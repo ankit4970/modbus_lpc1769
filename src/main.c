@@ -34,6 +34,8 @@
 static USHORT   usRegInputStart = REG_INPUT_START;
 static USHORT   usRegInputBuf[REG_INPUT_NREGS];
 
+
+
 /* ----------------------- Start implementation -----------------------------*/
 int main( void )
 {

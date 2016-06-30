@@ -78,7 +78,7 @@ static peMBFrameReceive peMBFrameReceiveCur;
 static pvMBFrameClose pvMBFrameCloseCur;
 
 /* Callback functions required by the porting layer. They are called when
- * an external event has happend which includes a timeout or the reception
+ * an external event has happened which includes a timeout or the reception
  * or transmission of a character.
  */
 BOOL( *pxMBFrameCBByteReceived ) ( void );

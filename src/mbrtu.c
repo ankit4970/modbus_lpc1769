@@ -116,6 +116,7 @@ eMBErrorCode eMBRTUInit( UCHAR ucSlaveAddress, UCHAR ucPort, ULONG ulBaudRate, e
             eStatus = MB_EPORTERR;
         }
     }
+
     EXIT_CRITICAL_SECTION(  );
 
     return eStatus;
@@ -191,7 +192,7 @@ eMBErrorCode eMBRTUSend( UCHAR ucSlaveAddress, const UCHAR * pucFrame, USHORT us
     eMBErrorCode    eStatus = MB_ENOERR;
     USHORT          usCRC16;
 
-    ENTER_CRITICAL_SECTION(  );
+    ENTER_CRITICAL_SECTION( );
 
     /* Check if the receiver is still in idle state. If not we where to
      * slow with processing the received frame and the master sent another

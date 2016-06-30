@@ -38,9 +38,84 @@
 /* ----------------------- Modbus includes ----------------------------------*/
 #include "mb.h"
 #include "mbproto.h"
-
+#include "LPC17xx.h"
 /* ----------------------- Defines ------------------------------------------*/
 #define BITS_UCHAR      8U
+
+#define INTERNAL_CLOCK		    (4  * 1000 * 1000UL)    ///< Do not change, this is the same on all LPC17XX
+#define EXTERNAL_CLOCK          (12 * 1000 * 1000UL)    ///< Change according to your board specification
+#define RTC_CLOCK               (32768UL)               ///< Do not change, this is the typical RTC crystal value
+#define configTICK_RATE_HZ		( 1000 )
+#define OS_MS(x)						( x / MS_PER_TICK() )        ///< Ticks to millisecond conversion
+#define OS_MS(x)						( x / MS_PER_TICK() )        ///< Ticks to millisecond conversion
+
+void delay(uint32_t delayInMs)
+{
+	LPC_TIM0->TCR = 0x02;		/* reset timer */
+	LPC_TIM0->PR  = 0x00;		/* set prescaler to zero */
+	LPC_TIM0->MR0 = delayInMs * (9000000 / 1000-1);
+	LPC_TIM0->IR  = 0xff;		/* reset all interrrupts */
+	LPC_TIM0->MCR = 0x04;		/* stop timer on match */
+	LPC_TIM0->TCR = 0x01;		/* start timer */
+
+	/* wait until delay time has elapsed */
+	while (LPC_TIM0->TCR & 0x01);
+
+	return;
+}
+
+unsigned int sys_get_cpu_clock()
+{
+	unsigned clock = 0;
+
+	/* Determine clock frequency according to clock register values             */
+	if (((LPC_SC->PLL0STAT >> 24) & 3) == 3)
+	{ /* If PLL0 enabled and connected */
+	    switch (LPC_SC->CLKSRCSEL & 0x03)
+	    {
+	        case 0: /* Int. RC oscillator => PLL0    */
+	        case 3: /* Reserved, default to Int. RC  */
+	            clock = (INTERNAL_CLOCK
+	                    * ((2 * ((LPC_SC->PLL0STAT & 0x7FFF) + 1)))
+	                    / (((LPC_SC->PLL0STAT >> 16) & 0xFF) + 1)
+	                    / ((LPC_SC->CCLKCFG & 0xFF) + 1));
+	            break;
+
+	        case 1: /* Main oscillator => PLL0       */
+	            clock = (EXTERNAL_CLOCK
+	                    * ((2 * ((LPC_SC->PLL0STAT & 0x7FFF) + 1)))
+	                    / (((LPC_SC->PLL0STAT >> 16) & 0xFF) + 1)
+	                    / ((LPC_SC->CCLKCFG & 0xFF) + 1));
+	            break;
+
+	        case 2: /* RTC oscillator => PLL0        */
+	            clock = (RTC_CLOCK
+	                    * ((2 * ((LPC_SC->PLL0STAT & 0x7FFF) + 1)))
+	                    / (((LPC_SC->PLL0STAT >> 16) & 0xFF) + 1)
+	                    / ((LPC_SC->CCLKCFG & 0xFF) + 1));
+	            break;
+	    }
+	}
+	else
+	{
+	    switch (LPC_SC->CLKSRCSEL & 0x03)
+	    {
+	        case 0: /* Int. RC oscillator => PLL0    */
+	        case 3: /* Reserved, default to Int. RC  */
+	            clock = INTERNAL_CLOCK / ((LPC_SC->CCLKCFG & 0xFF) + 1);
+	            break;
+	        case 1: /* Main oscillator => PLL0       */
+	            clock = EXTERNAL_CLOCK / ((LPC_SC->CCLKCFG & 0xFF) + 1);
+	            break;
+	        case 2: /* RTC oscillator => PLL0        */
+	            clock = RTC_CLOCK / ((LPC_SC->CCLKCFG & 0xFF) + 1);
+	            break;
+	    }
+	}
+
+	return clock;
+}
+
 
 /* ----------------------- Start implementation -----------------------------*/
 void

@@ -28,7 +28,9 @@
 /* ----------------------- Modbus includes ----------------------------------*/
 #include "mb.h"
 #include "mbport.h"
-
+#include "LPC17xx.h"
+#include "portserial.h"
+#include "mbutils.h"
 
 /* ----------------------- static functions ---------------------------------*/
 static void prvvUARTTxReadyISR( void );
@@ -45,6 +47,7 @@ static void prvvUARTISR( void );
 
 static BOOL RxEnable, TxEnable;     // Cam - keep a static copy of the RxEnable and TxEnable
                                     // status for the simulated ISR (ticker)
+
 
 
 /* ----------------------- Start implementation -----------------------------*/
@@ -159,6 +162,67 @@ BOOL xMBPortSerialGetByte( CHAR * pucByte )
  * a new character can be sent. The protocol stack will then call 
  * xMBPortSerialPutByte( ) to send the character.
  */
+
+static void UART2_IRQHandler()
+{
+	uint32_t intsrc=0, tmp=0, tmp1=0;
+
+	intsrc = (LPC_UART2->IIR & 0x03CF);
+	tmp = intsrc & UART_IIR_INTID_MASK;
+
+	// Receive Line Status
+	if (tmp == UART_IIR_INTID_RLS)
+	{
+		// Check line status
+		tmp1 = ((LPC_UART2->LSR) & UART_LSR_BITMASK);
+		// Mask out the Receive Ready and Transmit Holding empty status
+		tmp1 &= (UART_LSR_OE | UART_LSR_PE | UART_LSR_FE | UART_LSR_BI | UART_LSR_RXFE);
+		// If any error exist
+		if (tmp1)
+		{
+			while(1);
+		}
+	}
+
+	// Receive Data Available or Character time-out
+	if ((tmp == UART_IIR_INTID_RDA) || (tmp == UART_IIR_INTID_CTI))
+	{
+		pxMBFrameCBByteReceived( );
+#if 0
+		while (bToRecv)
+		{
+			if (!(LPC_UART2->LSR & UART_LSR_RDR))
+			{
+				printf("here1\n");
+				gBuffer[bRecvInt++] = '\0';
+				printf("-->%s\n",gBuffer);
+				bRecvInt =0;
+				xSemaphoreGiveFromISR(gUartSemaphore,NULL);
+				break;
+			}
+			else
+			{
+				recvData= LPC_UART2->RBR;
+				printf("%c\n",recvData);
+
+				printf("%c\n",recvData);
+				gBuffer[bRecvInt] = recvData;
+				bRecvInt++;
+				bToRecv--;
+			}
+		}
+#endif
+	}
+
+	// Transmit Holding Empty
+	if (tmp == UART_IIR_INTID_THRE)
+	{
+		pxMBFrameCBTransmitterEmpty();
+	}
+
+
+}
+
 static void prvvUARTTxReadyISR(void)
 {
     pxMBFrameCBTransmitterEmpty();

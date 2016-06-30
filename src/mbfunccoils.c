@@ -65,8 +65,7 @@ eMBException    prveMBError2Exception( eMBErrorCode eErrorCode );
 
 #if MB_FUNC_READ_COILS_ENABLED > 0
 
-eMBException
-eMBFuncReadCoils( UCHAR * pucFrame, USHORT * usLen )
+eMBException eMBFuncReadCoils( UCHAR * pucFrame, USHORT * usLen )
 {
     USHORT          usRegAddress;
     USHORT          usCoilCount;
