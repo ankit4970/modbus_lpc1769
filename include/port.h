@@ -1,4 +1,5 @@
 /*
+ * @file 				port.h
  * FreeModbus Libary: BARE Port
  * Copyright (C) 2006 Christian Walter <wolti@sil.at>
  *

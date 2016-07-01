@@ -1,0 +1,101 @@
+\hypertarget{group__modbus__utils}{}\section{Utilities}
+\label{group__modbus__utils}\index{Utilities@{Utilities}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{group__modbus__utils_gaffd1defb8bceb85f1b65d64fa1c895e1}{x\+M\+B\+Util\+Set\+Bits} (U\+C\+H\+AR $\ast$uc\+Byte\+Buf, U\+S\+H\+O\+RT us\+Bit\+Offset, U\+C\+H\+AR uc\+N\+Bits, U\+C\+H\+AR uc\+Values)
+\begin{DoxyCompactList}\small\item\em Function to set bits in a byte buffer. \end{DoxyCompactList}\item 
+U\+C\+H\+AR \hyperlink{group__modbus__utils_ga94b3b43e1d2353e621748c79e2fb4dd5}{x\+M\+B\+Util\+Get\+Bits} (U\+C\+H\+AR $\ast$uc\+Byte\+Buf, U\+S\+H\+O\+RT us\+Bit\+Offset, U\+C\+H\+AR uc\+N\+Bits)
+\begin{DoxyCompactList}\small\item\em Function to read bits in a byte buffer. \end{DoxyCompactList}\item 
+unsigned int {\bfseries sys\+\_\+get\+\_\+cpu\+\_\+clock} ()\hypertarget{group__modbus__utils_ga6ac4b492b79ce75125ae13fd7715873b}{}\label{group__modbus__utils_ga6ac4b492b79ce75125ae13fd7715873b}
+
+\item 
+void {\bfseries delay} (uint32\+\_\+t delay\+In\+Ms)\hypertarget{group__modbus__utils_ga5e9309bb72bdc5ba7967fd40ae3ca91a}{}\label{group__modbus__utils_ga5e9309bb72bdc5ba7967fd40ae3ca91a}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This module contains some utility functions which can be used by the application. It includes some special functions for working with bitfields backed by a character array buffer. 
+
+\subsection{Function Documentation}
+\index{Utilities@{Utilities}!x\+M\+B\+Util\+Set\+Bits@{x\+M\+B\+Util\+Set\+Bits}}
+\index{x\+M\+B\+Util\+Set\+Bits@{x\+M\+B\+Util\+Set\+Bits}!Utilities@{Utilities}}
+\subsubsection[{\texorpdfstring{x\+M\+B\+Util\+Set\+Bits(\+U\+C\+H\+A\+R $\ast$uc\+Byte\+Buf, U\+S\+H\+O\+R\+T us\+Bit\+Offset, U\+C\+H\+A\+R uc\+N\+Bits, U\+C\+H\+A\+R uc\+Values)}{xMBUtilSetBits(UCHAR *ucByteBuf, USHORT usBitOffset, UCHAR ucNBits, UCHAR ucValues)}}]{\setlength{\rightskip}{0pt plus 5cm}void x\+M\+B\+Util\+Set\+Bits (
+\begin{DoxyParamCaption}
+\item[{U\+C\+H\+AR $\ast$}]{uc\+Byte\+Buf, }
+\item[{U\+S\+H\+O\+RT}]{us\+Bit\+Offset, }
+\item[{U\+C\+H\+AR}]{uc\+N\+Bits, }
+\item[{U\+C\+H\+AR}]{uc\+Values}
+\end{DoxyParamCaption}
+)}\hypertarget{group__modbus__utils_gaffd1defb8bceb85f1b65d64fa1c895e1}{}\label{group__modbus__utils_gaffd1defb8bceb85f1b65d64fa1c895e1}
+
+
+Function to set bits in a byte buffer. 
+
+This function allows the efficient use of an array to implement bitfields. The array used for storing the bits must always be a multiple of two bytes. Up to eight bits can be set or cleared in one operation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em uc\+Byte\+Buf} & A buffer where the bit values are stored. Must be a multiple of 2 bytes. No length checking is performed and if us\+Bit\+Offset / 8 is greater than the size of the buffer memory contents is overwritten. \\
+\hline
+{\em us\+Bit\+Offset} & The starting address of the bits to set. The first bit has the offset 0. \\
+\hline
+{\em uc\+N\+Bits} & Number of bits to modify. The value must always be smaller than 8. \\
+\hline
+{\em uc\+Values} & Thew new values for the bits. The value for the first bit starting at {\ttfamily us\+Bit\+Offset} is the L\+SB of the value {\ttfamily uc\+Values}\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+1 ucBits[2] = \{0, 0\};
+2 
+3 // Set bit 4 to 1 (read: set 1 bit starting at bit offset 4 to value 1)
+4 xMBUtilSetBits( ucBits, 4, 1, 1 );
+5 
+6 // Set bit 7 to 1 and bit 8 to 0.
+7 xMBUtilSetBits( ucBits, 7, 2, 0x01 );
+8 
+9 // Set bits 8 - 11 to 0x05 and bits 12 - 15 to 0x0A;
+10 xMBUtilSetBits( ucBits, 8, 8, 0x5A);
+\end{DoxyCode}
+ 
+
+Definition at line 122 of file mbutils.\+c.
+
+\index{Utilities@{Utilities}!x\+M\+B\+Util\+Get\+Bits@{x\+M\+B\+Util\+Get\+Bits}}
+\index{x\+M\+B\+Util\+Get\+Bits@{x\+M\+B\+Util\+Get\+Bits}!Utilities@{Utilities}}
+\subsubsection[{\texorpdfstring{x\+M\+B\+Util\+Get\+Bits(\+U\+C\+H\+A\+R $\ast$uc\+Byte\+Buf, U\+S\+H\+O\+R\+T us\+Bit\+Offset, U\+C\+H\+A\+R uc\+N\+Bits)}{xMBUtilGetBits(UCHAR *ucByteBuf, USHORT usBitOffset, UCHAR ucNBits)}}]{\setlength{\rightskip}{0pt plus 5cm}U\+C\+H\+AR x\+M\+B\+Util\+Get\+Bits (
+\begin{DoxyParamCaption}
+\item[{U\+C\+H\+AR $\ast$}]{uc\+Byte\+Buf, }
+\item[{U\+S\+H\+O\+RT}]{us\+Bit\+Offset, }
+\item[{U\+C\+H\+AR}]{uc\+N\+Bits}
+\end{DoxyParamCaption}
+)}\hypertarget{group__modbus__utils_ga94b3b43e1d2353e621748c79e2fb4dd5}{}\label{group__modbus__utils_ga94b3b43e1d2353e621748c79e2fb4dd5}
+
+
+Function to read bits in a byte buffer. 
+
+This function is used to extract up bit values from an array. Up to eight bit values can be extracted in one step.
+
+
+\begin{DoxyParams}{Parameters}
+{\em uc\+Byte\+Buf} & A buffer where the bit values are stored. \\
+\hline
+{\em us\+Bit\+Offset} & The starting address of the bits to set. The first bit has the offset 0. \\
+\hline
+{\em uc\+N\+Bits} & Number of bits to modify. The value must always be smaller than 8.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+1 UCHAR ucBits[2] = \{0, 0\};
+2 UCHAR ucResult;
+3 
+4 // Extract the bits 3 - 10.
+5 ucResult = xMBUtilGetBits( ucBits, 3, 8 );
+\end{DoxyCode}
+ 
+
+Definition at line 161 of file mbutils.\+c.
+

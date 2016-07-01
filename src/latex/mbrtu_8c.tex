@@ -1,0 +1,523 @@
+\hypertarget{mbrtu_8c}{}\section{mbrtu.\+c File Reference}
+\label{mbrtu_8c}\index{mbrtu.\+c@{mbrtu.\+c}}
+{\ttfamily \#include \char`\"{}stdlib.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}string.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}port.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}mb.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}mbrtu.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}mbframe.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}mbcrc.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}mbport.\+h\char`\"{}}\\*
+Include dependency graph for mbrtu.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mbrtu_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{mbrtu_8c_ae0dc27c9b034c5177638e9eef79d48a7}{M\+B\+\_\+\+S\+E\+R\+\_\+\+P\+D\+U\+\_\+\+S\+I\+Z\+E\+\_\+\+M\+IN}~4
+\item 
+\#define \hyperlink{mbrtu_8c_ad7e9cfdbd55413153a9a862d824a149f}{M\+B\+\_\+\+S\+E\+R\+\_\+\+P\+D\+U\+\_\+\+S\+I\+Z\+E\+\_\+\+M\+AX}~256
+\item 
+\#define \hyperlink{mbrtu_8c_afc5bf40f988e11036cdd8a44c1402d52}{M\+B\+\_\+\+S\+E\+R\+\_\+\+P\+D\+U\+\_\+\+S\+I\+Z\+E\+\_\+\+C\+RC}~2
+\item 
+\#define \hyperlink{mbrtu_8c_afd3d56d60a90ce4cb9858d305f446630}{M\+B\+\_\+\+S\+E\+R\+\_\+\+P\+D\+U\+\_\+\+A\+D\+D\+R\+\_\+\+O\+FF}~0
+\item 
+\#define \hyperlink{mbrtu_8c_ab20d539d6366275b4f75f181908ca207}{M\+B\+\_\+\+S\+E\+R\+\_\+\+P\+D\+U\+\_\+\+P\+D\+U\+\_\+\+O\+FF}~1
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{mbrtu_8c_ada71af7b20c01523339e4f2ff95feefb}{e\+M\+B\+Rcv\+State} \{ \\*
+\hyperlink{mbrtu_8c_ada71af7b20c01523339e4f2ff95feefba2b2395354f5e0566929bd52408265fb3}{S\+T\+A\+T\+E\+\_\+\+R\+X\+\_\+\+I\+N\+IT}, 
+\\*
+\hyperlink{mbrtu_8c_ada71af7b20c01523339e4f2ff95feefba516714125b01eae93e5cb693fdc3a9e0}{S\+T\+A\+T\+E\+\_\+\+R\+X\+\_\+\+I\+D\+LE}, 
+\\*
+\hyperlink{mbrtu_8c_ada71af7b20c01523339e4f2ff95feefba6489a66156527784ec30b45fc5ffe43b}{S\+T\+A\+T\+E\+\_\+\+R\+X\+\_\+\+R\+CV}, 
+\\*
+\hyperlink{mbrtu_8c_ada71af7b20c01523339e4f2ff95feefbafbb71fcd5e10dfbcc33a8f5a00df1f95}{S\+T\+A\+T\+E\+\_\+\+R\+X\+\_\+\+E\+R\+R\+OR}
+ \}
+\item 
+enum \hyperlink{mbrtu_8c_ac877d5e834a5d5b2f80240c0a90d7fef}{e\+M\+B\+Snd\+State} \{ \\*
+\hyperlink{mbrtu_8c_ac877d5e834a5d5b2f80240c0a90d7fefab1bd9fcf7cdb346f72d012adfca4767a}{S\+T\+A\+T\+E\+\_\+\+T\+X\+\_\+\+I\+D\+LE}, 
+\\*
+\hyperlink{mbrtu_8c_ac877d5e834a5d5b2f80240c0a90d7fefa99b8ef6f95d0035f9519dcb2889b3a83}{S\+T\+A\+T\+E\+\_\+\+T\+X\+\_\+\+X\+M\+IT}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+e\+M\+B\+Error\+Code \hyperlink{mbrtu_8c_a52738b46d7f3be581582d30cfb2bfcb8}{e\+M\+B\+R\+T\+U\+Init} (U\+C\+H\+AR uc\+Slave\+Address, U\+C\+H\+AR uc\+Port, U\+L\+O\+NG ul\+Baud\+Rate, e\+M\+B\+Parity e\+Parity)
+\item 
+void \hyperlink{mbrtu_8c_ae342bae030ea291a6e8a2fe3d2d0abeb}{e\+M\+B\+R\+T\+U\+Start} (void)
+\item 
+void \hyperlink{mbrtu_8c_a3d44ef4747b7202d37142ef1aaea493b}{e\+M\+B\+R\+T\+U\+Stop} (void)
+\item 
+e\+M\+B\+Error\+Code \hyperlink{mbrtu_8c_a669fd79aadbd1cc49ac4f11382dc15d9}{e\+M\+B\+R\+T\+U\+Receive} (U\+C\+H\+AR $\ast$puc\+Rcv\+Address, U\+C\+H\+AR $\ast$$\ast$puc\+Frame, U\+S\+H\+O\+RT $\ast$pus\+Length)
+\item 
+e\+M\+B\+Error\+Code \hyperlink{mbrtu_8c_a6feb0c70f52d3ef74da1cfbdc10d1ab0}{e\+M\+B\+R\+T\+U\+Send} (U\+C\+H\+AR uc\+Slave\+Address, const U\+C\+H\+AR $\ast$puc\+Frame, U\+S\+H\+O\+RT us\+Length)
+\item 
+B\+O\+OL \hyperlink{mbrtu_8c_a447f45f582daab2600cad612b00120b0}{x\+M\+B\+R\+T\+U\+Receive\+F\+SM} (void)
+\item 
+B\+O\+OL \hyperlink{mbrtu_8c_a663e5daf0be0f2426a72c531c91d423f}{x\+M\+B\+R\+T\+U\+Transmit\+F\+SM} (void)
+\item 
+B\+O\+OL \hyperlink{mbrtu_8c_ac6302a8b67c6b82ae49e6c9d6a9795da}{x\+M\+B\+R\+T\+U\+Timer\+T35\+Expired} (void)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+volatile U\+C\+H\+AR {\bfseries uc\+R\+T\+U\+Buf} \mbox{[}\hyperlink{mbrtu_8c_ad7e9cfdbd55413153a9a862d824a149f}{M\+B\+\_\+\+S\+E\+R\+\_\+\+P\+D\+U\+\_\+\+S\+I\+Z\+E\+\_\+\+M\+AX}\mbox{]}\hypertarget{mbrtu_8c_a0fa63f7bfbfea7ac20cce55d94cf3d53}{}\label{mbrtu_8c_a0fa63f7bfbfea7ac20cce55d94cf3d53}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Free\+Modbus Libary\+: A portable Modbus implementation for Modbus A\+S\+C\+I\+I/\+R\+TU. Copyright (c) 2006 Christian Walter \href{mailto:wolti@sil.at}{\tt wolti@sil.\+at} All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met\+:
+\begin{DoxyEnumerate}
+\item Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+\item Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+\item The name of the author may not be used to endorse or promote products derived from this software without specific prior written permission.
+\end{DoxyEnumerate}
+
+T\+H\+IS S\+O\+F\+T\+W\+A\+RE IS P\+R\+O\+V\+I\+D\+ED BY T\+HE A\+U\+T\+H\+OR ``\+AS IS\textquotesingle{}\textquotesingle{} A\+ND A\+NY E\+X\+P\+R\+E\+SS OR I\+M\+P\+L\+I\+ED W\+A\+R\+R\+A\+N\+T\+I\+ES, I\+N\+C\+L\+U\+D\+I\+NG, B\+UT N\+OT L\+I\+M\+I\+T\+ED TO, T\+HE I\+M\+P\+L\+I\+ED W\+A\+R\+R\+A\+N\+T\+I\+ES OF M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+TY A\+ND F\+I\+T\+N\+E\+SS F\+OR A P\+A\+R\+T\+I\+C\+U\+L\+AR P\+U\+R\+P\+O\+SE A\+RE D\+I\+S\+C\+L\+A\+I\+M\+ED. IN NO E\+V\+E\+NT S\+H\+A\+LL T\+HE A\+U\+T\+H\+OR BE L\+I\+A\+B\+LE F\+OR A\+NY D\+I\+R\+E\+CT, I\+N\+D\+I\+R\+E\+CT, I\+N\+C\+I\+D\+E\+N\+T\+AL, S\+P\+E\+C\+I\+AL, E\+X\+E\+M\+P\+L\+A\+RY, OR C\+O\+N\+S\+E\+Q\+U\+E\+N\+T\+I\+AL D\+A\+M\+A\+G\+ES (I\+N\+C\+L\+U\+D\+I\+NG, B\+UT N\+OT L\+I\+M\+I\+T\+ED TO, P\+R\+O\+C\+U\+R\+E\+M\+E\+NT OF S\+U\+B\+S\+T\+I\+T\+U\+TE G\+O\+O\+DS OR S\+E\+R\+V\+I\+C\+ES; L\+O\+SS OF U\+SE, D\+A\+TA, OR P\+R\+O\+F\+I\+TS; OR B\+U\+S\+I\+N\+E\+SS I\+N\+T\+E\+R\+R\+U\+P\+T\+I\+ON) H\+O\+W\+E\+V\+ER C\+A\+U\+S\+ED A\+ND ON A\+NY T\+H\+E\+O\+RY OF L\+I\+A\+B\+I\+L\+I\+TY, W\+H\+E\+T\+H\+ER IN C\+O\+N\+T\+R\+A\+CT, S\+T\+R\+I\+CT L\+I\+A\+B\+I\+L\+I\+TY, OR T\+O\+RT (I\+N\+C\+L\+U\+D\+I\+NG N\+E\+G\+L\+I\+G\+E\+N\+CE OR O\+T\+H\+E\+R\+W\+I\+SE) A\+R\+I\+S\+I\+NG IN A\+NY W\+AY O\+UT OF T\+HE U\+SE OF T\+H\+IS S\+O\+F\+T\+W\+A\+RE, E\+V\+EN IF A\+D\+V\+I\+S\+ED OF T\+HE P\+O\+S\+S\+I\+B\+I\+L\+I\+TY OF S\+U\+CH D\+A\+M\+A\+GE.
+
+File\+: \begin{DoxyParagraph}{Id}
+\hyperlink{mbrtu_8c}{mbrtu.\+c},v 1.\+18 2007/09/12 10\+:15\+:56 wolti Exp 
+\end{DoxyParagraph}
+
+
+\subsection{Macro Definition Documentation}
+\index{mbrtu.\+c@{mbrtu.\+c}!M\+B\+\_\+\+S\+E\+R\+\_\+\+P\+D\+U\+\_\+\+S\+I\+Z\+E\+\_\+\+M\+IN@{M\+B\+\_\+\+S\+E\+R\+\_\+\+P\+D\+U\+\_\+\+S\+I\+Z\+E\+\_\+\+M\+IN}}
+\index{M\+B\+\_\+\+S\+E\+R\+\_\+\+P\+D\+U\+\_\+\+S\+I\+Z\+E\+\_\+\+M\+IN@{M\+B\+\_\+\+S\+E\+R\+\_\+\+P\+D\+U\+\_\+\+S\+I\+Z\+E\+\_\+\+M\+IN}!mbrtu.\+c@{mbrtu.\+c}}
+\subsubsection[{\texorpdfstring{M\+B\+\_\+\+S\+E\+R\+\_\+\+P\+D\+U\+\_\+\+S\+I\+Z\+E\+\_\+\+M\+IN}{MB_SER_PDU_SIZE_MIN}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+B\+\_\+\+S\+E\+R\+\_\+\+P\+D\+U\+\_\+\+S\+I\+Z\+E\+\_\+\+M\+IN~4}\hypertarget{mbrtu_8c_ae0dc27c9b034c5177638e9eef79d48a7}{}\label{mbrtu_8c_ae0dc27c9b034c5177638e9eef79d48a7}
+Minimum size of a Modbus R\+TU frame. 
+
+Definition at line 49 of file mbrtu.\+c.
+
+\index{mbrtu.\+c@{mbrtu.\+c}!M\+B\+\_\+\+S\+E\+R\+\_\+\+P\+D\+U\+\_\+\+S\+I\+Z\+E\+\_\+\+M\+AX@{M\+B\+\_\+\+S\+E\+R\+\_\+\+P\+D\+U\+\_\+\+S\+I\+Z\+E\+\_\+\+M\+AX}}
+\index{M\+B\+\_\+\+S\+E\+R\+\_\+\+P\+D\+U\+\_\+\+S\+I\+Z\+E\+\_\+\+M\+AX@{M\+B\+\_\+\+S\+E\+R\+\_\+\+P\+D\+U\+\_\+\+S\+I\+Z\+E\+\_\+\+M\+AX}!mbrtu.\+c@{mbrtu.\+c}}
+\subsubsection[{\texorpdfstring{M\+B\+\_\+\+S\+E\+R\+\_\+\+P\+D\+U\+\_\+\+S\+I\+Z\+E\+\_\+\+M\+AX}{MB_SER_PDU_SIZE_MAX}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+B\+\_\+\+S\+E\+R\+\_\+\+P\+D\+U\+\_\+\+S\+I\+Z\+E\+\_\+\+M\+AX~256}\hypertarget{mbrtu_8c_ad7e9cfdbd55413153a9a862d824a149f}{}\label{mbrtu_8c_ad7e9cfdbd55413153a9a862d824a149f}
+Maximum size of a Modbus R\+TU frame. 
+
+Definition at line 50 of file mbrtu.\+c.
+
+\index{mbrtu.\+c@{mbrtu.\+c}!M\+B\+\_\+\+S\+E\+R\+\_\+\+P\+D\+U\+\_\+\+S\+I\+Z\+E\+\_\+\+C\+RC@{M\+B\+\_\+\+S\+E\+R\+\_\+\+P\+D\+U\+\_\+\+S\+I\+Z\+E\+\_\+\+C\+RC}}
+\index{M\+B\+\_\+\+S\+E\+R\+\_\+\+P\+D\+U\+\_\+\+S\+I\+Z\+E\+\_\+\+C\+RC@{M\+B\+\_\+\+S\+E\+R\+\_\+\+P\+D\+U\+\_\+\+S\+I\+Z\+E\+\_\+\+C\+RC}!mbrtu.\+c@{mbrtu.\+c}}
+\subsubsection[{\texorpdfstring{M\+B\+\_\+\+S\+E\+R\+\_\+\+P\+D\+U\+\_\+\+S\+I\+Z\+E\+\_\+\+C\+RC}{MB_SER_PDU_SIZE_CRC}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+B\+\_\+\+S\+E\+R\+\_\+\+P\+D\+U\+\_\+\+S\+I\+Z\+E\+\_\+\+C\+RC~2}\hypertarget{mbrtu_8c_afc5bf40f988e11036cdd8a44c1402d52}{}\label{mbrtu_8c_afc5bf40f988e11036cdd8a44c1402d52}
+Size of C\+RC field in P\+DU. 
+
+Definition at line 51 of file mbrtu.\+c.
+
+\index{mbrtu.\+c@{mbrtu.\+c}!M\+B\+\_\+\+S\+E\+R\+\_\+\+P\+D\+U\+\_\+\+A\+D\+D\+R\+\_\+\+O\+FF@{M\+B\+\_\+\+S\+E\+R\+\_\+\+P\+D\+U\+\_\+\+A\+D\+D\+R\+\_\+\+O\+FF}}
+\index{M\+B\+\_\+\+S\+E\+R\+\_\+\+P\+D\+U\+\_\+\+A\+D\+D\+R\+\_\+\+O\+FF@{M\+B\+\_\+\+S\+E\+R\+\_\+\+P\+D\+U\+\_\+\+A\+D\+D\+R\+\_\+\+O\+FF}!mbrtu.\+c@{mbrtu.\+c}}
+\subsubsection[{\texorpdfstring{M\+B\+\_\+\+S\+E\+R\+\_\+\+P\+D\+U\+\_\+\+A\+D\+D\+R\+\_\+\+O\+FF}{MB_SER_PDU_ADDR_OFF}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+B\+\_\+\+S\+E\+R\+\_\+\+P\+D\+U\+\_\+\+A\+D\+D\+R\+\_\+\+O\+FF~0}\hypertarget{mbrtu_8c_afd3d56d60a90ce4cb9858d305f446630}{}\label{mbrtu_8c_afd3d56d60a90ce4cb9858d305f446630}
+Offset of slave address in Ser-\/\+P\+DU. 
+
+Definition at line 52 of file mbrtu.\+c.
+
+\index{mbrtu.\+c@{mbrtu.\+c}!M\+B\+\_\+\+S\+E\+R\+\_\+\+P\+D\+U\+\_\+\+P\+D\+U\+\_\+\+O\+FF@{M\+B\+\_\+\+S\+E\+R\+\_\+\+P\+D\+U\+\_\+\+P\+D\+U\+\_\+\+O\+FF}}
+\index{M\+B\+\_\+\+S\+E\+R\+\_\+\+P\+D\+U\+\_\+\+P\+D\+U\+\_\+\+O\+FF@{M\+B\+\_\+\+S\+E\+R\+\_\+\+P\+D\+U\+\_\+\+P\+D\+U\+\_\+\+O\+FF}!mbrtu.\+c@{mbrtu.\+c}}
+\subsubsection[{\texorpdfstring{M\+B\+\_\+\+S\+E\+R\+\_\+\+P\+D\+U\+\_\+\+P\+D\+U\+\_\+\+O\+FF}{MB_SER_PDU_PDU_OFF}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+B\+\_\+\+S\+E\+R\+\_\+\+P\+D\+U\+\_\+\+P\+D\+U\+\_\+\+O\+FF~1}\hypertarget{mbrtu_8c_ab20d539d6366275b4f75f181908ca207}{}\label{mbrtu_8c_ab20d539d6366275b4f75f181908ca207}
+Offset of Modbus-\/\+P\+DU in Ser-\/\+P\+DU. 
+
+Definition at line 53 of file mbrtu.\+c.
+
+
+
+\subsection{Enumeration Type Documentation}
+\index{mbrtu.\+c@{mbrtu.\+c}!e\+M\+B\+Rcv\+State@{e\+M\+B\+Rcv\+State}}
+\index{e\+M\+B\+Rcv\+State@{e\+M\+B\+Rcv\+State}!mbrtu.\+c@{mbrtu.\+c}}
+\subsubsection[{\texorpdfstring{e\+M\+B\+Rcv\+State}{eMBRcvState}}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf e\+M\+B\+Rcv\+State}}\hypertarget{mbrtu_8c_ada71af7b20c01523339e4f2ff95feefb}{}\label{mbrtu_8c_ada71af7b20c01523339e4f2ff95feefb}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{S\+T\+A\+T\+E\+\_\+\+R\+X\+\_\+\+I\+N\+IT@{S\+T\+A\+T\+E\+\_\+\+R\+X\+\_\+\+I\+N\+IT}!mbrtu.\+c@{mbrtu.\+c}}\index{mbrtu.\+c@{mbrtu.\+c}!S\+T\+A\+T\+E\+\_\+\+R\+X\+\_\+\+I\+N\+IT@{S\+T\+A\+T\+E\+\_\+\+R\+X\+\_\+\+I\+N\+IT}}\item[{\em 
+S\+T\+A\+T\+E\+\_\+\+R\+X\+\_\+\+I\+N\+IT\hypertarget{mbrtu_8c_ada71af7b20c01523339e4f2ff95feefba2b2395354f5e0566929bd52408265fb3}{}\label{mbrtu_8c_ada71af7b20c01523339e4f2ff95feefba2b2395354f5e0566929bd52408265fb3}
+}]Receiver is in initial state. \index{S\+T\+A\+T\+E\+\_\+\+R\+X\+\_\+\+I\+D\+LE@{S\+T\+A\+T\+E\+\_\+\+R\+X\+\_\+\+I\+D\+LE}!mbrtu.\+c@{mbrtu.\+c}}\index{mbrtu.\+c@{mbrtu.\+c}!S\+T\+A\+T\+E\+\_\+\+R\+X\+\_\+\+I\+D\+LE@{S\+T\+A\+T\+E\+\_\+\+R\+X\+\_\+\+I\+D\+LE}}\item[{\em 
+S\+T\+A\+T\+E\+\_\+\+R\+X\+\_\+\+I\+D\+LE\hypertarget{mbrtu_8c_ada71af7b20c01523339e4f2ff95feefba516714125b01eae93e5cb693fdc3a9e0}{}\label{mbrtu_8c_ada71af7b20c01523339e4f2ff95feefba516714125b01eae93e5cb693fdc3a9e0}
+}]Receiver is in idle state. \index{S\+T\+A\+T\+E\+\_\+\+R\+X\+\_\+\+R\+CV@{S\+T\+A\+T\+E\+\_\+\+R\+X\+\_\+\+R\+CV}!mbrtu.\+c@{mbrtu.\+c}}\index{mbrtu.\+c@{mbrtu.\+c}!S\+T\+A\+T\+E\+\_\+\+R\+X\+\_\+\+R\+CV@{S\+T\+A\+T\+E\+\_\+\+R\+X\+\_\+\+R\+CV}}\item[{\em 
+S\+T\+A\+T\+E\+\_\+\+R\+X\+\_\+\+R\+CV\hypertarget{mbrtu_8c_ada71af7b20c01523339e4f2ff95feefba6489a66156527784ec30b45fc5ffe43b}{}\label{mbrtu_8c_ada71af7b20c01523339e4f2ff95feefba6489a66156527784ec30b45fc5ffe43b}
+}]Frame is beeing received. \index{S\+T\+A\+T\+E\+\_\+\+R\+X\+\_\+\+E\+R\+R\+OR@{S\+T\+A\+T\+E\+\_\+\+R\+X\+\_\+\+E\+R\+R\+OR}!mbrtu.\+c@{mbrtu.\+c}}\index{mbrtu.\+c@{mbrtu.\+c}!S\+T\+A\+T\+E\+\_\+\+R\+X\+\_\+\+E\+R\+R\+OR@{S\+T\+A\+T\+E\+\_\+\+R\+X\+\_\+\+E\+R\+R\+OR}}\item[{\em 
+S\+T\+A\+T\+E\+\_\+\+R\+X\+\_\+\+E\+R\+R\+OR\hypertarget{mbrtu_8c_ada71af7b20c01523339e4f2ff95feefbafbb71fcd5e10dfbcc33a8f5a00df1f95}{}\label{mbrtu_8c_ada71af7b20c01523339e4f2ff95feefbafbb71fcd5e10dfbcc33a8f5a00df1f95}
+}]If the frame is invalid. \end{description}
+\end{Desc}
+
+
+Definition at line 56 of file mbrtu.\+c.
+
+\index{mbrtu.\+c@{mbrtu.\+c}!e\+M\+B\+Snd\+State@{e\+M\+B\+Snd\+State}}
+\index{e\+M\+B\+Snd\+State@{e\+M\+B\+Snd\+State}!mbrtu.\+c@{mbrtu.\+c}}
+\subsubsection[{\texorpdfstring{e\+M\+B\+Snd\+State}{eMBSndState}}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf e\+M\+B\+Snd\+State}}\hypertarget{mbrtu_8c_ac877d5e834a5d5b2f80240c0a90d7fef}{}\label{mbrtu_8c_ac877d5e834a5d5b2f80240c0a90d7fef}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{S\+T\+A\+T\+E\+\_\+\+T\+X\+\_\+\+I\+D\+LE@{S\+T\+A\+T\+E\+\_\+\+T\+X\+\_\+\+I\+D\+LE}!mbrtu.\+c@{mbrtu.\+c}}\index{mbrtu.\+c@{mbrtu.\+c}!S\+T\+A\+T\+E\+\_\+\+T\+X\+\_\+\+I\+D\+LE@{S\+T\+A\+T\+E\+\_\+\+T\+X\+\_\+\+I\+D\+LE}}\item[{\em 
+S\+T\+A\+T\+E\+\_\+\+T\+X\+\_\+\+I\+D\+LE\hypertarget{mbrtu_8c_ac877d5e834a5d5b2f80240c0a90d7fefab1bd9fcf7cdb346f72d012adfca4767a}{}\label{mbrtu_8c_ac877d5e834a5d5b2f80240c0a90d7fefab1bd9fcf7cdb346f72d012adfca4767a}
+}]Transmitter is in idle state. \index{S\+T\+A\+T\+E\+\_\+\+T\+X\+\_\+\+X\+M\+IT@{S\+T\+A\+T\+E\+\_\+\+T\+X\+\_\+\+X\+M\+IT}!mbrtu.\+c@{mbrtu.\+c}}\index{mbrtu.\+c@{mbrtu.\+c}!S\+T\+A\+T\+E\+\_\+\+T\+X\+\_\+\+X\+M\+IT@{S\+T\+A\+T\+E\+\_\+\+T\+X\+\_\+\+X\+M\+IT}}\item[{\em 
+S\+T\+A\+T\+E\+\_\+\+T\+X\+\_\+\+X\+M\+IT\hypertarget{mbrtu_8c_ac877d5e834a5d5b2f80240c0a90d7fefa99b8ef6f95d0035f9519dcb2889b3a83}{}\label{mbrtu_8c_ac877d5e834a5d5b2f80240c0a90d7fefa99b8ef6f95d0035f9519dcb2889b3a83}
+}]Transmitter is in transfer state. \end{description}
+\end{Desc}
+
+
+Definition at line 64 of file mbrtu.\+c.
+
+
+
+\subsection{Function Documentation}
+\index{mbrtu.\+c@{mbrtu.\+c}!e\+M\+B\+R\+T\+U\+Init@{e\+M\+B\+R\+T\+U\+Init}}
+\index{e\+M\+B\+R\+T\+U\+Init@{e\+M\+B\+R\+T\+U\+Init}!mbrtu.\+c@{mbrtu.\+c}}
+\subsubsection[{\texorpdfstring{e\+M\+B\+R\+T\+U\+Init(\+U\+C\+H\+A\+R uc\+Slave\+Address, U\+C\+H\+A\+R uc\+Port, U\+L\+O\+N\+G ul\+Baud\+Rate, e\+M\+B\+Parity e\+Parity)}{eMBRTUInit(UCHAR ucSlaveAddress, UCHAR ucPort, ULONG ulBaudRate, eMBParity eParity)}}]{\setlength{\rightskip}{0pt plus 5cm}e\+M\+B\+Error\+Code e\+M\+B\+R\+T\+U\+Init (
+\begin{DoxyParamCaption}
+\item[{U\+C\+H\+AR}]{uc\+Slave\+Address, }
+\item[{U\+C\+H\+AR}]{uc\+Port, }
+\item[{U\+L\+O\+NG}]{ul\+Baud\+Rate, }
+\item[{e\+M\+B\+Parity}]{e\+Parity}
+\end{DoxyParamCaption}
+)}\hypertarget{mbrtu_8c_a52738b46d7f3be581582d30cfb2bfcb8}{}\label{mbrtu_8c_a52738b46d7f3be581582d30cfb2bfcb8}
+
+
+ \subsubsection*{e\+M\+B\+R\+T\+U\+Init }
+
+Event Handler for G\+PI module \begin{DoxyVerb} @date                           DEC/02/2013
+ @author                         FW_DEV_2
+ @pre                            None
+ @return                         None\end{DoxyVerb}
+ 
+
+Definition at line 94 of file mbrtu.\+c.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mbrtu_8c_a52738b46d7f3be581582d30cfb2bfcb8_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=308pt]{mbrtu_8c_a52738b46d7f3be581582d30cfb2bfcb8_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{mbrtu.\+c@{mbrtu.\+c}!e\+M\+B\+R\+T\+U\+Start@{e\+M\+B\+R\+T\+U\+Start}}
+\index{e\+M\+B\+R\+T\+U\+Start@{e\+M\+B\+R\+T\+U\+Start}!mbrtu.\+c@{mbrtu.\+c}}
+\subsubsection[{\texorpdfstring{e\+M\+B\+R\+T\+U\+Start(void)}{eMBRTUStart(void)}}]{\setlength{\rightskip}{0pt plus 5cm}void e\+M\+B\+R\+T\+U\+Start (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{mbrtu_8c_ae342bae030ea291a6e8a2fe3d2d0abeb}{}\label{mbrtu_8c_ae342bae030ea291a6e8a2fe3d2d0abeb}
+
+
+ \subsubsection*{e\+M\+B\+R\+T\+U\+Start }
+
+Event Handler for G\+PI module \begin{DoxyVerb} @date                           DEC/02/2013
+ @author                         FW_DEV_2
+ @pre                            None
+ @return                         None\end{DoxyVerb}
+ 
+
+Definition at line 151 of file mbrtu.\+c.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mbrtu_8c_ae342bae030ea291a6e8a2fe3d2d0abeb_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=317pt]{mbrtu_8c_ae342bae030ea291a6e8a2fe3d2d0abeb_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{mbrtu.\+c@{mbrtu.\+c}!e\+M\+B\+R\+T\+U\+Stop@{e\+M\+B\+R\+T\+U\+Stop}}
+\index{e\+M\+B\+R\+T\+U\+Stop@{e\+M\+B\+R\+T\+U\+Stop}!mbrtu.\+c@{mbrtu.\+c}}
+\subsubsection[{\texorpdfstring{e\+M\+B\+R\+T\+U\+Stop(void)}{eMBRTUStop(void)}}]{\setlength{\rightskip}{0pt plus 5cm}void e\+M\+B\+R\+T\+U\+Stop (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{mbrtu_8c_a3d44ef4747b7202d37142ef1aaea493b}{}\label{mbrtu_8c_a3d44ef4747b7202d37142ef1aaea493b}
+
+
+ \subsubsection*{e\+M\+B\+R\+T\+U\+Stop }
+
+Event Handler for G\+PI module \begin{DoxyVerb} @date                           DEC/02/2013
+ @author                         FW_DEV_2
+ @pre                            None
+ @return                         None\end{DoxyVerb}
+ 
+
+Definition at line 179 of file mbrtu.\+c.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=307pt]{mbrtu_8c_a3d44ef4747b7202d37142ef1aaea493b_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=316pt]{mbrtu_8c_a3d44ef4747b7202d37142ef1aaea493b_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{mbrtu.\+c@{mbrtu.\+c}!e\+M\+B\+R\+T\+U\+Receive@{e\+M\+B\+R\+T\+U\+Receive}}
+\index{e\+M\+B\+R\+T\+U\+Receive@{e\+M\+B\+R\+T\+U\+Receive}!mbrtu.\+c@{mbrtu.\+c}}
+\subsubsection[{\texorpdfstring{e\+M\+B\+R\+T\+U\+Receive(\+U\+C\+H\+A\+R $\ast$puc\+Rcv\+Address, U\+C\+H\+A\+R $\ast$$\ast$puc\+Frame, U\+S\+H\+O\+R\+T $\ast$pus\+Length)}{eMBRTUReceive(UCHAR *pucRcvAddress, UCHAR **pucFrame, USHORT *pusLength)}}]{\setlength{\rightskip}{0pt plus 5cm}e\+M\+B\+Error\+Code e\+M\+B\+R\+T\+U\+Receive (
+\begin{DoxyParamCaption}
+\item[{U\+C\+H\+AR $\ast$}]{puc\+Rcv\+Address, }
+\item[{U\+C\+H\+AR $\ast$$\ast$}]{puc\+Frame, }
+\item[{U\+S\+H\+O\+RT $\ast$}]{pus\+Length}
+\end{DoxyParamCaption}
+)}\hypertarget{mbrtu_8c_a669fd79aadbd1cc49ac4f11382dc15d9}{}\label{mbrtu_8c_a669fd79aadbd1cc49ac4f11382dc15d9}
+
+
+ \subsubsection*{e\+M\+B\+R\+T\+U\+Receive }
+
+Event Handler for G\+PI module \begin{DoxyVerb} @date                           DEC/02/2013
+ @author                         FW_DEV_2
+ @pre                            None
+ @return                         None\end{DoxyVerb}
+ 
+
+Definition at line 199 of file mbrtu.\+c.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=278pt]{mbrtu_8c_a669fd79aadbd1cc49ac4f11382dc15d9_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=329pt]{mbrtu_8c_a669fd79aadbd1cc49ac4f11382dc15d9_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{mbrtu.\+c@{mbrtu.\+c}!e\+M\+B\+R\+T\+U\+Send@{e\+M\+B\+R\+T\+U\+Send}}
+\index{e\+M\+B\+R\+T\+U\+Send@{e\+M\+B\+R\+T\+U\+Send}!mbrtu.\+c@{mbrtu.\+c}}
+\subsubsection[{\texorpdfstring{e\+M\+B\+R\+T\+U\+Send(\+U\+C\+H\+A\+R uc\+Slave\+Address, const U\+C\+H\+A\+R $\ast$puc\+Frame, U\+S\+H\+O\+R\+T us\+Length)}{eMBRTUSend(UCHAR ucSlaveAddress, const UCHAR *pucFrame, USHORT usLength)}}]{\setlength{\rightskip}{0pt plus 5cm}e\+M\+B\+Error\+Code e\+M\+B\+R\+T\+U\+Send (
+\begin{DoxyParamCaption}
+\item[{U\+C\+H\+AR}]{uc\+Slave\+Address, }
+\item[{const U\+C\+H\+AR $\ast$}]{puc\+Frame, }
+\item[{U\+S\+H\+O\+RT}]{us\+Length}
+\end{DoxyParamCaption}
+)}\hypertarget{mbrtu_8c_a6feb0c70f52d3ef74da1cfbdc10d1ab0}{}\label{mbrtu_8c_a6feb0c70f52d3ef74da1cfbdc10d1ab0}
+
+
+ \subsubsection*{e\+M\+B\+R\+T\+U\+Send }
+
+Event Handler for G\+PI module \begin{DoxyVerb} @date                           DEC/02/2013
+ @author                         FW_DEV_2
+ @pre                            None
+ @return                         None\end{DoxyVerb}
+ 
+
+Definition at line 252 of file mbrtu.\+c.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=302pt]{mbrtu_8c_a6feb0c70f52d3ef74da1cfbdc10d1ab0_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=318pt]{mbrtu_8c_a6feb0c70f52d3ef74da1cfbdc10d1ab0_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{mbrtu.\+c@{mbrtu.\+c}!x\+M\+B\+R\+T\+U\+Receive\+F\+SM@{x\+M\+B\+R\+T\+U\+Receive\+F\+SM}}
+\index{x\+M\+B\+R\+T\+U\+Receive\+F\+SM@{x\+M\+B\+R\+T\+U\+Receive\+F\+SM}!mbrtu.\+c@{mbrtu.\+c}}
+\subsubsection[{\texorpdfstring{x\+M\+B\+R\+T\+U\+Receive\+F\+S\+M(void)}{xMBRTUReceiveFSM(void)}}]{\setlength{\rightskip}{0pt plus 5cm}B\+O\+OL x\+M\+B\+R\+T\+U\+Receive\+F\+SM (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{mbrtu_8c_a447f45f582daab2600cad612b00120b0}{}\label{mbrtu_8c_a447f45f582daab2600cad612b00120b0}
+
+
+ \subsubsection*{x\+M\+B\+R\+T\+U\+Receive\+F\+SM }
+
+Event Handler for G\+PI module \begin{DoxyVerb} @date                           DEC/02/2013
+ @author                         FW_DEV_2
+ @pre                            None
+ @return                         None\end{DoxyVerb}
+ 
+
+Definition at line 302 of file mbrtu.\+c.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mbrtu_8c_a447f45f582daab2600cad612b00120b0_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mbrtu_8c_a447f45f582daab2600cad612b00120b0_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{mbrtu.\+c@{mbrtu.\+c}!x\+M\+B\+R\+T\+U\+Transmit\+F\+SM@{x\+M\+B\+R\+T\+U\+Transmit\+F\+SM}}
+\index{x\+M\+B\+R\+T\+U\+Transmit\+F\+SM@{x\+M\+B\+R\+T\+U\+Transmit\+F\+SM}!mbrtu.\+c@{mbrtu.\+c}}
+\subsubsection[{\texorpdfstring{x\+M\+B\+R\+T\+U\+Transmit\+F\+S\+M(void)}{xMBRTUTransmitFSM(void)}}]{\setlength{\rightskip}{0pt plus 5cm}B\+O\+OL x\+M\+B\+R\+T\+U\+Transmit\+F\+SM (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{mbrtu_8c_a663e5daf0be0f2426a72c531c91d423f}{}\label{mbrtu_8c_a663e5daf0be0f2426a72c531c91d423f}
+
+
+ \subsubsection*{x\+M\+B\+R\+T\+U\+Transmit\+F\+SM }
+
+Event Handler for G\+PI module \begin{DoxyVerb} @date                           DEC/02/2013
+ @author                         FW_DEV_2
+ @pre                            None
+ @return                         None\end{DoxyVerb}
+ 
+
+Definition at line 372 of file mbrtu.\+c.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{mbrtu_8c_a663e5daf0be0f2426a72c531c91d423f_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mbrtu_8c_a663e5daf0be0f2426a72c531c91d423f_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{mbrtu.\+c@{mbrtu.\+c}!x\+M\+B\+R\+T\+U\+Timer\+T35\+Expired@{x\+M\+B\+R\+T\+U\+Timer\+T35\+Expired}}
+\index{x\+M\+B\+R\+T\+U\+Timer\+T35\+Expired@{x\+M\+B\+R\+T\+U\+Timer\+T35\+Expired}!mbrtu.\+c@{mbrtu.\+c}}
+\subsubsection[{\texorpdfstring{x\+M\+B\+R\+T\+U\+Timer\+T35\+Expired(void)}{xMBRTUTimerT35Expired(void)}}]{\setlength{\rightskip}{0pt plus 5cm}B\+O\+OL x\+M\+B\+R\+T\+U\+Timer\+T35\+Expired (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{mbrtu_8c_ac6302a8b67c6b82ae49e6c9d6a9795da}{}\label{mbrtu_8c_ac6302a8b67c6b82ae49e6c9d6a9795da}
+
+
+ \subsubsection*{x\+M\+B\+R\+T\+U\+Timer\+T35\+Expired }
+
+Event Handler for G\+PI module \begin{DoxyVerb} @date                           DEC/02/2013
+ @author                         FW_DEV_2
+ @pre                            None
+ @return                         None\end{DoxyVerb}
+ 
+
+Definition at line 420 of file mbrtu.\+c.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mbrtu_8c_ac6302a8b67c6b82ae49e6c9d6a9795da_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mbrtu_8c_ac6302a8b67c6b82ae49e6c9d6a9795da_icgraph}
+\end{center}
+\end{figure}
+
+

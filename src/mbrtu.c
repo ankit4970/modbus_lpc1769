@@ -1,4 +1,6 @@
-/* 
+/**
+ * @file 				mbrtu.c
+ *
  * FreeModbus Libary: A portable Modbus implementation for Modbus ASCII/RTU.
  * Copyright (c) 2006 Christian Walter <wolti@sil.at>
  * All rights reserved.
@@ -77,6 +79,18 @@ static volatile USHORT usSndBufferCount;
 static volatile USHORT usRcvBufferPos;
 
 /* ----------------------- Start implementation -----------------------------*/
+/**
+ -----------------------------------------------------------------------------------------------------------------------
+ eMBRTUInit
+ -----------------------------------------------------------------------------------------------------------------------
+*   Event Handler for GPI module
+*
+* 	@date       			DEC/02/2013
+* 	@author                         FW_DEV_2
+* 	@pre                            None
+* 	@return	 			None
+************************************************************************************************************************
+*/
 eMBErrorCode eMBRTUInit( UCHAR ucSlaveAddress, UCHAR ucPort, ULONG ulBaudRate, eMBParity eParity )
 {
     eMBErrorCode    eStatus = MB_ENOERR;
@@ -122,6 +136,18 @@ eMBErrorCode eMBRTUInit( UCHAR ucSlaveAddress, UCHAR ucPort, ULONG ulBaudRate, e
     return eStatus;
 }
 
+/**
+ -----------------------------------------------------------------------------------------------------------------------
+ eMBRTUStart
+ -----------------------------------------------------------------------------------------------------------------------
+*   Event Handler for GPI module
+*
+* 	@date       			DEC/02/2013
+* 	@author                         FW_DEV_2
+* 	@pre                            None
+* 	@return	 			None
+************************************************************************************************************************
+*/
 void eMBRTUStart( void )
 {
     ENTER_CRITICAL_SECTION();
@@ -138,6 +164,18 @@ void eMBRTUStart( void )
     EXIT_CRITICAL_SECTION(  );
 }
 
+/**
+ -----------------------------------------------------------------------------------------------------------------------
+ eMBRTUStop
+ -----------------------------------------------------------------------------------------------------------------------
+*   Event Handler for GPI module
+*
+* 	@date       			DEC/02/2013
+* 	@author                         FW_DEV_2
+* 	@pre                            None
+* 	@return	 			None
+************************************************************************************************************************
+*/
 void eMBRTUStop( void )
 {
     ENTER_CRITICAL_SECTION(  );
@@ -146,6 +184,18 @@ void eMBRTUStop( void )
     EXIT_CRITICAL_SECTION(  );
 }
 
+/**
+ -----------------------------------------------------------------------------------------------------------------------
+ eMBRTUReceive
+ -----------------------------------------------------------------------------------------------------------------------
+*   Event Handler for GPI module
+*
+* 	@date       			DEC/02/2013
+* 	@author                         FW_DEV_2
+* 	@pre                            None
+* 	@return	 			None
+************************************************************************************************************************
+*/
 eMBErrorCode eMBRTUReceive( UCHAR * pucRcvAddress, UCHAR ** pucFrame, USHORT * pusLength )
 {
     BOOL            xFrameReceived = FALSE;
@@ -187,6 +237,18 @@ eMBErrorCode eMBRTUReceive( UCHAR * pucRcvAddress, UCHAR ** pucFrame, USHORT * p
     return eStatus;
 }
 
+/**
+ -----------------------------------------------------------------------------------------------------------------------
+ eMBRTUSend
+ -----------------------------------------------------------------------------------------------------------------------
+*   Event Handler for GPI module
+*
+* 	@date       			DEC/02/2013
+* 	@author                         FW_DEV_2
+* 	@pre                            None
+* 	@return	 			None
+************************************************************************************************************************
+*/
 eMBErrorCode eMBRTUSend( UCHAR ucSlaveAddress, const UCHAR * pucFrame, USHORT usLength )
 {
     eMBErrorCode    eStatus = MB_ENOERR;
@@ -225,6 +287,18 @@ eMBErrorCode eMBRTUSend( UCHAR ucSlaveAddress, const UCHAR * pucFrame, USHORT us
     return eStatus;
 }
 
+/**
+ -----------------------------------------------------------------------------------------------------------------------
+ xMBRTUReceiveFSM
+ -----------------------------------------------------------------------------------------------------------------------
+*   Event Handler for GPI module
+*
+* 	@date       			DEC/02/2013
+* 	@author                         FW_DEV_2
+* 	@pre                            None
+* 	@return	 			None
+************************************************************************************************************************
+*/
 BOOL xMBRTUReceiveFSM( void )
 {
     BOOL            xTaskNeedSwitch = FALSE;
@@ -233,35 +307,35 @@ BOOL xMBRTUReceiveFSM( void )
     assert( eSndState == STATE_TX_IDLE );
 
     /* Always read the character. */
-    ( void )xMBPortSerialGetByte( ( CHAR * ) & ucByte );
+    (void)xMBPortSerialGetByte( ( CHAR * ) & ucByte );
 
-    switch ( eRcvState )
+    switch (eRcvState)
     {
         /* If we have received a character in the init state we have to
          * wait until the frame is finished.
          */
-    case STATE_RX_INIT:
-        vMBPortTimersEnable(  );
-        break;
+		case STATE_RX_INIT:
+			vMBPortTimersEnable();
+			break;
 
         /* In the error state we wait until all characters in the
          * damaged frame are transmitted.
          */
-    case STATE_RX_ERROR:
-        vMBPortTimersEnable(  );
-        break;
+		case STATE_RX_ERROR:
+			vMBPortTimersEnable();
+			break;
 
         /* In the idle state we wait for a new character. If a character
          * is received the t1.5 and t3.5 timers are started and the
          * receiver is in the state STATE_RX_RECEIVE.
          */
-    case STATE_RX_IDLE:
-        ucRTUBuf[usRcvBufferPos++] = ucByte;
-        eRcvState = STATE_RX_RCV;
+		case STATE_RX_IDLE:
+			ucRTUBuf[usRcvBufferPos++] = ucByte;
+			eRcvState = STATE_RX_RCV;
 
-        /* Enable t3.5 timers. */
-        vMBPortTimersEnable(  );
-        break;
+			/* Enable t3.5 timers. */
+			vMBPortTimersEnable();
+			break;
 
         /* We are currently receiving a frame. Reset the timer after
          * every character received. If more than the maximum possible
@@ -277,12 +351,25 @@ BOOL xMBRTUReceiveFSM( void )
         {
             eRcvState = STATE_RX_ERROR;
         }
-        vMBPortTimersEnable(  );
+        vMBPortTimersEnable();
         break;
     }
+
     return xTaskNeedSwitch;
 }
 
+/**
+ -----------------------------------------------------------------------------------------------------------------------
+ xMBRTUTransmitFSM
+ -----------------------------------------------------------------------------------------------------------------------
+*   Event Handler for GPI module
+*
+* 	@date       			DEC/02/2013
+* 	@author                         FW_DEV_2
+* 	@pre                            None
+* 	@return	 			None
+************************************************************************************************************************
+*/
 BOOL xMBRTUTransmitFSM( void )
 {
     BOOL            xNeedPoll = FALSE;
@@ -319,6 +406,18 @@ BOOL xMBRTUTransmitFSM( void )
     return xNeedPoll;
 }
 
+/**
+ -----------------------------------------------------------------------------------------------------------------------
+ xMBRTUTimerT35Expired
+ -----------------------------------------------------------------------------------------------------------------------
+*   Event Handler for GPI module
+*
+* 	@date       			DEC/02/2013
+* 	@author                         FW_DEV_2
+* 	@pre                            None
+* 	@return	 			None
+************************************************************************************************************************
+*/
 BOOL xMBRTUTimerT35Expired( void )
 {
     BOOL    xNeedPoll = FALSE;

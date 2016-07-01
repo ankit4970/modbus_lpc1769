@@ -1,0 +1,170 @@
+\hypertarget{main_8c}{}\section{main.\+c File Reference}
+\label{main_8c}\index{main.\+c@{main.\+c}}
+{\ttfamily \#include \char`\"{}mb.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}mbport.\+h\char`\"{}}\\*
+Include dependency graph for main.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=192pt]{main_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bfseries R\+E\+G\+\_\+\+I\+N\+P\+U\+T\+\_\+\+S\+T\+A\+RT}~1000\hypertarget{main_8c_a27bda6ca1eca28ed48c3fa6ada78ba5d}{}\label{main_8c_a27bda6ca1eca28ed48c3fa6ada78ba5d}
+
+\item 
+\#define {\bfseries R\+E\+G\+\_\+\+I\+N\+P\+U\+T\+\_\+\+N\+R\+E\+GS}~4\hypertarget{main_8c_ab2f42820482da2df43117b4dfe700eb2}{}\label{main_8c_ab2f42820482da2df43117b4dfe700eb2}
+
+\item 
+\#define {\bfseries S\+L\+A\+V\+E\+\_\+\+ID}~0x0A\hypertarget{main_8c_aed258e18fa2ea561f21f58d651a33cff}{}\label{main_8c_aed258e18fa2ea561f21f58d651a33cff}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{main_8c_a840291bc02cba5474a4cb46a9b9566fe}{main} (void)
+\item 
+e\+M\+B\+Error\+Code \hyperlink{main_8c_a7816677520b1eb2ebecf15060a41bc81}{e\+M\+B\+Reg\+Input\+CB} (U\+C\+H\+AR $\ast$puc\+Reg\+Buffer, U\+S\+H\+O\+RT us\+Address, U\+S\+H\+O\+RT us\+N\+Regs)
+\item 
+e\+M\+B\+Error\+Code \hyperlink{main_8c_a10d37e1d80224bf3b1eeb9e246d7582e}{e\+M\+B\+Reg\+Holding\+CB} (U\+C\+H\+AR $\ast$puc\+Reg\+Buffer, U\+S\+H\+O\+RT us\+Address, U\+S\+H\+O\+RT us\+N\+Regs, e\+M\+B\+Register\+Mode e\+Mode)
+\item 
+e\+M\+B\+Error\+Code \hyperlink{main_8c_a88d9b719291515c60eee1bf9ffa1dd02}{e\+M\+B\+Reg\+Coils\+CB} (U\+C\+H\+AR $\ast$puc\+Reg\+Buffer, U\+S\+H\+O\+RT us\+Address, U\+S\+H\+O\+RT us\+N\+Coils, e\+M\+B\+Register\+Mode e\+Mode)
+\item 
+e\+M\+B\+Error\+Code \hyperlink{main_8c_a38101f5da54af137e210a3b8b9fa3887}{e\+M\+B\+Reg\+Discrete\+CB} (U\+C\+H\+AR $\ast$puc\+Reg\+Buffer, U\+S\+H\+O\+RT us\+Address, U\+S\+H\+O\+RT us\+N\+Discrete)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Free\+Modbus Libary\+: B\+A\+RE Demo Application Copyright (C) 2006 Christian Walter \href{mailto:wolti@sil.at}{\tt wolti@sil.\+at}
+
+This program is free software; you can redistribute it and/or modify it under the terms of the G\+NU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but W\+I\+T\+H\+O\+UT A\+NY W\+A\+R\+R\+A\+N\+TY; without even the implied warranty of M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+TY or F\+I\+T\+N\+E\+SS F\+OR A P\+A\+R\+T\+I\+C\+U\+L\+AR P\+U\+R\+P\+O\+SE. See the G\+NU General Public License for more details.
+
+You should have received a copy of the G\+NU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-\/1301 U\+SA
+
+File\+: \begin{DoxyParagraph}{Id}
+demo.\+c,v 1.\+1 2006/08/22 21\+:35\+:13 wolti Exp 
+\end{DoxyParagraph}
+
+
+\subsection{Function Documentation}
+\index{main.\+c@{main.\+c}!main@{main}}
+\index{main@{main}!main.\+c@{main.\+c}}
+\subsubsection[{\texorpdfstring{main(void)}{main(void)}}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8c_a840291bc02cba5474a4cb46a9b9566fe}{}\label{main_8c_a840291bc02cba5474a4cb46a9b9566fe}
+
+
+ \subsubsection*{main }
+
+Event Handler for G\+PI module \begin{DoxyVerb} @date                           DEC/02/2013
+ @author                         FW_DEV_2
+ @pre                            None
+ @return                         None\end{DoxyVerb}
+ 
+
+Definition at line 53 of file main.\+c.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8c_a840291bc02cba5474a4cb46a9b9566fe_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{main.\+c@{main.\+c}!e\+M\+B\+Reg\+Input\+CB@{e\+M\+B\+Reg\+Input\+CB}}
+\index{e\+M\+B\+Reg\+Input\+CB@{e\+M\+B\+Reg\+Input\+CB}!main.\+c@{main.\+c}}
+\subsubsection[{\texorpdfstring{e\+M\+B\+Reg\+Input\+C\+B(\+U\+C\+H\+A\+R $\ast$puc\+Reg\+Buffer, U\+S\+H\+O\+R\+T us\+Address, U\+S\+H\+O\+R\+T us\+N\+Regs)}{eMBRegInputCB(UCHAR *pucRegBuffer, USHORT usAddress, USHORT usNRegs)}}]{\setlength{\rightskip}{0pt plus 5cm}e\+M\+B\+Error\+Code e\+M\+B\+Reg\+Input\+CB (
+\begin{DoxyParamCaption}
+\item[{U\+C\+H\+AR $\ast$}]{puc\+Reg\+Buffer, }
+\item[{U\+S\+H\+O\+RT}]{us\+Address, }
+\item[{U\+S\+H\+O\+RT}]{us\+N\+Regs}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8c_a7816677520b1eb2ebecf15060a41bc81}{}\label{main_8c_a7816677520b1eb2ebecf15060a41bc81}
+
+
+ \subsubsection*{e\+M\+B\+Reg\+Input\+CB }
+
+Event Handler for G\+PI module \begin{DoxyVerb} @date                           DEC/02/2013
+ @author                         FW_DEV_2
+ @pre                            None
+ @return                         None\end{DoxyVerb}
+ 
+
+Definition at line 88 of file main.\+c.
+
+\index{main.\+c@{main.\+c}!e\+M\+B\+Reg\+Holding\+CB@{e\+M\+B\+Reg\+Holding\+CB}}
+\index{e\+M\+B\+Reg\+Holding\+CB@{e\+M\+B\+Reg\+Holding\+CB}!main.\+c@{main.\+c}}
+\subsubsection[{\texorpdfstring{e\+M\+B\+Reg\+Holding\+C\+B(\+U\+C\+H\+A\+R $\ast$puc\+Reg\+Buffer, U\+S\+H\+O\+R\+T us\+Address, U\+S\+H\+O\+R\+T us\+N\+Regs, e\+M\+B\+Register\+Mode e\+Mode)}{eMBRegHoldingCB(UCHAR *pucRegBuffer, USHORT usAddress, USHORT usNRegs, eMBRegisterMode eMode)}}]{\setlength{\rightskip}{0pt plus 5cm}e\+M\+B\+Error\+Code e\+M\+B\+Reg\+Holding\+CB (
+\begin{DoxyParamCaption}
+\item[{U\+C\+H\+AR $\ast$}]{puc\+Reg\+Buffer, }
+\item[{U\+S\+H\+O\+RT}]{us\+Address, }
+\item[{U\+S\+H\+O\+RT}]{us\+N\+Regs, }
+\item[{e\+M\+B\+Register\+Mode}]{e\+Mode}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8c_a10d37e1d80224bf3b1eeb9e246d7582e}{}\label{main_8c_a10d37e1d80224bf3b1eeb9e246d7582e}
+
+
+ \subsubsection*{e\+M\+B\+Reg\+Holding\+CB }
+
+Event Handler for G\+PI module \begin{DoxyVerb} @date                           DEC/02/2013
+ @author                         FW_DEV_2
+ @pre                            None
+ @return                         None\end{DoxyVerb}
+ 
+
+Definition at line 126 of file main.\+c.
+
+\index{main.\+c@{main.\+c}!e\+M\+B\+Reg\+Coils\+CB@{e\+M\+B\+Reg\+Coils\+CB}}
+\index{e\+M\+B\+Reg\+Coils\+CB@{e\+M\+B\+Reg\+Coils\+CB}!main.\+c@{main.\+c}}
+\subsubsection[{\texorpdfstring{e\+M\+B\+Reg\+Coils\+C\+B(\+U\+C\+H\+A\+R $\ast$puc\+Reg\+Buffer, U\+S\+H\+O\+R\+T us\+Address, U\+S\+H\+O\+R\+T us\+N\+Coils, e\+M\+B\+Register\+Mode e\+Mode)}{eMBRegCoilsCB(UCHAR *pucRegBuffer, USHORT usAddress, USHORT usNCoils, eMBRegisterMode eMode)}}]{\setlength{\rightskip}{0pt plus 5cm}e\+M\+B\+Error\+Code e\+M\+B\+Reg\+Coils\+CB (
+\begin{DoxyParamCaption}
+\item[{U\+C\+H\+AR $\ast$}]{puc\+Reg\+Buffer, }
+\item[{U\+S\+H\+O\+RT}]{us\+Address, }
+\item[{U\+S\+H\+O\+RT}]{us\+N\+Coils, }
+\item[{e\+M\+B\+Register\+Mode}]{e\+Mode}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8c_a88d9b719291515c60eee1bf9ffa1dd02}{}\label{main_8c_a88d9b719291515c60eee1bf9ffa1dd02}
+
+
+ \subsubsection*{e\+M\+B\+Reg\+Coils\+CB }
+
+Event Handler for G\+PI module \begin{DoxyVerb} @date                           DEC/02/2013
+ @author                         FW_DEV_2
+ @pre                            None
+ @return                         None\end{DoxyVerb}
+ 
+
+Definition at line 178 of file main.\+c.
+
+\index{main.\+c@{main.\+c}!e\+M\+B\+Reg\+Discrete\+CB@{e\+M\+B\+Reg\+Discrete\+CB}}
+\index{e\+M\+B\+Reg\+Discrete\+CB@{e\+M\+B\+Reg\+Discrete\+CB}!main.\+c@{main.\+c}}
+\subsubsection[{\texorpdfstring{e\+M\+B\+Reg\+Discrete\+C\+B(\+U\+C\+H\+A\+R $\ast$puc\+Reg\+Buffer, U\+S\+H\+O\+R\+T us\+Address, U\+S\+H\+O\+R\+T us\+N\+Discrete)}{eMBRegDiscreteCB(UCHAR *pucRegBuffer, USHORT usAddress, USHORT usNDiscrete)}}]{\setlength{\rightskip}{0pt plus 5cm}e\+M\+B\+Error\+Code e\+M\+B\+Reg\+Discrete\+CB (
+\begin{DoxyParamCaption}
+\item[{U\+C\+H\+AR $\ast$}]{puc\+Reg\+Buffer, }
+\item[{U\+S\+H\+O\+RT}]{us\+Address, }
+\item[{U\+S\+H\+O\+RT}]{us\+N\+Discrete}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8c_a38101f5da54af137e210a3b8b9fa3887}{}\label{main_8c_a38101f5da54af137e210a3b8b9fa3887}
+
+
+ \subsubsection*{e\+M\+B\+Reg\+Discrete\+CB }
+
+Event Handler for G\+PI module \begin{DoxyVerb} @date                           DEC/02/2013
+ @author                         FW_DEV_2
+ @pre                            None
+ @return                         None\end{DoxyVerb}
+ 
+
+Definition at line 195 of file main.\+c.
+

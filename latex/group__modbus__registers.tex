@@ -1,0 +1,173 @@
+\hypertarget{group__modbus__registers}{}\section{Modbus Registers}
+\label{group__modbus__registers}\index{Modbus Registers@{Modbus Registers}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group__modbus_ga9e7fce8c431cb0e521c67f7f36dd823d}{e\+M\+B\+Error\+Code} \hyperlink{group__modbus__registers_ga7816677520b1eb2ebecf15060a41bc81}{e\+M\+B\+Reg\+Input\+CB} (U\+C\+H\+AR $\ast$puc\+Reg\+Buffer, U\+S\+H\+O\+RT us\+Address, U\+S\+H\+O\+RT us\+N\+Regs)
+\begin{DoxyCompactList}\small\item\em Callback function used if the value of a {\itshape Input Register} is required by the protocol stack. The starting register address is given by {\ttfamily us\+Address} and the last register is given by {\ttfamily us\+Address + us\+N\+Regs -\/ 1}. \end{DoxyCompactList}\item 
+\hyperlink{group__modbus_ga9e7fce8c431cb0e521c67f7f36dd823d}{e\+M\+B\+Error\+Code} \hyperlink{group__modbus__registers_ga10d37e1d80224bf3b1eeb9e246d7582e}{e\+M\+B\+Reg\+Holding\+CB} (U\+C\+H\+AR $\ast$puc\+Reg\+Buffer, U\+S\+H\+O\+RT us\+Address, U\+S\+H\+O\+RT us\+N\+Regs, \hyperlink{group__modbus_gaf1398cbbeb317b1dbd0276b275f5b0f8}{e\+M\+B\+Register\+Mode} e\+Mode)
+\begin{DoxyCompactList}\small\item\em Callback function used if a {\itshape Holding Register} value is read or written by the protocol stack. The starting register address is given by {\ttfamily us\+Address} and the last register is given by {\ttfamily us\+Address + us\+N\+Regs -\/ 1}. \end{DoxyCompactList}\item 
+\hyperlink{group__modbus_ga9e7fce8c431cb0e521c67f7f36dd823d}{e\+M\+B\+Error\+Code} \hyperlink{group__modbus__registers_ga88d9b719291515c60eee1bf9ffa1dd02}{e\+M\+B\+Reg\+Coils\+CB} (U\+C\+H\+AR $\ast$puc\+Reg\+Buffer, U\+S\+H\+O\+RT us\+Address, U\+S\+H\+O\+RT us\+N\+Coils, \hyperlink{group__modbus_gaf1398cbbeb317b1dbd0276b275f5b0f8}{e\+M\+B\+Register\+Mode} e\+Mode)
+\begin{DoxyCompactList}\small\item\em Callback function used if a {\itshape Coil Register} value is read or written by the protocol stack. If you are going to use this function you might use the functions x\+M\+B\+Util\+Set\+Bits(  ) and x\+M\+B\+Util\+Get\+Bits(  ) for working with bitfields. \end{DoxyCompactList}\item 
+\hyperlink{group__modbus_ga9e7fce8c431cb0e521c67f7f36dd823d}{e\+M\+B\+Error\+Code} \hyperlink{group__modbus__registers_ga38101f5da54af137e210a3b8b9fa3887}{e\+M\+B\+Reg\+Discrete\+CB} (U\+C\+H\+AR $\ast$puc\+Reg\+Buffer, U\+S\+H\+O\+RT us\+Address, U\+S\+H\+O\+RT us\+N\+Discrete)
+\begin{DoxyCompactList}\small\item\em Callback function used if a {\itshape Input Discrete Register} value is read by the protocol stack. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+\begin{DoxyCode}
+\textcolor{preprocessor}{#include "mb.h"} 
+\end{DoxyCode}
+ The protocol stack does not internally allocate any memory for the registers. This makes the protocol stack very small and also usable on low end targets. In addition the values don\textquotesingle{}t have to be in the memory and could for example be stored in a flash.~\newline
+ Whenever the protocol stack requires a value it calls one of the callback function with the register address and the number of registers to read as an argument. The application should then read the actual register values (for example the A\+DC voltage) and should store the result in the supplied buffer.~\newline
+ If the protocol stack wants to update a register value because a write register function was received a buffer with the new register values is passed to the callback function. The function should then use these values to update the application register values. 
+
+\subsection{Function Documentation}
+\index{Modbus Registers@{Modbus Registers}!e\+M\+B\+Reg\+Input\+CB@{e\+M\+B\+Reg\+Input\+CB}}
+\index{e\+M\+B\+Reg\+Input\+CB@{e\+M\+B\+Reg\+Input\+CB}!Modbus Registers@{Modbus Registers}}
+\subsubsection[{\texorpdfstring{e\+M\+B\+Reg\+Input\+C\+B(\+U\+C\+H\+A\+R $\ast$puc\+Reg\+Buffer, U\+S\+H\+O\+R\+T us\+Address, U\+S\+H\+O\+R\+T us\+N\+Regs)}{eMBRegInputCB(UCHAR *pucRegBuffer, USHORT usAddress, USHORT usNRegs)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf e\+M\+B\+Error\+Code} e\+M\+B\+Reg\+Input\+CB (
+\begin{DoxyParamCaption}
+\item[{U\+C\+H\+AR $\ast$}]{puc\+Reg\+Buffer, }
+\item[{U\+S\+H\+O\+RT}]{us\+Address, }
+\item[{U\+S\+H\+O\+RT}]{us\+N\+Regs}
+\end{DoxyParamCaption}
+)}\hypertarget{group__modbus__registers_ga7816677520b1eb2ebecf15060a41bc81}{}\label{group__modbus__registers_ga7816677520b1eb2ebecf15060a41bc81}
+
+
+Callback function used if the value of a {\itshape Input Register} is required by the protocol stack. The starting register address is given by {\ttfamily us\+Address} and the last register is given by {\ttfamily us\+Address + us\+N\+Regs -\/ 1}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em puc\+Reg\+Buffer} & A buffer where the callback function should write the current value of the modbus registers to. \\
+\hline
+{\em us\+Address} & The starting address of the register. Input registers are in the range 1 -\/ 65535. \\
+\hline
+{\em us\+N\+Regs} & Number of registers the callback function must supply.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The function must return one of the following error codes\+:
+\begin{DoxyItemize}
+\item e\+M\+B\+Error\+Code\+::\+M\+B\+\_\+\+E\+N\+O\+E\+RR If no error occurred. In this case a normal Modbus response is sent.
+\item e\+M\+B\+Error\+Code\+::\+M\+B\+\_\+\+E\+N\+O\+R\+EG If the application can not supply values for registers within this range. In this case a {\bfseries I\+L\+L\+E\+G\+AL D\+A\+TA A\+D\+D\+R\+E\+SS} exception frame is sent as a response.
+\item e\+M\+B\+Error\+Code\+::\+M\+B\+\_\+\+E\+T\+I\+M\+E\+D\+O\+UT If the requested register block is currently not available and the application dependent response timeout would be violated. In this case a {\bfseries S\+L\+A\+VE D\+E\+V\+I\+CE B\+U\+SY} exception is sent as a response.
+\item e\+M\+B\+Error\+Code\+::\+M\+B\+\_\+\+E\+IO If an unrecoverable error occurred. In this case a {\bfseries S\+L\+A\+VE D\+E\+V\+I\+CE F\+A\+I\+L\+U\+RE} exception is sent as a response. 
+\end{DoxyItemize}
+\end{DoxyReturn}
+
+
+Definition at line 63 of file main.\+c.
+
+\index{Modbus Registers@{Modbus Registers}!e\+M\+B\+Reg\+Holding\+CB@{e\+M\+B\+Reg\+Holding\+CB}}
+\index{e\+M\+B\+Reg\+Holding\+CB@{e\+M\+B\+Reg\+Holding\+CB}!Modbus Registers@{Modbus Registers}}
+\subsubsection[{\texorpdfstring{e\+M\+B\+Reg\+Holding\+C\+B(\+U\+C\+H\+A\+R $\ast$puc\+Reg\+Buffer, U\+S\+H\+O\+R\+T us\+Address, U\+S\+H\+O\+R\+T us\+N\+Regs, e\+M\+B\+Register\+Mode e\+Mode)}{eMBRegHoldingCB(UCHAR *pucRegBuffer, USHORT usAddress, USHORT usNRegs, eMBRegisterMode eMode)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf e\+M\+B\+Error\+Code} e\+M\+B\+Reg\+Holding\+CB (
+\begin{DoxyParamCaption}
+\item[{U\+C\+H\+AR $\ast$}]{puc\+Reg\+Buffer, }
+\item[{U\+S\+H\+O\+RT}]{us\+Address, }
+\item[{U\+S\+H\+O\+RT}]{us\+N\+Regs, }
+\item[{{\bf e\+M\+B\+Register\+Mode}}]{e\+Mode}
+\end{DoxyParamCaption}
+)}\hypertarget{group__modbus__registers_ga10d37e1d80224bf3b1eeb9e246d7582e}{}\label{group__modbus__registers_ga10d37e1d80224bf3b1eeb9e246d7582e}
+
+
+Callback function used if a {\itshape Holding Register} value is read or written by the protocol stack. The starting register address is given by {\ttfamily us\+Address} and the last register is given by {\ttfamily us\+Address + us\+N\+Regs -\/ 1}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em puc\+Reg\+Buffer} & If the application registers values should be updated the buffer points to the new registers values. If the protocol stack needs to now the current values the callback function should write them into this buffer. \\
+\hline
+{\em us\+Address} & The starting address of the register. \\
+\hline
+{\em us\+N\+Regs} & Number of registers to read or write. \\
+\hline
+{\em e\+Mode} & If e\+M\+B\+Register\+Mode\+::\+M\+B\+\_\+\+R\+E\+G\+\_\+\+W\+R\+I\+TE the application register values should be updated from the values in the buffer. For example this would be the case when the Modbus master has issued an {\bfseries W\+R\+I\+TE S\+I\+N\+G\+LE R\+E\+G\+I\+S\+T\+ER} command. If the value e\+M\+B\+Register\+Mode\+::\+M\+B\+\_\+\+R\+E\+G\+\_\+\+R\+E\+AD the application should copy the current values into the buffer {\ttfamily puc\+Reg\+Buffer}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The function must return one of the following error codes\+:
+\begin{DoxyItemize}
+\item e\+M\+B\+Error\+Code\+::\+M\+B\+\_\+\+E\+N\+O\+E\+RR If no error occurred. In this case a normal Modbus response is sent.
+\item e\+M\+B\+Error\+Code\+::\+M\+B\+\_\+\+E\+N\+O\+R\+EG If the application can not supply values for registers within this range. In this case a {\bfseries I\+L\+L\+E\+G\+AL D\+A\+TA A\+D\+D\+R\+E\+SS} exception frame is sent as a response.
+\item e\+M\+B\+Error\+Code\+::\+M\+B\+\_\+\+E\+T\+I\+M\+E\+D\+O\+UT If the requested register block is currently not available and the application dependent response timeout would be violated. In this case a {\bfseries S\+L\+A\+VE D\+E\+V\+I\+CE B\+U\+SY} exception is sent as a response.
+\item e\+M\+B\+Error\+Code\+::\+M\+B\+\_\+\+E\+IO If an unrecoverable error occurred. In this case a {\bfseries S\+L\+A\+VE D\+E\+V\+I\+CE F\+A\+I\+L\+U\+RE} exception is sent as a response. 
+\end{DoxyItemize}
+\end{DoxyReturn}
+
+
+Definition at line 89 of file main.\+c.
+
+\index{Modbus Registers@{Modbus Registers}!e\+M\+B\+Reg\+Coils\+CB@{e\+M\+B\+Reg\+Coils\+CB}}
+\index{e\+M\+B\+Reg\+Coils\+CB@{e\+M\+B\+Reg\+Coils\+CB}!Modbus Registers@{Modbus Registers}}
+\subsubsection[{\texorpdfstring{e\+M\+B\+Reg\+Coils\+C\+B(\+U\+C\+H\+A\+R $\ast$puc\+Reg\+Buffer, U\+S\+H\+O\+R\+T us\+Address, U\+S\+H\+O\+R\+T us\+N\+Coils, e\+M\+B\+Register\+Mode e\+Mode)}{eMBRegCoilsCB(UCHAR *pucRegBuffer, USHORT usAddress, USHORT usNCoils, eMBRegisterMode eMode)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf e\+M\+B\+Error\+Code} e\+M\+B\+Reg\+Coils\+CB (
+\begin{DoxyParamCaption}
+\item[{U\+C\+H\+AR $\ast$}]{puc\+Reg\+Buffer, }
+\item[{U\+S\+H\+O\+RT}]{us\+Address, }
+\item[{U\+S\+H\+O\+RT}]{us\+N\+Coils, }
+\item[{{\bf e\+M\+B\+Register\+Mode}}]{e\+Mode}
+\end{DoxyParamCaption}
+)}\hypertarget{group__modbus__registers_ga88d9b719291515c60eee1bf9ffa1dd02}{}\label{group__modbus__registers_ga88d9b719291515c60eee1bf9ffa1dd02}
+
+
+Callback function used if a {\itshape Coil Register} value is read or written by the protocol stack. If you are going to use this function you might use the functions x\+M\+B\+Util\+Set\+Bits(  ) and x\+M\+B\+Util\+Get\+Bits(  ) for working with bitfields. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em puc\+Reg\+Buffer} & The bits are packed in bytes where the first coil starting at address {\ttfamily us\+Address} is stored in the L\+SB of the first byte in the buffer {\ttfamily puc\+Reg\+Buffer}. If the buffer should be written by the callback function unused coil values (I.\+e. if not a multiple of eight coils is used) should be set to zero. \\
+\hline
+{\em us\+Address} & The first coil number. \\
+\hline
+{\em us\+N\+Coils} & Number of coil values requested. \\
+\hline
+{\em e\+Mode} & If e\+M\+B\+Register\+Mode\+::\+M\+B\+\_\+\+R\+E\+G\+\_\+\+W\+R\+I\+TE the application values should be updated from the values supplied in the buffer {\ttfamily puc\+Reg\+Buffer}. If e\+M\+B\+Register\+Mode\+::\+M\+B\+\_\+\+R\+E\+G\+\_\+\+R\+E\+AD the application should store the current values in the buffer {\ttfamily puc\+Reg\+Buffer}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The function must return one of the following error codes\+:
+\begin{DoxyItemize}
+\item e\+M\+B\+Error\+Code\+::\+M\+B\+\_\+\+E\+N\+O\+E\+RR If no error occurred. In this case a normal Modbus response is sent.
+\item e\+M\+B\+Error\+Code\+::\+M\+B\+\_\+\+E\+N\+O\+R\+EG If the application does not map an coils within the requested address range. In this case a {\bfseries I\+L\+L\+E\+G\+AL D\+A\+TA A\+D\+D\+R\+E\+SS} is sent as a response.
+\item e\+M\+B\+Error\+Code\+::\+M\+B\+\_\+\+E\+T\+I\+M\+E\+D\+O\+UT If the requested register block is currently not available and the application dependent response timeout would be violated. In this case a {\bfseries S\+L\+A\+VE D\+E\+V\+I\+CE B\+U\+SY} exception is sent as a response.
+\item e\+M\+B\+Error\+Code\+::\+M\+B\+\_\+\+E\+IO If an unrecoverable error occurred. In this case a {\bfseries S\+L\+A\+VE D\+E\+V\+I\+CE F\+A\+I\+L\+U\+RE} exception is sent as a response. 
+\end{DoxyItemize}
+\end{DoxyReturn}
+
+
+Definition at line 130 of file main.\+c.
+
+\index{Modbus Registers@{Modbus Registers}!e\+M\+B\+Reg\+Discrete\+CB@{e\+M\+B\+Reg\+Discrete\+CB}}
+\index{e\+M\+B\+Reg\+Discrete\+CB@{e\+M\+B\+Reg\+Discrete\+CB}!Modbus Registers@{Modbus Registers}}
+\subsubsection[{\texorpdfstring{e\+M\+B\+Reg\+Discrete\+C\+B(\+U\+C\+H\+A\+R $\ast$puc\+Reg\+Buffer, U\+S\+H\+O\+R\+T us\+Address, U\+S\+H\+O\+R\+T us\+N\+Discrete)}{eMBRegDiscreteCB(UCHAR *pucRegBuffer, USHORT usAddress, USHORT usNDiscrete)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf e\+M\+B\+Error\+Code} e\+M\+B\+Reg\+Discrete\+CB (
+\begin{DoxyParamCaption}
+\item[{U\+C\+H\+AR $\ast$}]{puc\+Reg\+Buffer, }
+\item[{U\+S\+H\+O\+RT}]{us\+Address, }
+\item[{U\+S\+H\+O\+RT}]{us\+N\+Discrete}
+\end{DoxyParamCaption}
+)}\hypertarget{group__modbus__registers_ga38101f5da54af137e210a3b8b9fa3887}{}\label{group__modbus__registers_ga38101f5da54af137e210a3b8b9fa3887}
+
+
+Callback function used if a {\itshape Input Discrete Register} value is read by the protocol stack. 
+
+If you are going to use his function you might use the functions x\+M\+B\+Util\+Set\+Bits(  ) and x\+M\+B\+Util\+Get\+Bits(  ) for working with bitfields.
+
+
+\begin{DoxyParams}{Parameters}
+{\em puc\+Reg\+Buffer} & The buffer should be updated with the current coil values. The first discrete input starting at {\ttfamily us\+Address} must be stored at the L\+SB of the first byte in the buffer. If the requested number is not a multiple of eight the remaining bits should be set to zero. \\
+\hline
+{\em us\+Address} & The starting address of the first discrete input. \\
+\hline
+{\em us\+N\+Discrete} & Number of discrete input values. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The function must return one of the following error codes\+:
+\begin{DoxyItemize}
+\item e\+M\+B\+Error\+Code\+::\+M\+B\+\_\+\+E\+N\+O\+E\+RR If no error occurred. In this case a normal Modbus response is sent.
+\item e\+M\+B\+Error\+Code\+::\+M\+B\+\_\+\+E\+N\+O\+R\+EG If no such discrete inputs exists. In this case a {\bfseries I\+L\+L\+E\+G\+AL D\+A\+TA A\+D\+D\+R\+E\+SS} exception frame is sent as a response.
+\item e\+M\+B\+Error\+Code\+::\+M\+B\+\_\+\+E\+T\+I\+M\+E\+D\+O\+UT If the requested register block is currently not available and the application dependent response timeout would be violated. In this case a {\bfseries S\+L\+A\+VE D\+E\+V\+I\+CE B\+U\+SY} exception is sent as a response.
+\item e\+M\+B\+Error\+Code\+::\+M\+B\+\_\+\+E\+IO If an unrecoverable error occurred. In this case a {\bfseries S\+L\+A\+VE D\+E\+V\+I\+CE F\+A\+I\+L\+U\+RE} exception is sent as a response. 
+\end{DoxyItemize}
+\end{DoxyReturn}
+
+
+Definition at line 135 of file main.\+c.
+

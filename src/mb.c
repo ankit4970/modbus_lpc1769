@@ -1,4 +1,7 @@
-/*
+/**
+ * @file 				mb.c
+ * @brief              This is main source file for GPI Module.
+ *
  * FreeModbus Libary: A portable Modbus implementation for Modbus ASCII/RTU.
  * Copyright (c) 2006 Christian Walter <wolti@sil.at>
  * All rights reserved.
@@ -124,6 +127,18 @@ static xMBFunctionHandler xFuncHandlers[MB_FUNC_HANDLERS_MAX] = {
 #endif
 };
 
+/**
+ -----------------------------------------------------------------------------------------------------------------------
+ eMBInit
+ -----------------------------------------------------------------------------------------------------------------------
+*   Event Handler for GPI module
+*
+* 	@date       			DEC/02/2013
+* 	@author                         FW_DEV_2
+* 	@pre                            None
+* 	@return	 			None
+************************************************************************************************************************
+*/
 /* ----------------------- Start implementation -----------------------------*/
 eMBErrorCode eMBInit( eMBMode eMode, UCHAR ucSlaveAddress, UCHAR ucPort, ULONG ulBaudRate, eMBParity eParity )
 {
@@ -214,7 +229,18 @@ eMBErrorCode eMBTCPInit( USHORT ucTCPPort )
 }
 #endif
 
-
+/**
+ -----------------------------------------------------------------------------------------------------------------------
+ eMBRegisterCB
+ -----------------------------------------------------------------------------------------------------------------------
+*   Event Handler for GPI module
+*
+* 	@date       			DEC/02/2013
+* 	@author                         FW_DEV_2
+* 	@pre                            None
+* 	@return	 			None
+************************************************************************************************************************
+*/
 eMBErrorCode eMBRegisterCB( UCHAR ucFunctionCode, pxMBFunctionHandler pxHandler ) 
 {
     int             i;
@@ -261,7 +287,18 @@ eMBErrorCode eMBRegisterCB( UCHAR ucFunctionCode, pxMBFunctionHandler pxHandler 
     return eStatus;
 }
 
-
+/**
+ -----------------------------------------------------------------------------------------------------------------------
+ eMBClose
+ -----------------------------------------------------------------------------------------------------------------------
+*   Event Handler for GPI module
+*
+* 	@date       			DEC/02/2013
+* 	@author                         FW_DEV_2
+* 	@pre                            None
+* 	@return	 			None
+************************************************************************************************************************
+*/
 eMBErrorCode eMBClose( void ) 
 {
     eMBErrorCode    eStatus = MB_ENOERR;
@@ -280,7 +317,18 @@ eMBErrorCode eMBClose( void )
 	
     return eStatus;
 }
-
+/**
+ -----------------------------------------------------------------------------------------------------------------------
+ eMBEnable
+ -----------------------------------------------------------------------------------------------------------------------
+*   Event Handler for GPI module
+*
+* 	@date       			DEC/02/2013
+* 	@author                         FW_DEV_2
+* 	@pre                            None
+* 	@return	 			None
+************************************************************************************************************************
+*/
 eMBErrorCode eMBEnable( void ) 
 {
     eMBErrorCode eStatus = MB_ENOERR;
@@ -298,7 +346,18 @@ eMBErrorCode eMBEnable( void )
 	
     return eStatus;
 }
-
+/**
+ -----------------------------------------------------------------------------------------------------------------------
+ eMBDisable
+ -----------------------------------------------------------------------------------------------------------------------
+*   Event Handler for GPI module
+*
+* 	@date       			DEC/02/2013
+* 	@author                         FW_DEV_2
+* 	@pre                            None
+* 	@return	 			None
+************************************************************************************************************************
+*/
 eMBErrorCode eMBDisable( void ) 
 {
     eMBErrorCode    eStatus;
@@ -320,7 +379,18 @@ eMBErrorCode eMBDisable( void )
 	
     return eStatus;
 }
-
+/**
+ -----------------------------------------------------------------------------------------------------------------------
+ eMBPoll
+ -----------------------------------------------------------------------------------------------------------------------
+*   Event Handler for GPI module
+*
+* 	@date       			DEC/02/2013
+* 	@author                         FW_DEV_2
+* 	@pre                            None
+* 	@return	 			None
+************************************************************************************************************************
+*/
 eMBErrorCode eMBPoll( void ) 
 {
     static UCHAR   *ucMBFrame;
@@ -355,7 +425,7 @@ eMBErrorCode eMBPoll( void )
                     /* Check if the frame is for us. If not ignore the frame. */
                     if ( ( ucRcvAddress == ucMBAddress ) || ( ucRcvAddress == MB_ADDRESS_BROADCAST ) )
                     {
-                        ( void )xMBPortEventPost( EV_EXECUTE );
+                        (void)xMBPortEventPost( EV_EXECUTE );
                     }
                 }
                 break;
@@ -378,8 +448,7 @@ eMBErrorCode eMBPoll( void )
                     }
                 }
 
-                /* If the request was not sent to the broadcast address we
-                 * return a reply. */
+                /* If the request was not sent to the broadcast address we return a reply. */
                 if ( ucRcvAddress != MB_ADDRESS_BROADCAST )
                 {
                     if ( eException != MB_EX_NONE )

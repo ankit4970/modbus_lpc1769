@@ -1,4 +1,7 @@
-/*
+/**
+ * @file 				portevent.c
+ * @brief              This is main source file for GPI Module.
+ *
  * FreeModbus Libary: BARE Port
  * Copyright (C) 2006 Christian Walter <wolti@sil.at>
  *
@@ -34,6 +37,18 @@ BOOL xMBPortEventInit( void )
     return TRUE;
 }
 
+/**
+ -----------------------------------------------------------------------------------------------------------------------
+ xMBPortEventPost
+ -----------------------------------------------------------------------------------------------------------------------
+*   Event Handler for GPI module
+*
+* 	@date       			DEC/02/2013
+* 	@author                         FW_DEV_2
+* 	@pre                            None
+* 	@return	 			None
+************************************************************************************************************************
+*/
 BOOL xMBPortEventPost( eMBEventType eEvent )
 {
     xEventInQueue = TRUE;
@@ -41,6 +56,18 @@ BOOL xMBPortEventPost( eMBEventType eEvent )
     return TRUE;
 }
 
+/**
+ -----------------------------------------------------------------------------------------------------------------------
+ xMBPortEventGet
+ -----------------------------------------------------------------------------------------------------------------------
+*   Event Handler for GPI module
+*
+* 	@date       			DEC/02/2013
+* 	@author                         FW_DEV_2
+* 	@pre                            None
+* 	@return	 			None
+************************************************************************************************************************
+*/
 BOOL xMBPortEventGet( eMBEventType * eEvent )
 {
     BOOL    xEventHappened = FALSE;

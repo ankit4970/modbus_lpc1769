@@ -1,4 +1,5 @@
-/* 
+/**
+ * @file 				mbcrc.c
  * FreeModbus Libary: A portable Modbus implementation for Modbus ASCII/RTU.
  * Copyright (c) 2006 Christian Walter <wolti@sil.at>
  * All rights reserved.
@@ -81,8 +82,19 @@ static const UCHAR aucCRCLo[] = {
     0x41, 0x81, 0x80, 0x40
 };
 
-USHORT
-usMBCRC16( UCHAR * pucFrame, USHORT usLen )
+/**
+ -----------------------------------------------------------------------------------------------------------------------
+ usMBCRC16
+ -----------------------------------------------------------------------------------------------------------------------
+*   Event Handler for GPI module
+*
+* 	@date       			DEC/02/2013
+* 	@author                         FW_DEV_2
+* 	@pre                            None
+* 	@return	 			None
+************************************************************************************************************************
+*/
+USHORT usMBCRC16( UCHAR * pucFrame, USHORT usLen )
 {
     UCHAR           ucCRCHi = 0xFF;
     UCHAR           ucCRCLo = 0xFF;

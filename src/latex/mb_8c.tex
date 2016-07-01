@@ -1,0 +1,275 @@
+\hypertarget{mb_8c}{}\section{mb.\+c File Reference}
+\label{mb_8c}\index{mb.\+c@{mb.\+c}}
+
+
+This is main source file for G\+PI Module.  
+
+
+{\ttfamily \#include \char`\"{}stdlib.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}string.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}port.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}mb.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}mbconfig.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}mbframe.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}mbproto.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}mbfunc.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}mbport.\+h\char`\"{}}\\*
+Include dependency graph for mb.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mb_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bfseries M\+B\+\_\+\+P\+O\+R\+T\+\_\+\+H\+A\+S\+\_\+\+C\+L\+O\+SE}~0\hypertarget{mb_8c_a63c1fbefc04d96d29ef84407e22c4e3e}{}\label{mb_8c_a63c1fbefc04d96d29ef84407e22c4e3e}
+
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \\*
+{\bfseries S\+T\+A\+T\+E\+\_\+\+E\+N\+A\+B\+L\+ED}, 
+\\*
+{\bfseries S\+T\+A\+T\+E\+\_\+\+D\+I\+S\+A\+B\+L\+ED}, 
+\\*
+{\bfseries S\+T\+A\+T\+E\+\_\+\+N\+O\+T\+\_\+\+I\+N\+I\+T\+I\+A\+L\+I\+Z\+ED}
+ \}\hypertarget{mb_8c_a06fc87d81c62e9abb8790b6e5713c55b}{}\label{mb_8c_a06fc87d81c62e9abb8790b6e5713c55b}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+e\+M\+B\+Error\+Code \hyperlink{mb_8c_a622dbe6b38ff1d255523d4736fa3da26}{e\+M\+B\+Init} (e\+M\+B\+Mode e\+Mode, U\+C\+H\+AR uc\+Slave\+Address, U\+C\+H\+AR uc\+Port, U\+L\+O\+NG ul\+Baud\+Rate, e\+M\+B\+Parity e\+Parity)
+\item 
+e\+M\+B\+Error\+Code \hyperlink{mb_8c_a5f6e66893b2388a602ac453253a00784}{e\+M\+B\+Register\+CB} (U\+C\+H\+AR uc\+Function\+Code, px\+M\+B\+Function\+Handler px\+Handler)
+\item 
+e\+M\+B\+Error\+Code \hyperlink{mb_8c_ac20080d92be2934456e2a5d27cd36310}{e\+M\+B\+Close} (void)
+\item 
+e\+M\+B\+Error\+Code \hyperlink{mb_8c_ab697be370833d562e6b016626d996132}{e\+M\+B\+Enable} (void)
+\item 
+e\+M\+B\+Error\+Code \hyperlink{mb_8c_abcc2a31ec41fc276ab3c3ac705defdf3}{e\+M\+B\+Disable} (void)
+\item 
+e\+M\+B\+Error\+Code \hyperlink{mb_8c_a12648c98d45f768ba878fbcee46caca5}{e\+M\+B\+Poll} (void)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+B\+O\+OL($\ast$ {\bfseries px\+M\+B\+Frame\+C\+B\+Byte\+Received} )(void)\hypertarget{mb_8c_a4d1633f4b1d60cace408738c04fce911}{}\label{mb_8c_a4d1633f4b1d60cace408738c04fce911}
+
+\item 
+B\+O\+OL($\ast$ {\bfseries px\+M\+B\+Frame\+C\+B\+Transmitter\+Empty} )(void)\hypertarget{mb_8c_a019be320e5b288e526d4540b8f3b72fa}{}\label{mb_8c_a019be320e5b288e526d4540b8f3b72fa}
+
+\item 
+B\+O\+OL($\ast$ {\bfseries px\+M\+B\+Port\+C\+B\+Timer\+Expired} )(void)\hypertarget{mb_8c_a3b5983cb09b81183b03bea267a817980}{}\label{mb_8c_a3b5983cb09b81183b03bea267a817980}
+
+\item 
+B\+O\+OL($\ast$ {\bfseries px\+M\+B\+Frame\+C\+B\+Receive\+F\+S\+M\+Cur} )(void)\hypertarget{mb_8c_a3f01b620e5050996ae85dd49a1060ecb}{}\label{mb_8c_a3f01b620e5050996ae85dd49a1060ecb}
+
+\item 
+B\+O\+OL($\ast$ {\bfseries px\+M\+B\+Frame\+C\+B\+Transmit\+F\+S\+M\+Cur} )(void)\hypertarget{mb_8c_a78d9c464d5735a51451e8cc2a18e8568}{}\label{mb_8c_a78d9c464d5735a51451e8cc2a18e8568}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This is main source file for G\+PI Module. 
+
+Free\+Modbus Libary\+: A portable Modbus implementation for Modbus A\+S\+C\+I\+I/\+R\+TU. Copyright (c) 2006 Christian Walter \href{mailto:wolti@sil.at}{\tt wolti@sil.\+at} All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met\+:
+\begin{DoxyEnumerate}
+\item Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+\item Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+\item The name of the author may not be used to endorse or promote products derived from this software without specific prior written permission.
+\end{DoxyEnumerate}
+
+T\+H\+IS S\+O\+F\+T\+W\+A\+RE IS P\+R\+O\+V\+I\+D\+ED BY T\+HE A\+U\+T\+H\+OR ``\+AS IS\textquotesingle{}\textquotesingle{} A\+ND A\+NY E\+X\+P\+R\+E\+SS OR I\+M\+P\+L\+I\+ED W\+A\+R\+R\+A\+N\+T\+I\+ES, I\+N\+C\+L\+U\+D\+I\+NG, B\+UT N\+OT L\+I\+M\+I\+T\+ED TO, T\+HE I\+M\+P\+L\+I\+ED W\+A\+R\+R\+A\+N\+T\+I\+ES OF M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+TY A\+ND F\+I\+T\+N\+E\+SS F\+OR A P\+A\+R\+T\+I\+C\+U\+L\+AR P\+U\+R\+P\+O\+SE A\+RE D\+I\+S\+C\+L\+A\+I\+M\+ED. IN NO E\+V\+E\+NT S\+H\+A\+LL T\+HE A\+U\+T\+H\+OR BE L\+I\+A\+B\+LE F\+OR A\+NY D\+I\+R\+E\+CT, I\+N\+D\+I\+R\+E\+CT, I\+N\+C\+I\+D\+E\+N\+T\+AL, S\+P\+E\+C\+I\+AL, E\+X\+E\+M\+P\+L\+A\+RY, OR C\+O\+N\+S\+E\+Q\+U\+E\+N\+T\+I\+AL D\+A\+M\+A\+G\+ES (I\+N\+C\+L\+U\+D\+I\+NG, B\+UT N\+OT L\+I\+M\+I\+T\+ED TO, P\+R\+O\+C\+U\+R\+E\+M\+E\+NT OF S\+U\+B\+S\+T\+I\+T\+U\+TE G\+O\+O\+DS OR S\+E\+R\+V\+I\+C\+ES; L\+O\+SS OF U\+SE, D\+A\+TA, OR P\+R\+O\+F\+I\+TS; OR B\+U\+S\+I\+N\+E\+SS I\+N\+T\+E\+R\+R\+U\+P\+T\+I\+ON) H\+O\+W\+E\+V\+ER C\+A\+U\+S\+ED A\+ND ON A\+NY T\+H\+E\+O\+RY OF L\+I\+A\+B\+I\+L\+I\+TY, W\+H\+E\+T\+H\+ER IN C\+O\+N\+T\+R\+A\+CT, S\+T\+R\+I\+CT L\+I\+A\+B\+I\+L\+I\+TY, OR T\+O\+RT (I\+N\+C\+L\+U\+D\+I\+NG N\+E\+G\+L\+I\+G\+E\+N\+CE OR O\+T\+H\+E\+R\+W\+I\+SE) A\+R\+I\+S\+I\+NG IN A\+NY W\+AY O\+UT OF T\+HE U\+SE OF T\+H\+IS S\+O\+F\+T\+W\+A\+RE, E\+V\+EN IF A\+D\+V\+I\+S\+ED OF T\+HE P\+O\+S\+S\+I\+B\+I\+L\+I\+TY OF S\+U\+CH D\+A\+M\+A\+GE.
+
+File\+: \begin{DoxyParagraph}{Id}
+\hyperlink{mb_8c}{mb.\+c},v 1.\+27 2007/02/18 23\+:45\+:41 wolti Exp 
+\end{DoxyParagraph}
+
+
+\subsection{Function Documentation}
+\index{mb.\+c@{mb.\+c}!e\+M\+B\+Init@{e\+M\+B\+Init}}
+\index{e\+M\+B\+Init@{e\+M\+B\+Init}!mb.\+c@{mb.\+c}}
+\subsubsection[{\texorpdfstring{e\+M\+B\+Init(e\+M\+B\+Mode e\+Mode, U\+C\+H\+A\+R uc\+Slave\+Address, U\+C\+H\+A\+R uc\+Port, U\+L\+O\+N\+G ul\+Baud\+Rate, e\+M\+B\+Parity e\+Parity)}{eMBInit(eMBMode eMode, UCHAR ucSlaveAddress, UCHAR ucPort, ULONG ulBaudRate, eMBParity eParity)}}]{\setlength{\rightskip}{0pt plus 5cm}e\+M\+B\+Error\+Code e\+M\+B\+Init (
+\begin{DoxyParamCaption}
+\item[{e\+M\+B\+Mode}]{e\+Mode, }
+\item[{U\+C\+H\+AR}]{uc\+Slave\+Address, }
+\item[{U\+C\+H\+AR}]{uc\+Port, }
+\item[{U\+L\+O\+NG}]{ul\+Baud\+Rate, }
+\item[{e\+M\+B\+Parity}]{e\+Parity}
+\end{DoxyParamCaption}
+)}\hypertarget{mb_8c_a622dbe6b38ff1d255523d4736fa3da26}{}\label{mb_8c_a622dbe6b38ff1d255523d4736fa3da26}
+
+
+ \subsubsection*{e\+M\+B\+Init }
+
+Event Handler for G\+PI module \begin{DoxyVerb} @date                           DEC/02/2013
+ @author                         FW_DEV_2
+ @pre                            None
+ @return                         None\end{DoxyVerb}
+ 
+
+Definition at line 143 of file mb.\+c.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mb_8c_a622dbe6b38ff1d255523d4736fa3da26_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{mb_8c_a622dbe6b38ff1d255523d4736fa3da26_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{mb.\+c@{mb.\+c}!e\+M\+B\+Register\+CB@{e\+M\+B\+Register\+CB}}
+\index{e\+M\+B\+Register\+CB@{e\+M\+B\+Register\+CB}!mb.\+c@{mb.\+c}}
+\subsubsection[{\texorpdfstring{e\+M\+B\+Register\+C\+B(\+U\+C\+H\+A\+R uc\+Function\+Code, px\+M\+B\+Function\+Handler px\+Handler)}{eMBRegisterCB(UCHAR ucFunctionCode, pxMBFunctionHandler pxHandler)}}]{\setlength{\rightskip}{0pt plus 5cm}e\+M\+B\+Error\+Code e\+M\+B\+Register\+CB (
+\begin{DoxyParamCaption}
+\item[{U\+C\+H\+AR}]{uc\+Function\+Code, }
+\item[{px\+M\+B\+Function\+Handler}]{px\+Handler}
+\end{DoxyParamCaption}
+)}\hypertarget{mb_8c_a5f6e66893b2388a602ac453253a00784}{}\label{mb_8c_a5f6e66893b2388a602ac453253a00784}
+
+
+ \subsubsection*{e\+M\+B\+Register\+CB }
+
+Event Handler for G\+PI module \begin{DoxyVerb} @date                           DEC/02/2013
+ @author                         FW_DEV_2
+ @pre                            None
+ @return                         None\end{DoxyVerb}
+ 
+
+Definition at line 244 of file mb.\+c.
+
+\index{mb.\+c@{mb.\+c}!e\+M\+B\+Close@{e\+M\+B\+Close}}
+\index{e\+M\+B\+Close@{e\+M\+B\+Close}!mb.\+c@{mb.\+c}}
+\subsubsection[{\texorpdfstring{e\+M\+B\+Close(void)}{eMBClose(void)}}]{\setlength{\rightskip}{0pt plus 5cm}e\+M\+B\+Error\+Code e\+M\+B\+Close (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{mb_8c_ac20080d92be2934456e2a5d27cd36310}{}\label{mb_8c_ac20080d92be2934456e2a5d27cd36310}
+
+
+ \subsubsection*{e\+M\+B\+Close }
+
+Event Handler for G\+PI module \begin{DoxyVerb} @date                           DEC/02/2013
+ @author                         FW_DEV_2
+ @pre                            None
+ @return                         None\end{DoxyVerb}
+ 
+
+Definition at line 302 of file mb.\+c.
+
+\index{mb.\+c@{mb.\+c}!e\+M\+B\+Enable@{e\+M\+B\+Enable}}
+\index{e\+M\+B\+Enable@{e\+M\+B\+Enable}!mb.\+c@{mb.\+c}}
+\subsubsection[{\texorpdfstring{e\+M\+B\+Enable(void)}{eMBEnable(void)}}]{\setlength{\rightskip}{0pt plus 5cm}e\+M\+B\+Error\+Code e\+M\+B\+Enable (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{mb_8c_ab697be370833d562e6b016626d996132}{}\label{mb_8c_ab697be370833d562e6b016626d996132}
+
+
+ \subsubsection*{e\+M\+B\+Enable }
+
+Event Handler for G\+PI module \begin{DoxyVerb} @date                           DEC/02/2013
+ @author                         FW_DEV_2
+ @pre                            None
+ @return                         None\end{DoxyVerb}
+ 
+
+Definition at line 332 of file mb.\+c.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{mb_8c_ab697be370833d562e6b016626d996132_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{mb.\+c@{mb.\+c}!e\+M\+B\+Disable@{e\+M\+B\+Disable}}
+\index{e\+M\+B\+Disable@{e\+M\+B\+Disable}!mb.\+c@{mb.\+c}}
+\subsubsection[{\texorpdfstring{e\+M\+B\+Disable(void)}{eMBDisable(void)}}]{\setlength{\rightskip}{0pt plus 5cm}e\+M\+B\+Error\+Code e\+M\+B\+Disable (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{mb_8c_abcc2a31ec41fc276ab3c3ac705defdf3}{}\label{mb_8c_abcc2a31ec41fc276ab3c3ac705defdf3}
+
+
+ \subsubsection*{e\+M\+B\+Disable }
+
+Event Handler for G\+PI module \begin{DoxyVerb} @date                           DEC/02/2013
+ @author                         FW_DEV_2
+ @pre                            None
+ @return                         None\end{DoxyVerb}
+ 
+
+Definition at line 361 of file mb.\+c.
+
+\index{mb.\+c@{mb.\+c}!e\+M\+B\+Poll@{e\+M\+B\+Poll}}
+\index{e\+M\+B\+Poll@{e\+M\+B\+Poll}!mb.\+c@{mb.\+c}}
+\subsubsection[{\texorpdfstring{e\+M\+B\+Poll(void)}{eMBPoll(void)}}]{\setlength{\rightskip}{0pt plus 5cm}e\+M\+B\+Error\+Code e\+M\+B\+Poll (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{mb_8c_a12648c98d45f768ba878fbcee46caca5}{}\label{mb_8c_a12648c98d45f768ba878fbcee46caca5}
+
+
+ \subsubsection*{e\+M\+B\+Poll }
+
+Event Handler for G\+PI module \begin{DoxyVerb} @date                           DEC/02/2013
+ @author                         FW_DEV_2
+ @pre                            None
+ @return                         None\end{DoxyVerb}
+ 
+
+Definition at line 394 of file mb.\+c.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=268pt]{mb_8c_a12648c98d45f768ba878fbcee46caca5_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=207pt]{mb_8c_a12648c98d45f768ba878fbcee46caca5_icgraph}
+\end{center}
+\end{figure}
+
+

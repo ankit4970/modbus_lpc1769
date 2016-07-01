@@ -1,4 +1,5 @@
-/* 
+/**
+ * @file 				mbfunccoils.c
  * FreeModbus Libary: A portable Modbus implementation for Modbus ASCII/RTU.
  * Copyright (c) 2006 Christian Walter <wolti@sil.at>
  * All rights reserved.
@@ -64,7 +65,18 @@ eMBException    prveMBError2Exception( eMBErrorCode eErrorCode );
 /* ----------------------- Start implementation -----------------------------*/
 
 #if MB_FUNC_READ_COILS_ENABLED > 0
-
+/**
+ -----------------------------------------------------------------------------------------------------------------------
+ eMBFuncReadCoils
+ -----------------------------------------------------------------------------------------------------------------------
+*   Event Handler for GPI module
+*
+* 	@date       			DEC/02/2013
+* 	@author                         FW_DEV_2
+* 	@pre                            None
+* 	@return	 			None
+************************************************************************************************************************
+*/
 eMBException eMBFuncReadCoils( UCHAR * pucFrame, USHORT * usLen )
 {
     USHORT          usRegAddress;
@@ -141,8 +153,19 @@ eMBException eMBFuncReadCoils( UCHAR * pucFrame, USHORT * usLen )
 }
 
 #if MB_FUNC_WRITE_COIL_ENABLED > 0
-eMBException
-eMBFuncWriteCoil( UCHAR * pucFrame, USHORT * usLen )
+/**
+ -----------------------------------------------------------------------------------------------------------------------
+ eMBFuncWriteCoil
+ -----------------------------------------------------------------------------------------------------------------------
+*   Event Handler for GPI module
+*
+* 	@date       			DEC/02/2013
+* 	@author                         FW_DEV_2
+* 	@pre                            None
+* 	@return	 			None
+************************************************************************************************************************
+*/
+eMBException eMBFuncWriteCoil( UCHAR * pucFrame, USHORT * usLen )
 {
     USHORT          usRegAddress;
     UCHAR           ucBuf[2];
@@ -195,8 +218,19 @@ eMBFuncWriteCoil( UCHAR * pucFrame, USHORT * usLen )
 #endif
 
 #if MB_FUNC_WRITE_MULTIPLE_COILS_ENABLED > 0
-eMBException
-eMBFuncWriteMultipleCoils( UCHAR * pucFrame, USHORT * usLen )
+/**
+ -----------------------------------------------------------------------------------------------------------------------
+ eMBFuncWriteMultipleCoils
+ -----------------------------------------------------------------------------------------------------------------------
+*   Event Handler for GPI module
+*
+* 	@date       			DEC/02/2013
+* 	@author                         FW_DEV_2
+* 	@pre                            None
+* 	@return	 			None
+************************************************************************************************************************
+*/
+eMBException eMBFuncWriteMultipleCoils( UCHAR * pucFrame, USHORT * usLen )
 {
     USHORT          usRegAddress;
     USHORT          usCoilCnt;

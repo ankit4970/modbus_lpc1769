@@ -1,4 +1,5 @@
-/* 
+/**
+ * @file 				mbutils.c
  * FreeModbus Libary: A portable Modbus implementation for Modbus ASCII/RTU.
  * Copyright (c) 2006 Christian Walter <wolti@sil.at>
  * All rights reserved.
@@ -49,6 +50,18 @@
 #define OS_MS(x)						( x / MS_PER_TICK() )        ///< Ticks to millisecond conversion
 #define OS_MS(x)						( x / MS_PER_TICK() )        ///< Ticks to millisecond conversion
 
+/**
+ -----------------------------------------------------------------------------------------------------------------------
+ delay
+ -----------------------------------------------------------------------------------------------------------------------
+*   Event Handler for GPI module
+*
+* 	@date       			DEC/02/2013
+* 	@author                         FW_DEV_2
+* 	@pre                            None
+* 	@return	 			None
+************************************************************************************************************************
+*/
 void delay(uint32_t delayInMs)
 {
 	LPC_TIM0->TCR = 0x02;		/* reset timer */
@@ -64,6 +77,18 @@ void delay(uint32_t delayInMs)
 	return;
 }
 
+/**
+ -----------------------------------------------------------------------------------------------------------------------
+ sys_get_cpu_clock
+ -----------------------------------------------------------------------------------------------------------------------
+*   Event Handler for GPI module
+*
+* 	@date       			DEC/02/2013
+* 	@author                         FW_DEV_2
+* 	@pre                            None
+* 	@return	 			None
+************************************************************************************************************************
+*/
 unsigned int sys_get_cpu_clock()
 {
 	unsigned clock = 0;
@@ -118,8 +143,19 @@ unsigned int sys_get_cpu_clock()
 
 
 /* ----------------------- Start implementation -----------------------------*/
-void
-xMBUtilSetBits( UCHAR * ucByteBuf, USHORT usBitOffset, UCHAR ucNBits,
+/**
+ -----------------------------------------------------------------------------------------------------------------------
+ xMBUtilSetBits
+ -----------------------------------------------------------------------------------------------------------------------
+*   Event Handler for GPI module
+*
+* 	@date       			DEC/02/2013
+* 	@author                         FW_DEV_2
+* 	@pre                            None
+* 	@return	 			None
+************************************************************************************************************************
+*/
+void xMBUtilSetBits( UCHAR * ucByteBuf, USHORT usBitOffset, UCHAR ucNBits,
                 UCHAR ucValue )
 {
     USHORT          usWordBuf;
@@ -157,8 +193,19 @@ xMBUtilSetBits( UCHAR * ucByteBuf, USHORT usBitOffset, UCHAR ucNBits,
     ucByteBuf[usByteOffset + 1] = ( UCHAR )( usWordBuf >> BITS_UCHAR );
 }
 
-UCHAR
-xMBUtilGetBits( UCHAR * ucByteBuf, USHORT usBitOffset, UCHAR ucNBits )
+/**
+ -----------------------------------------------------------------------------------------------------------------------
+ xMBUtilGetBits
+ -----------------------------------------------------------------------------------------------------------------------
+*   Event Handler for GPI module
+*
+* 	@date       			DEC/02/2013
+* 	@author                         FW_DEV_2
+* 	@pre                            None
+* 	@return	 			None
+************************************************************************************************************************
+*/
+UCHAR xMBUtilGetBits( UCHAR * ucByteBuf, USHORT usBitOffset, UCHAR ucNBits )
 {
     USHORT          usWordBuf;
     USHORT          usMask;
@@ -187,9 +234,19 @@ xMBUtilGetBits( UCHAR * ucByteBuf, USHORT usBitOffset, UCHAR ucNBits )
 
     return ( UCHAR ) usWordBuf;
 }
-
-eMBException
-prveMBError2Exception( eMBErrorCode eErrorCode )
+/**
+ -----------------------------------------------------------------------------------------------------------------------
+ prveMBError2Exception
+ -----------------------------------------------------------------------------------------------------------------------
+*   Event Handler for GPI module
+*
+* 	@date       			DEC/02/2013
+* 	@author                         FW_DEV_2
+* 	@pre                            None
+* 	@return	 			None
+************************************************************************************************************************
+*/
+eMBException prveMBError2Exception( eMBErrorCode eErrorCode )
 {
     eMBException    eStatus;
 

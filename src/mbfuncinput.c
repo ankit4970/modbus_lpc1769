@@ -1,4 +1,6 @@
-/* 
+/**
+ * @file 				mbfuncinput.c
+ *
  * FreeModbus Libary: A portable Modbus implementation for Modbus ASCII/RTU.
  * Copyright (c) 2006 Christian Walter <wolti@sil.at>
  * All rights reserved.
@@ -55,8 +57,19 @@ eMBException    prveMBError2Exception( eMBErrorCode eErrorCode );
 /* ----------------------- Start implementation -----------------------------*/
 #if MB_FUNC_READ_INPUT_ENABLED > 0
 
-eMBException
-eMBFuncReadInputRegister( UCHAR * pucFrame, USHORT * usLen )
+/**
+ -----------------------------------------------------------------------------------------------------------------------
+ eMBFuncReadInputRegister
+ -----------------------------------------------------------------------------------------------------------------------
+*   Event Handler for GPI module
+*
+* 	@date       			DEC/02/2013
+* 	@author                         FW_DEV_2
+* 	@pre                            None
+* 	@return	 			None
+************************************************************************************************************************
+*/
+eMBException eMBFuncReadInputRegister( UCHAR * pucFrame, USHORT * usLen )
 {
     USHORT          usRegAddress;
     USHORT          usRegCount;

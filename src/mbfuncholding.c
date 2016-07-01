@@ -1,4 +1,6 @@
-/* 
+/**
+ * @file 				mbfuncholding.c
+ *
  * FreeModbus Libary: A portable Modbus implementation for Modbus ASCII/RTU.
  * Copyright (c) 2006 Christian Walter <wolti@sil.at>
  * All rights reserved.
@@ -73,8 +75,19 @@ eMBException    prveMBError2Exception( eMBErrorCode eErrorCode );
 
 #if MB_FUNC_WRITE_HOLDING_ENABLED > 0
 
-eMBException
-eMBFuncWriteHoldingRegister( UCHAR * pucFrame, USHORT * usLen )
+/**
+ -----------------------------------------------------------------------------------------------------------------------
+ eMBFuncWriteHoldingRegister
+ -----------------------------------------------------------------------------------------------------------------------
+*   Event Handler for GPI module
+*
+* 	@date       			DEC/02/2013
+* 	@author                         FW_DEV_2
+* 	@pre                            None
+* 	@return	 			None
+************************************************************************************************************************
+*/
+eMBException eMBFuncWriteHoldingRegister( UCHAR * pucFrame, USHORT * usLen )
 {
     USHORT          usRegAddress;
     eMBException    eStatus = MB_EX_NONE;
@@ -106,8 +119,19 @@ eMBFuncWriteHoldingRegister( UCHAR * pucFrame, USHORT * usLen )
 #endif
 
 #if MB_FUNC_WRITE_MULTIPLE_HOLDING_ENABLED > 0
-eMBException
-eMBFuncWriteMultipleHoldingRegister( UCHAR * pucFrame, USHORT * usLen )
+/**
+ -----------------------------------------------------------------------------------------------------------------------
+ eMBFuncWriteMultipleHoldingRegister
+ -----------------------------------------------------------------------------------------------------------------------
+*   Event Handler for GPI module
+*
+* 	@date       			DEC/02/2013
+* 	@author                         FW_DEV_2
+* 	@pre                            None
+* 	@return	 			None
+************************************************************************************************************************
+*/
+eMBException eMBFuncWriteMultipleHoldingRegister( UCHAR * pucFrame, USHORT * usLen )
 {
     USHORT          usRegAddress;
     USHORT          usRegCount;
@@ -166,8 +190,19 @@ eMBFuncWriteMultipleHoldingRegister( UCHAR * pucFrame, USHORT * usLen )
 
 #if MB_FUNC_READ_HOLDING_ENABLED > 0
 
-eMBException
-eMBFuncReadHoldingRegister( UCHAR * pucFrame, USHORT * usLen )
+/**
+ -----------------------------------------------------------------------------------------------------------------------
+ eMBFuncReadHoldingRegister
+ -----------------------------------------------------------------------------------------------------------------------
+*   Event Handler for GPI module
+*
+* 	@date       			DEC/02/2013
+* 	@author                         FW_DEV_2
+* 	@pre                            None
+* 	@return	 			None
+************************************************************************************************************************
+*/
+eMBException eMBFuncReadHoldingRegister( UCHAR * pucFrame, USHORT * usLen )
 {
     USHORT          usRegAddress;
     USHORT          usRegCount;
@@ -231,8 +266,19 @@ eMBFuncReadHoldingRegister( UCHAR * pucFrame, USHORT * usLen )
 
 #if MB_FUNC_READWRITE_HOLDING_ENABLED > 0
 
-eMBException
-eMBFuncReadWriteMultipleHoldingRegister( UCHAR * pucFrame, USHORT * usLen )
+/**
+ -----------------------------------------------------------------------------------------------------------------------
+ eMBFuncReadWriteMultipleHoldingRegister
+ -----------------------------------------------------------------------------------------------------------------------
+*   Event Handler for GPI module
+*
+* 	@date       			DEC/02/2013
+* 	@author                         FW_DEV_2
+* 	@pre                            None
+* 	@return	 			None
+************************************************************************************************************************
+*/
+eMBException eMBFuncReadWriteMultipleHoldingRegister( UCHAR * pucFrame, USHORT * usLen )
 {
     USHORT          usRegReadAddress;
     USHORT          usRegReadCount;

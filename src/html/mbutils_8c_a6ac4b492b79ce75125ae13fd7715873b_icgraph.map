@@ -1,0 +1,6 @@
+<map id="sys_get_cpu_clock" name="sys_get_cpu_clock">
+<area shape="rect" id="node2" href="$portserial_8c.html#a34627006710d0ea50c9215afad55ed55" title="xMBPortSerialInit" alt="" coords="188,5,311,32"/>
+<area shape="rect" id="node3" href="$mbrtu_8c.html#a52738b46d7f3be581582d30cfb2bfcb8" title="eMBRTUInit" alt="" coords="359,5,449,32"/>
+<area shape="rect" id="node4" href="$mb_8c.html#a622dbe6b38ff1d255523d4736fa3da26" title="eMBInit" alt="" coords="497,5,564,32"/>
+<area shape="rect" id="node5" href="$main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="main" alt="" coords="612,5,663,32"/>
+</map>

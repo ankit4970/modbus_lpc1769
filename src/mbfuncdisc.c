@@ -1,4 +1,5 @@
- /*
+ /**
+  * @file 				mbfuncdisc.c
   * FreeRTOS Modbus Libary: A Modbus serial implementation for FreeRTOS
   * Copyright (C) 2006 Christian Walter <wolti@sil.at>
   *
@@ -45,8 +46,19 @@ eMBException    prveMBError2Exception( eMBErrorCode eErrorCode );
 
 #if MB_FUNC_READ_COILS_ENABLED > 0
 
-eMBException
-eMBFuncReadDiscreteInputs( UCHAR * pucFrame, USHORT * usLen )
+/**
+ -----------------------------------------------------------------------------------------------------------------------
+ eMBFuncReadDiscreteInputs
+ -----------------------------------------------------------------------------------------------------------------------
+*   Event Handler for GPI module
+*
+* 	@date       			DEC/02/2013
+* 	@author                         FW_DEV_2
+* 	@pre                            None
+* 	@return	 			None
+************************************************************************************************************************
+*/
+eMBException eMBFuncReadDiscreteInputs( UCHAR * pucFrame, USHORT * usLen )
 {
     USHORT          usRegAddress;
     USHORT          usDiscreteCnt;

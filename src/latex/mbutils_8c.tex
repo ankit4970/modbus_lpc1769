@@ -1,0 +1,185 @@
+\hypertarget{mbutils_8c}{}\section{mbutils.\+c File Reference}
+\label{mbutils_8c}\index{mbutils.\+c@{mbutils.\+c}}
+{\ttfamily \#include \char`\"{}stdlib.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}string.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}port.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}mb.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}mbproto.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}L\+P\+C17xx.\+h\char`\"{}}\\*
+Include dependency graph for mbutils.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mbutils_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bfseries B\+I\+T\+S\+\_\+\+U\+C\+H\+AR}~8U\hypertarget{mbutils_8c_aad9c8ffbfd788a2a6ba69ed38ea11983}{}\label{mbutils_8c_aad9c8ffbfd788a2a6ba69ed38ea11983}
+
+\item 
+\#define \hyperlink{mbutils_8c_a748a344fc38ce1f9469b536aa2663ba0}{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+C\+L\+O\+CK}~(4  $\ast$ 1000 $\ast$ 1000\+U\+L)\hypertarget{mbutils_8c_a748a344fc38ce1f9469b536aa2663ba0}{}\label{mbutils_8c_a748a344fc38ce1f9469b536aa2663ba0}
+
+\begin{DoxyCompactList}\small\item\em Do not change, this is the same on all L\+P\+C17\+XX. \end{DoxyCompactList}\item 
+\#define \hyperlink{mbutils_8c_ae9d5d3d0882e298dbe8f4d5c5152c960}{E\+X\+T\+E\+R\+N\+A\+L\+\_\+\+C\+L\+O\+CK}~(12 $\ast$ 1000 $\ast$ 1000\+U\+L)\hypertarget{mbutils_8c_ae9d5d3d0882e298dbe8f4d5c5152c960}{}\label{mbutils_8c_ae9d5d3d0882e298dbe8f4d5c5152c960}
+
+\begin{DoxyCompactList}\small\item\em Change according to your board specification. \end{DoxyCompactList}\item 
+\#define \hyperlink{mbutils_8c_ae359e5fa2f56eadc30656472ac53d174}{R\+T\+C\+\_\+\+C\+L\+O\+CK}~(32768\+U\+L)\hypertarget{mbutils_8c_ae359e5fa2f56eadc30656472ac53d174}{}\label{mbutils_8c_ae359e5fa2f56eadc30656472ac53d174}
+
+\begin{DoxyCompactList}\small\item\em Do not change, this is the typical R\+TC crystal value. \end{DoxyCompactList}\item 
+\#define {\bfseries config\+T\+I\+C\+K\+\_\+\+R\+A\+T\+E\+\_\+\+HZ}~( 1000 )\hypertarget{mbutils_8c_a2f0258dd1e3b877e5bc013be54c2db6a}{}\label{mbutils_8c_a2f0258dd1e3b877e5bc013be54c2db6a}
+
+\item 
+\#define \hyperlink{mbutils_8c_ab743eff669ae3062b0885a8e0315b641}{O\+S\+\_\+\+MS}(x)~( x / M\+S\+\_\+\+P\+E\+R\+\_\+\+T\+I\+CK() )\hypertarget{mbutils_8c_ab743eff669ae3062b0885a8e0315b641}{}\label{mbutils_8c_ab743eff669ae3062b0885a8e0315b641}
+
+\begin{DoxyCompactList}\small\item\em Ticks to millisecond conversion. \end{DoxyCompactList}\item 
+\#define \hyperlink{mbutils_8c_ab743eff669ae3062b0885a8e0315b641}{O\+S\+\_\+\+MS}(x)~( x / M\+S\+\_\+\+P\+E\+R\+\_\+\+T\+I\+CK() )\hypertarget{mbutils_8c_ab743eff669ae3062b0885a8e0315b641}{}\label{mbutils_8c_ab743eff669ae3062b0885a8e0315b641}
+
+\begin{DoxyCompactList}\small\item\em Ticks to millisecond conversion. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{mbutils_8c_a5e9309bb72bdc5ba7967fd40ae3ca91a}{delay} (uint32\+\_\+t delay\+In\+Ms)
+\item 
+unsigned int \hyperlink{mbutils_8c_a6ac4b492b79ce75125ae13fd7715873b}{sys\+\_\+get\+\_\+cpu\+\_\+clock} ()
+\item 
+void \hyperlink{mbutils_8c_a48cf317a6fd966e09ad3afee42dbd866}{x\+M\+B\+Util\+Set\+Bits} (U\+C\+H\+AR $\ast$uc\+Byte\+Buf, U\+S\+H\+O\+RT us\+Bit\+Offset, U\+C\+H\+AR uc\+N\+Bits, U\+C\+H\+AR uc\+Value)
+\item 
+U\+C\+H\+AR \hyperlink{mbutils_8c_a94b3b43e1d2353e621748c79e2fb4dd5}{x\+M\+B\+Util\+Get\+Bits} (U\+C\+H\+AR $\ast$uc\+Byte\+Buf, U\+S\+H\+O\+RT us\+Bit\+Offset, U\+C\+H\+AR uc\+N\+Bits)
+\item 
+e\+M\+B\+Exception \hyperlink{mbutils_8c_ad5d2cc07a83fa7ea723ed734c905bc55}{prve\+M\+B\+Error2\+Exception} (e\+M\+B\+Error\+Code e\+Error\+Code)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Free\+Modbus Libary\+: A portable Modbus implementation for Modbus A\+S\+C\+I\+I/\+R\+TU. Copyright (c) 2006 Christian Walter \href{mailto:wolti@sil.at}{\tt wolti@sil.\+at} All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met\+:
+\begin{DoxyEnumerate}
+\item Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+\item Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+\item The name of the author may not be used to endorse or promote products derived from this software without specific prior written permission.
+\end{DoxyEnumerate}
+
+T\+H\+IS S\+O\+F\+T\+W\+A\+RE IS P\+R\+O\+V\+I\+D\+ED BY T\+HE A\+U\+T\+H\+OR ``\+AS IS\textquotesingle{}\textquotesingle{} A\+ND A\+NY E\+X\+P\+R\+E\+SS OR I\+M\+P\+L\+I\+ED W\+A\+R\+R\+A\+N\+T\+I\+ES, I\+N\+C\+L\+U\+D\+I\+NG, B\+UT N\+OT L\+I\+M\+I\+T\+ED TO, T\+HE I\+M\+P\+L\+I\+ED W\+A\+R\+R\+A\+N\+T\+I\+ES OF M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+TY A\+ND F\+I\+T\+N\+E\+SS F\+OR A P\+A\+R\+T\+I\+C\+U\+L\+AR P\+U\+R\+P\+O\+SE A\+RE D\+I\+S\+C\+L\+A\+I\+M\+ED. IN NO E\+V\+E\+NT S\+H\+A\+LL T\+HE A\+U\+T\+H\+OR BE L\+I\+A\+B\+LE F\+OR A\+NY D\+I\+R\+E\+CT, I\+N\+D\+I\+R\+E\+CT, I\+N\+C\+I\+D\+E\+N\+T\+AL, S\+P\+E\+C\+I\+AL, E\+X\+E\+M\+P\+L\+A\+RY, OR C\+O\+N\+S\+E\+Q\+U\+E\+N\+T\+I\+AL D\+A\+M\+A\+G\+ES (I\+N\+C\+L\+U\+D\+I\+NG, B\+UT N\+OT L\+I\+M\+I\+T\+ED TO, P\+R\+O\+C\+U\+R\+E\+M\+E\+NT OF S\+U\+B\+S\+T\+I\+T\+U\+TE G\+O\+O\+DS OR S\+E\+R\+V\+I\+C\+ES; L\+O\+SS OF U\+SE, D\+A\+TA, OR P\+R\+O\+F\+I\+TS; OR B\+U\+S\+I\+N\+E\+SS I\+N\+T\+E\+R\+R\+U\+P\+T\+I\+ON) H\+O\+W\+E\+V\+ER C\+A\+U\+S\+ED A\+ND ON A\+NY T\+H\+E\+O\+RY OF L\+I\+A\+B\+I\+L\+I\+TY, W\+H\+E\+T\+H\+ER IN C\+O\+N\+T\+R\+A\+CT, S\+T\+R\+I\+CT L\+I\+A\+B\+I\+L\+I\+TY, OR T\+O\+RT (I\+N\+C\+L\+U\+D\+I\+NG N\+E\+G\+L\+I\+G\+E\+N\+CE OR O\+T\+H\+E\+R\+W\+I\+SE) A\+R\+I\+S\+I\+NG IN A\+NY W\+AY O\+UT OF T\+HE U\+SE OF T\+H\+IS S\+O\+F\+T\+W\+A\+RE, E\+V\+EN IF A\+D\+V\+I\+S\+ED OF T\+HE P\+O\+S\+S\+I\+B\+I\+L\+I\+TY OF S\+U\+CH D\+A\+M\+A\+GE.
+
+File\+: \begin{DoxyParagraph}{Id}
+\hyperlink{mbutils_8c}{mbutils.\+c},v 1.\+6 2007/02/18 23\+:49\+:07 wolti Exp 
+\end{DoxyParagraph}
+
+
+\subsection{Function Documentation}
+\index{mbutils.\+c@{mbutils.\+c}!delay@{delay}}
+\index{delay@{delay}!mbutils.\+c@{mbutils.\+c}}
+\subsubsection[{\texorpdfstring{delay(uint32\+\_\+t delay\+In\+Ms)}{delay(uint32_t delayInMs)}}]{\setlength{\rightskip}{0pt plus 5cm}void delay (
+\begin{DoxyParamCaption}
+\item[{uint32\+\_\+t}]{delay\+In\+Ms}
+\end{DoxyParamCaption}
+)}\hypertarget{mbutils_8c_a5e9309bb72bdc5ba7967fd40ae3ca91a}{}\label{mbutils_8c_a5e9309bb72bdc5ba7967fd40ae3ca91a}
+
+
+ \subsubsection*{delay }
+
+Event Handler for G\+PI module \begin{DoxyVerb} @date                           DEC/02/2013
+ @author                         FW_DEV_2
+ @pre                            None
+ @return                         None\end{DoxyVerb}
+ 
+
+Definition at line 65 of file mbutils.\+c.
+
+\index{mbutils.\+c@{mbutils.\+c}!sys\+\_\+get\+\_\+cpu\+\_\+clock@{sys\+\_\+get\+\_\+cpu\+\_\+clock}}
+\index{sys\+\_\+get\+\_\+cpu\+\_\+clock@{sys\+\_\+get\+\_\+cpu\+\_\+clock}!mbutils.\+c@{mbutils.\+c}}
+\subsubsection[{\texorpdfstring{sys\+\_\+get\+\_\+cpu\+\_\+clock()}{sys_get_cpu_clock()}}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int sys\+\_\+get\+\_\+cpu\+\_\+clock (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{mbutils_8c_a6ac4b492b79ce75125ae13fd7715873b}{}\label{mbutils_8c_a6ac4b492b79ce75125ae13fd7715873b}
+
+
+ \subsubsection*{sys\+\_\+get\+\_\+cpu\+\_\+clock }
+
+Event Handler for G\+PI module \begin{DoxyVerb} @date                           DEC/02/2013
+ @author                         FW_DEV_2
+ @pre                            None
+ @return                         None\end{DoxyVerb}
+ 
+
+Definition at line 92 of file mbutils.\+c.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mbutils_8c_a6ac4b492b79ce75125ae13fd7715873b_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{mbutils.\+c@{mbutils.\+c}!x\+M\+B\+Util\+Set\+Bits@{x\+M\+B\+Util\+Set\+Bits}}
+\index{x\+M\+B\+Util\+Set\+Bits@{x\+M\+B\+Util\+Set\+Bits}!mbutils.\+c@{mbutils.\+c}}
+\subsubsection[{\texorpdfstring{x\+M\+B\+Util\+Set\+Bits(\+U\+C\+H\+A\+R $\ast$uc\+Byte\+Buf, U\+S\+H\+O\+R\+T us\+Bit\+Offset, U\+C\+H\+A\+R uc\+N\+Bits, U\+C\+H\+A\+R uc\+Value)}{xMBUtilSetBits(UCHAR *ucByteBuf, USHORT usBitOffset, UCHAR ucNBits, UCHAR ucValue)}}]{\setlength{\rightskip}{0pt plus 5cm}void x\+M\+B\+Util\+Set\+Bits (
+\begin{DoxyParamCaption}
+\item[{U\+C\+H\+AR $\ast$}]{uc\+Byte\+Buf, }
+\item[{U\+S\+H\+O\+RT}]{us\+Bit\+Offset, }
+\item[{U\+C\+H\+AR}]{uc\+N\+Bits, }
+\item[{U\+C\+H\+AR}]{uc\+Value}
+\end{DoxyParamCaption}
+)}\hypertarget{mbutils_8c_a48cf317a6fd966e09ad3afee42dbd866}{}\label{mbutils_8c_a48cf317a6fd966e09ad3afee42dbd866}
+
+
+ \subsubsection*{x\+M\+B\+Util\+Set\+Bits }
+
+Event Handler for G\+PI module \begin{DoxyVerb} @date                           DEC/02/2013
+ @author                         FW_DEV_2
+ @pre                            None
+ @return                         None\end{DoxyVerb}
+ 
+
+Definition at line 158 of file mbutils.\+c.
+
+\index{mbutils.\+c@{mbutils.\+c}!x\+M\+B\+Util\+Get\+Bits@{x\+M\+B\+Util\+Get\+Bits}}
+\index{x\+M\+B\+Util\+Get\+Bits@{x\+M\+B\+Util\+Get\+Bits}!mbutils.\+c@{mbutils.\+c}}
+\subsubsection[{\texorpdfstring{x\+M\+B\+Util\+Get\+Bits(\+U\+C\+H\+A\+R $\ast$uc\+Byte\+Buf, U\+S\+H\+O\+R\+T us\+Bit\+Offset, U\+C\+H\+A\+R uc\+N\+Bits)}{xMBUtilGetBits(UCHAR *ucByteBuf, USHORT usBitOffset, UCHAR ucNBits)}}]{\setlength{\rightskip}{0pt plus 5cm}U\+C\+H\+AR x\+M\+B\+Util\+Get\+Bits (
+\begin{DoxyParamCaption}
+\item[{U\+C\+H\+AR $\ast$}]{uc\+Byte\+Buf, }
+\item[{U\+S\+H\+O\+RT}]{us\+Bit\+Offset, }
+\item[{U\+C\+H\+AR}]{uc\+N\+Bits}
+\end{DoxyParamCaption}
+)}\hypertarget{mbutils_8c_a94b3b43e1d2353e621748c79e2fb4dd5}{}\label{mbutils_8c_a94b3b43e1d2353e621748c79e2fb4dd5}
+
+
+ \subsubsection*{x\+M\+B\+Util\+Get\+Bits }
+
+Event Handler for G\+PI module \begin{DoxyVerb} @date                           DEC/02/2013
+ @author                         FW_DEV_2
+ @pre                            None
+ @return                         None\end{DoxyVerb}
+ 
+
+Definition at line 208 of file mbutils.\+c.
+
+\index{mbutils.\+c@{mbutils.\+c}!prve\+M\+B\+Error2\+Exception@{prve\+M\+B\+Error2\+Exception}}
+\index{prve\+M\+B\+Error2\+Exception@{prve\+M\+B\+Error2\+Exception}!mbutils.\+c@{mbutils.\+c}}
+\subsubsection[{\texorpdfstring{prve\+M\+B\+Error2\+Exception(e\+M\+B\+Error\+Code e\+Error\+Code)}{prveMBError2Exception(eMBErrorCode eErrorCode)}}]{\setlength{\rightskip}{0pt plus 5cm}e\+M\+B\+Exception prve\+M\+B\+Error2\+Exception (
+\begin{DoxyParamCaption}
+\item[{e\+M\+B\+Error\+Code}]{e\+Error\+Code}
+\end{DoxyParamCaption}
+)}\hypertarget{mbutils_8c_ad5d2cc07a83fa7ea723ed734c905bc55}{}\label{mbutils_8c_ad5d2cc07a83fa7ea723ed734c905bc55}
+
+
+ \subsubsection*{prve\+M\+B\+Error2\+Exception }
+
+Event Handler for G\+PI module \begin{DoxyVerb} @date                           DEC/02/2013
+ @author                         FW_DEV_2
+ @pre                            None
+ @return                         None\end{DoxyVerb}
+ 
+
+Definition at line 249 of file mbutils.\+c.
+

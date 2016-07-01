@@ -1,0 +1,430 @@
+\hypertarget{group__modbus}{}\section{Modbus}
+\label{group__modbus}\index{Modbus@{Modbus}}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{group__modbus_ga0e6d79d4ff38dbf7d3fd81a80d655b70}{M\+B\+\_\+\+T\+C\+P\+\_\+\+P\+O\+R\+T\+\_\+\+U\+S\+E\+\_\+\+D\+E\+F\+A\+U\+LT}~0\hypertarget{group__modbus_ga0e6d79d4ff38dbf7d3fd81a80d655b70}{}\label{group__modbus_ga0e6d79d4ff38dbf7d3fd81a80d655b70}
+
+\begin{DoxyCompactList}\small\item\em Use the default Modbus T\+CP port (502) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{group__modbus_ga462d0d9396f02be6f9fd5b6f19463e61}{e\+M\+B\+Mode} \{ \\*
+\hyperlink{group__modbus_gga462d0d9396f02be6f9fd5b6f19463e61a1b807b8cf3d593d8cd8d1a1d21a3da31}{M\+B\+\_\+\+R\+TU}, 
+\\*
+\hyperlink{group__modbus_gga462d0d9396f02be6f9fd5b6f19463e61afa37751530d5e48cb5a3f8841f9e3143}{M\+B\+\_\+\+A\+S\+C\+II}, 
+\\*
+\hyperlink{group__modbus_gga462d0d9396f02be6f9fd5b6f19463e61a5786284fe284b4a23889bf5b444d5142}{M\+B\+\_\+\+T\+CP}
+ \}\begin{DoxyCompactList}\small\item\em Modbus serial transmission modes (R\+T\+U/\+A\+S\+C\+II). \end{DoxyCompactList}
+\item 
+enum \hyperlink{group__modbus_gaf1398cbbeb317b1dbd0276b275f5b0f8}{e\+M\+B\+Register\+Mode} \{ \\*
+\hyperlink{group__modbus_ggaf1398cbbeb317b1dbd0276b275f5b0f8aa210c1d03e2745efb42486b822740d4b}{M\+B\+\_\+\+R\+E\+G\+\_\+\+R\+E\+AD}, 
+\\*
+\hyperlink{group__modbus_ggaf1398cbbeb317b1dbd0276b275f5b0f8a3d0a62208562b69c5e7692a5a168c14e}{M\+B\+\_\+\+R\+E\+G\+\_\+\+W\+R\+I\+TE}
+ \}\begin{DoxyCompactList}\small\item\em If register should be written or read. \end{DoxyCompactList}
+\item 
+enum \hyperlink{group__modbus_ga9e7fce8c431cb0e521c67f7f36dd823d}{e\+M\+B\+Error\+Code} \{ \\*
+\hyperlink{group__modbus_gga9e7fce8c431cb0e521c67f7f36dd823dabf4c1fb8c72eafc08be972225613fe2b}{M\+B\+\_\+\+E\+N\+O\+E\+RR}, 
+\\*
+\hyperlink{group__modbus_gga9e7fce8c431cb0e521c67f7f36dd823daf415371aad180c545b726d39adbf9ba7}{M\+B\+\_\+\+E\+N\+O\+R\+EG}, 
+\\*
+\hyperlink{group__modbus_gga9e7fce8c431cb0e521c67f7f36dd823dafa57cdb3f85e8ab4baf160579104d624}{M\+B\+\_\+\+E\+I\+N\+V\+AL}, 
+\\*
+\hyperlink{group__modbus_gga9e7fce8c431cb0e521c67f7f36dd823da539fb138411468b12c05556157c6864d}{M\+B\+\_\+\+E\+P\+O\+R\+T\+E\+RR}, 
+\\*
+\hyperlink{group__modbus_gga9e7fce8c431cb0e521c67f7f36dd823daf0700c1e37bfc75068e6577bc0b04bb8}{M\+B\+\_\+\+E\+N\+O\+R\+ES}, 
+\\*
+\hyperlink{group__modbus_gga9e7fce8c431cb0e521c67f7f36dd823daf6eed4a1c490af14b7467be1e6e2fe67}{M\+B\+\_\+\+E\+IO}, 
+\\*
+\hyperlink{group__modbus_gga9e7fce8c431cb0e521c67f7f36dd823daf0e64a209ac1a01935167c6986338a6f}{M\+B\+\_\+\+E\+I\+L\+L\+S\+T\+A\+TE}, 
+\\*
+\hyperlink{group__modbus_gga9e7fce8c431cb0e521c67f7f36dd823da017c559e956f718cf77aafe269f49bd5}{M\+B\+\_\+\+E\+T\+I\+M\+E\+D\+O\+UT}
+ \}\begin{DoxyCompactList}\small\item\em Errorcodes used by all function in the protocol stack. \end{DoxyCompactList}
+\item 
+enum \hyperlink{group__modbus_ga16ba85fa56bcd52a11a12576af445ccb}{e\+M\+B\+Parity} \{ \\*
+\hyperlink{group__modbus_gga16ba85fa56bcd52a11a12576af445ccba36c1b70b68bc05d618632e3f975a557b}{M\+B\+\_\+\+P\+A\+R\+\_\+\+N\+O\+NE}, 
+\\*
+\hyperlink{group__modbus_gga16ba85fa56bcd52a11a12576af445ccba955fa6c30334314739ddceed6e749316}{M\+B\+\_\+\+P\+A\+R\+\_\+\+O\+DD}, 
+\\*
+\hyperlink{group__modbus_gga16ba85fa56bcd52a11a12576af445ccba0415f4c7ede57e13a0cca698a8375dbd}{M\+B\+\_\+\+P\+A\+R\+\_\+\+E\+V\+EN}
+ \}\begin{DoxyCompactList}\small\item\em Parity used for characters in serial mode. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group__modbus_ga9e7fce8c431cb0e521c67f7f36dd823d}{e\+M\+B\+Error\+Code} \hyperlink{group__modbus_ga622dbe6b38ff1d255523d4736fa3da26}{e\+M\+B\+Init} (\hyperlink{group__modbus_ga462d0d9396f02be6f9fd5b6f19463e61}{e\+M\+B\+Mode} e\+Mode, U\+C\+H\+AR uc\+Slave\+Address, U\+C\+H\+AR uc\+Port, U\+L\+O\+NG ul\+Baud\+Rate, \hyperlink{group__modbus_ga16ba85fa56bcd52a11a12576af445ccb}{e\+M\+B\+Parity} e\+Parity)
+\begin{DoxyCompactList}\small\item\em Initialize the Modbus protocol stack. \end{DoxyCompactList}\item 
+\hyperlink{group__modbus_ga9e7fce8c431cb0e521c67f7f36dd823d}{e\+M\+B\+Error\+Code} \hyperlink{group__modbus_gab06a2d0ef8bdfd866cd934f0ec7e7a6e}{e\+M\+B\+T\+C\+P\+Init} (U\+S\+H\+O\+RT us\+T\+C\+P\+Port)
+\begin{DoxyCompactList}\small\item\em Initialize the Modbus protocol stack for Modbus T\+CP. \end{DoxyCompactList}\item 
+\hyperlink{group__modbus_ga9e7fce8c431cb0e521c67f7f36dd823d}{e\+M\+B\+Error\+Code} \hyperlink{group__modbus_gac20080d92be2934456e2a5d27cd36310}{e\+M\+B\+Close} (void)
+\begin{DoxyCompactList}\small\item\em Release resources used by the protocol stack. \end{DoxyCompactList}\item 
+\hyperlink{group__modbus_ga9e7fce8c431cb0e521c67f7f36dd823d}{e\+M\+B\+Error\+Code} \hyperlink{group__modbus_gab697be370833d562e6b016626d996132}{e\+M\+B\+Enable} (void)
+\begin{DoxyCompactList}\small\item\em Enable the Modbus protocol stack. \end{DoxyCompactList}\item 
+\hyperlink{group__modbus_ga9e7fce8c431cb0e521c67f7f36dd823d}{e\+M\+B\+Error\+Code} \hyperlink{group__modbus_gabcc2a31ec41fc276ab3c3ac705defdf3}{e\+M\+B\+Disable} (void)
+\begin{DoxyCompactList}\small\item\em Disable the Modbus protocol stack. \end{DoxyCompactList}\item 
+\hyperlink{group__modbus_ga9e7fce8c431cb0e521c67f7f36dd823d}{e\+M\+B\+Error\+Code} \hyperlink{group__modbus_ga12648c98d45f768ba878fbcee46caca5}{e\+M\+B\+Poll} (void)
+\begin{DoxyCompactList}\small\item\em The main pooling loop of the Modbus protocol stack. \end{DoxyCompactList}\item 
+\hyperlink{group__modbus_ga9e7fce8c431cb0e521c67f7f36dd823d}{e\+M\+B\+Error\+Code} \hyperlink{group__modbus_gabe2b0e2dccf23d506666aa3cfdf6a8a3}{e\+M\+B\+Set\+Slave\+ID} (U\+C\+H\+AR uc\+Slave\+ID, B\+O\+OL x\+Is\+Running, U\+C\+H\+AR const $\ast$puc\+Additional, U\+S\+H\+O\+RT us\+Additional\+Len)
+\begin{DoxyCompactList}\small\item\em Configure the slave id of the device. \end{DoxyCompactList}\item 
+\hyperlink{group__modbus_ga9e7fce8c431cb0e521c67f7f36dd823d}{e\+M\+B\+Error\+Code} \hyperlink{group__modbus_ga5f6e66893b2388a602ac453253a00784}{e\+M\+B\+Register\+CB} (U\+C\+H\+AR uc\+Function\+Code, px\+M\+B\+Function\+Handler px\+Handler)
+\begin{DoxyCompactList}\small\item\em Registers a callback handler for a given function code. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+\begin{DoxyCode}
+\textcolor{preprocessor}{#include "mb.h"} 
+\end{DoxyCode}
+
+
+This module defines the interface for the application. It contains the basic functions and types required to use the Modbus protocol stack. A typical application will want to call \hyperlink{group__modbus_ga622dbe6b38ff1d255523d4736fa3da26}{e\+M\+B\+Init()} first. If the device is ready to answer network requests it must then call \hyperlink{group__modbus_gab697be370833d562e6b016626d996132}{e\+M\+B\+Enable()} to activate the protocol stack. In the main loop the function \hyperlink{group__modbus_ga12648c98d45f768ba878fbcee46caca5}{e\+M\+B\+Poll()} must be called periodically. The time interval between pooling depends on the configured Modbus timeout. If an R\+T\+OS is available a separate task should be created and the task should always call the function \hyperlink{group__modbus_ga12648c98d45f768ba878fbcee46caca5}{e\+M\+B\+Poll()}.
+
+
+\begin{DoxyCode}
+\textcolor{comment}{// Initialize protocol stack in RTU mode for a slave with address 10 = 0x0A}
+\hyperlink{group__modbus_ga622dbe6b38ff1d255523d4736fa3da26}{eMBInit}( \hyperlink{group__modbus_gga462d0d9396f02be6f9fd5b6f19463e61a1b807b8cf3d593d8cd8d1a1d21a3da31}{MB\_RTU}, 0x0A, 38400, \hyperlink{group__modbus_gga16ba85fa56bcd52a11a12576af445ccba0415f4c7ede57e13a0cca698a8375dbd}{MB\_PAR\_EVEN} );
+\textcolor{comment}{// Enable the Modbus Protocol Stack.}
+\hyperlink{group__modbus_gab697be370833d562e6b016626d996132}{eMBEnable}(  );
+\textcolor{keywordflow}{for}( ;; )
+\{
+    \textcolor{comment}{// Call the main polling loop of the Modbus protocol stack.}
+    \hyperlink{group__modbus_ga12648c98d45f768ba878fbcee46caca5}{eMBPoll}(  );
+    ...
+\}
+\end{DoxyCode}
+ 
+
+\subsection{Enumeration Type Documentation}
+\index{Modbus@{Modbus}!e\+M\+B\+Mode@{e\+M\+B\+Mode}}
+\index{e\+M\+B\+Mode@{e\+M\+B\+Mode}!Modbus@{Modbus}}
+\subsubsection[{\texorpdfstring{e\+M\+B\+Mode}{eMBMode}}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf e\+M\+B\+Mode}}\hypertarget{group__modbus_ga462d0d9396f02be6f9fd5b6f19463e61}{}\label{group__modbus_ga462d0d9396f02be6f9fd5b6f19463e61}
+
+
+Modbus serial transmission modes (R\+T\+U/\+A\+S\+C\+II). 
+
+Modbus serial supports two transmission modes. Either A\+S\+C\+II or R\+TU. R\+TU is faster but has more hardware requirements and requires a network with a low jitter. A\+S\+C\+II is slower and more reliable on slower links (E.\+g. modems) \begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{M\+B\+\_\+\+R\+TU@{M\+B\+\_\+\+R\+TU}!Modbus@{Modbus}}\index{Modbus@{Modbus}!M\+B\+\_\+\+R\+TU@{M\+B\+\_\+\+R\+TU}}\item[{\em 
+M\+B\+\_\+\+R\+TU\hypertarget{group__modbus_gga462d0d9396f02be6f9fd5b6f19463e61a1b807b8cf3d593d8cd8d1a1d21a3da31}{}\label{group__modbus_gga462d0d9396f02be6f9fd5b6f19463e61a1b807b8cf3d593d8cd8d1a1d21a3da31}
+}]R\+TU transmission mode. \index{M\+B\+\_\+\+A\+S\+C\+II@{M\+B\+\_\+\+A\+S\+C\+II}!Modbus@{Modbus}}\index{Modbus@{Modbus}!M\+B\+\_\+\+A\+S\+C\+II@{M\+B\+\_\+\+A\+S\+C\+II}}\item[{\em 
+M\+B\+\_\+\+A\+S\+C\+II\hypertarget{group__modbus_gga462d0d9396f02be6f9fd5b6f19463e61afa37751530d5e48cb5a3f8841f9e3143}{}\label{group__modbus_gga462d0d9396f02be6f9fd5b6f19463e61afa37751530d5e48cb5a3f8841f9e3143}
+}]A\+S\+C\+II transmission mode. \index{M\+B\+\_\+\+T\+CP@{M\+B\+\_\+\+T\+CP}!Modbus@{Modbus}}\index{Modbus@{Modbus}!M\+B\+\_\+\+T\+CP@{M\+B\+\_\+\+T\+CP}}\item[{\em 
+M\+B\+\_\+\+T\+CP\hypertarget{group__modbus_gga462d0d9396f02be6f9fd5b6f19463e61a5786284fe284b4a23889bf5b444d5142}{}\label{group__modbus_gga462d0d9396f02be6f9fd5b6f19463e61a5786284fe284b4a23889bf5b444d5142}
+}]T\+CP mode. \end{description}
+\end{Desc}
+
+
+Definition at line 85 of file mb.\+h.
+
+\index{Modbus@{Modbus}!e\+M\+B\+Register\+Mode@{e\+M\+B\+Register\+Mode}}
+\index{e\+M\+B\+Register\+Mode@{e\+M\+B\+Register\+Mode}!Modbus@{Modbus}}
+\subsubsection[{\texorpdfstring{e\+M\+B\+Register\+Mode}{eMBRegisterMode}}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf e\+M\+B\+Register\+Mode}}\hypertarget{group__modbus_gaf1398cbbeb317b1dbd0276b275f5b0f8}{}\label{group__modbus_gaf1398cbbeb317b1dbd0276b275f5b0f8}
+
+
+If register should be written or read. 
+
+This value is passed to the callback functions which support either reading or writing register values. Writing means that the application registers should be updated and reading means that the modbus protocol stack needs to know the current register values.
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__modbus__registers_ga10d37e1d80224bf3b1eeb9e246d7582e}{e\+M\+B\+Reg\+Holding\+C\+B( )}, \hyperlink{group__modbus__registers_ga88d9b719291515c60eee1bf9ffa1dd02}{e\+M\+B\+Reg\+Coils\+C\+B( )}, \hyperlink{group__modbus__registers_ga38101f5da54af137e210a3b8b9fa3887}{e\+M\+B\+Reg\+Discrete\+C\+B( )} and \hyperlink{group__modbus__registers_ga7816677520b1eb2ebecf15060a41bc81}{e\+M\+B\+Reg\+Input\+C\+B( )}. 
+\end{DoxySeeAlso}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{M\+B\+\_\+\+R\+E\+G\+\_\+\+R\+E\+AD@{M\+B\+\_\+\+R\+E\+G\+\_\+\+R\+E\+AD}!Modbus@{Modbus}}\index{Modbus@{Modbus}!M\+B\+\_\+\+R\+E\+G\+\_\+\+R\+E\+AD@{M\+B\+\_\+\+R\+E\+G\+\_\+\+R\+E\+AD}}\item[{\em 
+M\+B\+\_\+\+R\+E\+G\+\_\+\+R\+E\+AD\hypertarget{group__modbus_ggaf1398cbbeb317b1dbd0276b275f5b0f8aa210c1d03e2745efb42486b822740d4b}{}\label{group__modbus_ggaf1398cbbeb317b1dbd0276b275f5b0f8aa210c1d03e2745efb42486b822740d4b}
+}]Read register values and pass to protocol stack. \index{M\+B\+\_\+\+R\+E\+G\+\_\+\+W\+R\+I\+TE@{M\+B\+\_\+\+R\+E\+G\+\_\+\+W\+R\+I\+TE}!Modbus@{Modbus}}\index{Modbus@{Modbus}!M\+B\+\_\+\+R\+E\+G\+\_\+\+W\+R\+I\+TE@{M\+B\+\_\+\+R\+E\+G\+\_\+\+W\+R\+I\+TE}}\item[{\em 
+M\+B\+\_\+\+R\+E\+G\+\_\+\+W\+R\+I\+TE\hypertarget{group__modbus_ggaf1398cbbeb317b1dbd0276b275f5b0f8a3d0a62208562b69c5e7692a5a168c14e}{}\label{group__modbus_ggaf1398cbbeb317b1dbd0276b275f5b0f8a3d0a62208562b69c5e7692a5a168c14e}
+}]Update register values. \end{description}
+\end{Desc}
+
+
+Definition at line 103 of file mb.\+h.
+
+\index{Modbus@{Modbus}!e\+M\+B\+Error\+Code@{e\+M\+B\+Error\+Code}}
+\index{e\+M\+B\+Error\+Code@{e\+M\+B\+Error\+Code}!Modbus@{Modbus}}
+\subsubsection[{\texorpdfstring{e\+M\+B\+Error\+Code}{eMBErrorCode}}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf e\+M\+B\+Error\+Code}}\hypertarget{group__modbus_ga9e7fce8c431cb0e521c67f7f36dd823d}{}\label{group__modbus_ga9e7fce8c431cb0e521c67f7f36dd823d}
+
+
+Errorcodes used by all function in the protocol stack. 
+
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{M\+B\+\_\+\+E\+N\+O\+E\+RR@{M\+B\+\_\+\+E\+N\+O\+E\+RR}!Modbus@{Modbus}}\index{Modbus@{Modbus}!M\+B\+\_\+\+E\+N\+O\+E\+RR@{M\+B\+\_\+\+E\+N\+O\+E\+RR}}\item[{\em 
+M\+B\+\_\+\+E\+N\+O\+E\+RR\hypertarget{group__modbus_gga9e7fce8c431cb0e521c67f7f36dd823dabf4c1fb8c72eafc08be972225613fe2b}{}\label{group__modbus_gga9e7fce8c431cb0e521c67f7f36dd823dabf4c1fb8c72eafc08be972225613fe2b}
+}]no error. \index{M\+B\+\_\+\+E\+N\+O\+R\+EG@{M\+B\+\_\+\+E\+N\+O\+R\+EG}!Modbus@{Modbus}}\index{Modbus@{Modbus}!M\+B\+\_\+\+E\+N\+O\+R\+EG@{M\+B\+\_\+\+E\+N\+O\+R\+EG}}\item[{\em 
+M\+B\+\_\+\+E\+N\+O\+R\+EG\hypertarget{group__modbus_gga9e7fce8c431cb0e521c67f7f36dd823daf415371aad180c545b726d39adbf9ba7}{}\label{group__modbus_gga9e7fce8c431cb0e521c67f7f36dd823daf415371aad180c545b726d39adbf9ba7}
+}]illegal register address. \index{M\+B\+\_\+\+E\+I\+N\+V\+AL@{M\+B\+\_\+\+E\+I\+N\+V\+AL}!Modbus@{Modbus}}\index{Modbus@{Modbus}!M\+B\+\_\+\+E\+I\+N\+V\+AL@{M\+B\+\_\+\+E\+I\+N\+V\+AL}}\item[{\em 
+M\+B\+\_\+\+E\+I\+N\+V\+AL\hypertarget{group__modbus_gga9e7fce8c431cb0e521c67f7f36dd823dafa57cdb3f85e8ab4baf160579104d624}{}\label{group__modbus_gga9e7fce8c431cb0e521c67f7f36dd823dafa57cdb3f85e8ab4baf160579104d624}
+}]illegal argument. \index{M\+B\+\_\+\+E\+P\+O\+R\+T\+E\+RR@{M\+B\+\_\+\+E\+P\+O\+R\+T\+E\+RR}!Modbus@{Modbus}}\index{Modbus@{Modbus}!M\+B\+\_\+\+E\+P\+O\+R\+T\+E\+RR@{M\+B\+\_\+\+E\+P\+O\+R\+T\+E\+RR}}\item[{\em 
+M\+B\+\_\+\+E\+P\+O\+R\+T\+E\+RR\hypertarget{group__modbus_gga9e7fce8c431cb0e521c67f7f36dd823da539fb138411468b12c05556157c6864d}{}\label{group__modbus_gga9e7fce8c431cb0e521c67f7f36dd823da539fb138411468b12c05556157c6864d}
+}]porting layer error. \index{M\+B\+\_\+\+E\+N\+O\+R\+ES@{M\+B\+\_\+\+E\+N\+O\+R\+ES}!Modbus@{Modbus}}\index{Modbus@{Modbus}!M\+B\+\_\+\+E\+N\+O\+R\+ES@{M\+B\+\_\+\+E\+N\+O\+R\+ES}}\item[{\em 
+M\+B\+\_\+\+E\+N\+O\+R\+ES\hypertarget{group__modbus_gga9e7fce8c431cb0e521c67f7f36dd823daf0700c1e37bfc75068e6577bc0b04bb8}{}\label{group__modbus_gga9e7fce8c431cb0e521c67f7f36dd823daf0700c1e37bfc75068e6577bc0b04bb8}
+}]insufficient resources. \index{M\+B\+\_\+\+E\+IO@{M\+B\+\_\+\+E\+IO}!Modbus@{Modbus}}\index{Modbus@{Modbus}!M\+B\+\_\+\+E\+IO@{M\+B\+\_\+\+E\+IO}}\item[{\em 
+M\+B\+\_\+\+E\+IO\hypertarget{group__modbus_gga9e7fce8c431cb0e521c67f7f36dd823daf6eed4a1c490af14b7467be1e6e2fe67}{}\label{group__modbus_gga9e7fce8c431cb0e521c67f7f36dd823daf6eed4a1c490af14b7467be1e6e2fe67}
+}]I/O error. \index{M\+B\+\_\+\+E\+I\+L\+L\+S\+T\+A\+TE@{M\+B\+\_\+\+E\+I\+L\+L\+S\+T\+A\+TE}!Modbus@{Modbus}}\index{Modbus@{Modbus}!M\+B\+\_\+\+E\+I\+L\+L\+S\+T\+A\+TE@{M\+B\+\_\+\+E\+I\+L\+L\+S\+T\+A\+TE}}\item[{\em 
+M\+B\+\_\+\+E\+I\+L\+L\+S\+T\+A\+TE\hypertarget{group__modbus_gga9e7fce8c431cb0e521c67f7f36dd823daf0e64a209ac1a01935167c6986338a6f}{}\label{group__modbus_gga9e7fce8c431cb0e521c67f7f36dd823daf0e64a209ac1a01935167c6986338a6f}
+}]protocol stack in illegal state. \index{M\+B\+\_\+\+E\+T\+I\+M\+E\+D\+O\+UT@{M\+B\+\_\+\+E\+T\+I\+M\+E\+D\+O\+UT}!Modbus@{Modbus}}\index{Modbus@{Modbus}!M\+B\+\_\+\+E\+T\+I\+M\+E\+D\+O\+UT@{M\+B\+\_\+\+E\+T\+I\+M\+E\+D\+O\+UT}}\item[{\em 
+M\+B\+\_\+\+E\+T\+I\+M\+E\+D\+O\+UT\hypertarget{group__modbus_gga9e7fce8c431cb0e521c67f7f36dd823da017c559e956f718cf77aafe269f49bd5}{}\label{group__modbus_gga9e7fce8c431cb0e521c67f7f36dd823da017c559e956f718cf77aafe269f49bd5}
+}]timeout error occurred. \end{description}
+\end{Desc}
+
+
+Definition at line 112 of file mb.\+h.
+
+\index{Modbus@{Modbus}!e\+M\+B\+Parity@{e\+M\+B\+Parity}}
+\index{e\+M\+B\+Parity@{e\+M\+B\+Parity}!Modbus@{Modbus}}
+\subsubsection[{\texorpdfstring{e\+M\+B\+Parity}{eMBParity}}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf e\+M\+B\+Parity}}\hypertarget{group__modbus_ga16ba85fa56bcd52a11a12576af445ccb}{}\label{group__modbus_ga16ba85fa56bcd52a11a12576af445ccb}
+
+
+Parity used for characters in serial mode. 
+
+The parity which should be applied to the characters sent over the serial link. Please note that this values are actually passed to the porting layer and therefore not all parity modes might be available. \begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{M\+B\+\_\+\+P\+A\+R\+\_\+\+N\+O\+NE@{M\+B\+\_\+\+P\+A\+R\+\_\+\+N\+O\+NE}!Modbus@{Modbus}}\index{Modbus@{Modbus}!M\+B\+\_\+\+P\+A\+R\+\_\+\+N\+O\+NE@{M\+B\+\_\+\+P\+A\+R\+\_\+\+N\+O\+NE}}\item[{\em 
+M\+B\+\_\+\+P\+A\+R\+\_\+\+N\+O\+NE\hypertarget{group__modbus_gga16ba85fa56bcd52a11a12576af445ccba36c1b70b68bc05d618632e3f975a557b}{}\label{group__modbus_gga16ba85fa56bcd52a11a12576af445ccba36c1b70b68bc05d618632e3f975a557b}
+}]No parity. \index{M\+B\+\_\+\+P\+A\+R\+\_\+\+O\+DD@{M\+B\+\_\+\+P\+A\+R\+\_\+\+O\+DD}!Modbus@{Modbus}}\index{Modbus@{Modbus}!M\+B\+\_\+\+P\+A\+R\+\_\+\+O\+DD@{M\+B\+\_\+\+P\+A\+R\+\_\+\+O\+DD}}\item[{\em 
+M\+B\+\_\+\+P\+A\+R\+\_\+\+O\+DD\hypertarget{group__modbus_gga16ba85fa56bcd52a11a12576af445ccba955fa6c30334314739ddceed6e749316}{}\label{group__modbus_gga16ba85fa56bcd52a11a12576af445ccba955fa6c30334314739ddceed6e749316}
+}]Odd parity. \index{M\+B\+\_\+\+P\+A\+R\+\_\+\+E\+V\+EN@{M\+B\+\_\+\+P\+A\+R\+\_\+\+E\+V\+EN}!Modbus@{Modbus}}\index{Modbus@{Modbus}!M\+B\+\_\+\+P\+A\+R\+\_\+\+E\+V\+EN@{M\+B\+\_\+\+P\+A\+R\+\_\+\+E\+V\+EN}}\item[{\em 
+M\+B\+\_\+\+P\+A\+R\+\_\+\+E\+V\+EN\hypertarget{group__modbus_gga16ba85fa56bcd52a11a12576af445ccba0415f4c7ede57e13a0cca698a8375dbd}{}\label{group__modbus_gga16ba85fa56bcd52a11a12576af445ccba0415f4c7ede57e13a0cca698a8375dbd}
+}]Even parity. \end{description}
+\end{Desc}
+
+
+Definition at line 55 of file mbport.\+h.
+
+
+
+\subsection{Function Documentation}
+\index{Modbus@{Modbus}!e\+M\+B\+Init@{e\+M\+B\+Init}}
+\index{e\+M\+B\+Init@{e\+M\+B\+Init}!Modbus@{Modbus}}
+\subsubsection[{\texorpdfstring{e\+M\+B\+Init(e\+M\+B\+Mode e\+Mode, U\+C\+H\+A\+R uc\+Slave\+Address, U\+C\+H\+A\+R uc\+Port, U\+L\+O\+N\+G ul\+Baud\+Rate, e\+M\+B\+Parity e\+Parity)}{eMBInit(eMBMode eMode, UCHAR ucSlaveAddress, UCHAR ucPort, ULONG ulBaudRate, eMBParity eParity)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf e\+M\+B\+Error\+Code} e\+M\+B\+Init (
+\begin{DoxyParamCaption}
+\item[{{\bf e\+M\+B\+Mode}}]{e\+Mode, }
+\item[{U\+C\+H\+AR}]{uc\+Slave\+Address, }
+\item[{U\+C\+H\+AR}]{uc\+Port, }
+\item[{U\+L\+O\+NG}]{ul\+Baud\+Rate, }
+\item[{{\bf e\+M\+B\+Parity}}]{e\+Parity}
+\end{DoxyParamCaption}
+)}\hypertarget{group__modbus_ga622dbe6b38ff1d255523d4736fa3da26}{}\label{group__modbus_ga622dbe6b38ff1d255523d4736fa3da26}
+
+
+Initialize the Modbus protocol stack. 
+
+This functions initializes the A\+S\+C\+II or R\+TU module and calls the init functions of the porting layer to prepare the hardware. Please note that the receiver is still disabled and no Modbus frames are processed until \hyperlink{group__modbus_gab697be370833d562e6b016626d996132}{e\+M\+B\+Enable( )} has been called.
+
+
+\begin{DoxyParams}{Parameters}
+{\em e\+Mode} & If A\+S\+C\+II or R\+TU mode should be used. \\
+\hline
+{\em uc\+Slave\+Address} & The slave address. Only frames sent to this address or to the broadcast address are processed. \\
+\hline
+{\em uc\+Port} & The port to use. E.\+g. 1 for C\+O\+M1 on windows. This value is platform dependent and some ports simply choose to ignore it. \\
+\hline
+{\em ul\+Baud\+Rate} & The baudrate. E.\+g. 19200. Supported baudrates depend on the porting layer. \\
+\hline
+{\em e\+Parity} & Parity used for serial transmission.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+If no error occurs the function returns e\+M\+B\+Error\+Code\+::\+M\+B\+\_\+\+E\+N\+O\+E\+RR. The protocol is then in the disabled state and ready for activation by calling \hyperlink{group__modbus_gab697be370833d562e6b016626d996132}{e\+M\+B\+Enable( )}. Otherwise one of the following error codes is returned\+:
+\begin{DoxyItemize}
+\item e\+M\+B\+Error\+Code\+::\+M\+B\+\_\+\+E\+I\+N\+V\+AL If the slave address was not valid. Valid slave addresses are in the range 1 -\/ 247.
+\item e\+M\+B\+Error\+Code\+::\+M\+B\+\_\+\+E\+P\+O\+R\+T\+E\+RR IF the porting layer returned an error. 
+\end{DoxyItemize}
+\end{DoxyReturn}
+
+
+Definition at line 128 of file mb.\+c.
+
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{group__modbus_ga622dbe6b38ff1d255523d4736fa3da26_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Modbus@{Modbus}!e\+M\+B\+T\+C\+P\+Init@{e\+M\+B\+T\+C\+P\+Init}}
+\index{e\+M\+B\+T\+C\+P\+Init@{e\+M\+B\+T\+C\+P\+Init}!Modbus@{Modbus}}
+\subsubsection[{\texorpdfstring{e\+M\+B\+T\+C\+P\+Init(\+U\+S\+H\+O\+R\+T us\+T\+C\+P\+Port)}{eMBTCPInit(USHORT usTCPPort)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf e\+M\+B\+Error\+Code} e\+M\+B\+T\+C\+P\+Init (
+\begin{DoxyParamCaption}
+\item[{U\+S\+H\+O\+RT}]{us\+T\+C\+P\+Port}
+\end{DoxyParamCaption}
+)}\hypertarget{group__modbus_gab06a2d0ef8bdfd866cd934f0ec7e7a6e}{}\label{group__modbus_gab06a2d0ef8bdfd866cd934f0ec7e7a6e}
+
+
+Initialize the Modbus protocol stack for Modbus T\+CP. 
+
+This function initializes the Modbus T\+CP Module. Please note that frame processing is still disabled until \hyperlink{group__modbus_gab697be370833d562e6b016626d996132}{e\+M\+B\+Enable( )} is called.
+
+
+\begin{DoxyParams}{Parameters}
+{\em us\+T\+C\+P\+Port} & The T\+CP port to listen on. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+If the protocol stack has been initialized correctly the function returns e\+M\+B\+Error\+Code\+::\+M\+B\+\_\+\+E\+N\+O\+E\+RR. Otherwise one of the following error codes is returned\+:
+\begin{DoxyItemize}
+\item e\+M\+B\+Error\+Code\+::\+M\+B\+\_\+\+E\+I\+N\+V\+AL If the slave address was not valid. Valid slave addresses are in the range 1 -\/ 247.
+\item e\+M\+B\+Error\+Code\+::\+M\+B\+\_\+\+E\+P\+O\+R\+T\+E\+RR IF the porting layer returned an error. 
+\end{DoxyItemize}
+\end{DoxyReturn}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{group__modbus_gab06a2d0ef8bdfd866cd934f0ec7e7a6e_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Modbus@{Modbus}!e\+M\+B\+Close@{e\+M\+B\+Close}}
+\index{e\+M\+B\+Close@{e\+M\+B\+Close}!Modbus@{Modbus}}
+\subsubsection[{\texorpdfstring{e\+M\+B\+Close(void)}{eMBClose(void)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf e\+M\+B\+Error\+Code} e\+M\+B\+Close (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{group__modbus_gac20080d92be2934456e2a5d27cd36310}{}\label{group__modbus_gac20080d92be2934456e2a5d27cd36310}
+
+
+Release resources used by the protocol stack. 
+
+This function disables the Modbus protocol stack and release all hardware resources. It must only be called when the protocol stack is disabled.
+
+\begin{DoxyNote}{Note}
+Note all ports implement this function. A port which wants to get an callback must define the macro M\+B\+\_\+\+P\+O\+R\+T\+\_\+\+H\+A\+S\+\_\+\+C\+L\+O\+SE to 1.
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+If the resources where released it return e\+M\+B\+Error\+Code\+::\+M\+B\+\_\+\+E\+N\+O\+E\+RR. If the protocol stack is not in the disabled state it returns e\+M\+B\+Error\+Code\+::\+M\+B\+\_\+\+E\+I\+L\+L\+S\+T\+A\+TE. 
+\end{DoxyReturn}
+
+
+Definition at line 265 of file mb.\+c.
+
+\index{Modbus@{Modbus}!e\+M\+B\+Enable@{e\+M\+B\+Enable}}
+\index{e\+M\+B\+Enable@{e\+M\+B\+Enable}!Modbus@{Modbus}}
+\subsubsection[{\texorpdfstring{e\+M\+B\+Enable(void)}{eMBEnable(void)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf e\+M\+B\+Error\+Code} e\+M\+B\+Enable (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{group__modbus_gab697be370833d562e6b016626d996132}{}\label{group__modbus_gab697be370833d562e6b016626d996132}
+
+
+Enable the Modbus protocol stack. 
+
+This function enables processing of Modbus frames. Enabling the protocol stack is only possible if it is in the disabled state.
+
+\begin{DoxyReturn}{Returns}
+If the protocol stack is now in the state enabled it returns e\+M\+B\+Error\+Code\+::\+M\+B\+\_\+\+E\+N\+O\+E\+RR. If it was not in the disabled state it return e\+M\+B\+Error\+Code\+::\+M\+B\+\_\+\+E\+I\+L\+L\+S\+T\+A\+TE. 
+\end{DoxyReturn}
+
+
+Definition at line 284 of file mb.\+c.
+
+\index{Modbus@{Modbus}!e\+M\+B\+Disable@{e\+M\+B\+Disable}}
+\index{e\+M\+B\+Disable@{e\+M\+B\+Disable}!Modbus@{Modbus}}
+\subsubsection[{\texorpdfstring{e\+M\+B\+Disable(void)}{eMBDisable(void)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf e\+M\+B\+Error\+Code} e\+M\+B\+Disable (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{group__modbus_gabcc2a31ec41fc276ab3c3ac705defdf3}{}\label{group__modbus_gabcc2a31ec41fc276ab3c3ac705defdf3}
+
+
+Disable the Modbus protocol stack. 
+
+This function disables processing of Modbus frames.
+
+\begin{DoxyReturn}{Returns}
+If the protocol stack has been disabled it returns e\+M\+B\+Error\+Code\+::\+M\+B\+\_\+\+E\+N\+O\+E\+RR. If it was not in the enabled state it returns e\+M\+B\+Error\+Code\+::\+M\+B\+\_\+\+E\+I\+L\+L\+S\+T\+A\+TE. 
+\end{DoxyReturn}
+
+
+Definition at line 302 of file mb.\+c.
+
+\index{Modbus@{Modbus}!e\+M\+B\+Poll@{e\+M\+B\+Poll}}
+\index{e\+M\+B\+Poll@{e\+M\+B\+Poll}!Modbus@{Modbus}}
+\subsubsection[{\texorpdfstring{e\+M\+B\+Poll(void)}{eMBPoll(void)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf e\+M\+B\+Error\+Code} e\+M\+B\+Poll (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{group__modbus_ga12648c98d45f768ba878fbcee46caca5}{}\label{group__modbus_ga12648c98d45f768ba878fbcee46caca5}
+
+
+The main pooling loop of the Modbus protocol stack. 
+
+This function must be called periodically. The timer interval required is given by the application dependent Modbus slave timeout. Internally the function calls x\+M\+B\+Port\+Event\+Get() and waits for an event from the receiver or transmitter state machines.
+
+\begin{DoxyReturn}{Returns}
+If the protocol stack is not in the enabled state the function returns e\+M\+B\+Error\+Code\+::\+M\+B\+\_\+\+E\+I\+L\+L\+S\+T\+A\+TE. Otherwise it returns e\+M\+B\+Error\+Code\+::\+M\+B\+\_\+\+E\+N\+O\+E\+RR. 
+\end{DoxyReturn}
+
+
+Definition at line 324 of file mb.\+c.
+
+\index{Modbus@{Modbus}!e\+M\+B\+Set\+Slave\+ID@{e\+M\+B\+Set\+Slave\+ID}}
+\index{e\+M\+B\+Set\+Slave\+ID@{e\+M\+B\+Set\+Slave\+ID}!Modbus@{Modbus}}
+\subsubsection[{\texorpdfstring{e\+M\+B\+Set\+Slave\+I\+D(\+U\+C\+H\+A\+R uc\+Slave\+I\+D, B\+O\+O\+L x\+Is\+Running, U\+C\+H\+A\+R const $\ast$puc\+Additional, U\+S\+H\+O\+R\+T us\+Additional\+Len)}{eMBSetSlaveID(UCHAR ucSlaveID, BOOL xIsRunning, UCHAR const *pucAdditional, USHORT usAdditionalLen)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf e\+M\+B\+Error\+Code} e\+M\+B\+Set\+Slave\+ID (
+\begin{DoxyParamCaption}
+\item[{U\+C\+H\+AR}]{uc\+Slave\+ID, }
+\item[{B\+O\+OL}]{x\+Is\+Running, }
+\item[{U\+C\+H\+AR const $\ast$}]{puc\+Additional, }
+\item[{U\+S\+H\+O\+RT}]{us\+Additional\+Len}
+\end{DoxyParamCaption}
+)}\hypertarget{group__modbus_gabe2b0e2dccf23d506666aa3cfdf6a8a3}{}\label{group__modbus_gabe2b0e2dccf23d506666aa3cfdf6a8a3}
+
+
+Configure the slave id of the device. 
+
+This function should be called when the Modbus function {\itshape Report Slave ID} is enabled ( By defining M\+B\+\_\+\+F\+U\+N\+C\+\_\+\+O\+T\+H\+E\+R\+\_\+\+R\+E\+P\+\_\+\+S\+L\+A\+V\+E\+I\+D\+\_\+\+E\+N\+A\+B\+L\+ED in \hyperlink{mbconfig_8h_source}{mbconfig.\+h} ).
+
+
+\begin{DoxyParams}{Parameters}
+{\em uc\+Slave\+ID} & Values is returned in the {\itshape Slave ID} byte of the {\itshape Report Slave ID} response. \\
+\hline
+{\em x\+Is\+Running} & If T\+R\+UE the {\itshape Run Indicator Status} byte is set to 0x\+FF. otherwise the {\itshape Run Indicator Status} is 0x00. \\
+\hline
+{\em puc\+Additional} & Values which should be returned in the {\itshape Additional} bytes of the {\itshape  Report Slave ID} response. \\
+\hline
+{\em us\+Additional\+Len} & Length of the buffer {\ttfamily puc\+Additonal}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+If the static buffer defined by M\+B\+\_\+\+F\+U\+N\+C\+\_\+\+O\+T\+H\+E\+R\+\_\+\+R\+E\+P\+\_\+\+S\+L\+A\+V\+E\+I\+D\+\_\+\+B\+UF in \hyperlink{mbconfig_8h_source}{mbconfig.\+h} is to small it returns e\+M\+B\+Error\+Code\+::\+M\+B\+\_\+\+E\+N\+O\+R\+ES. Otherwise it returns e\+M\+B\+Error\+Code\+::\+M\+B\+\_\+\+E\+N\+O\+E\+RR. 
+\end{DoxyReturn}
+\index{Modbus@{Modbus}!e\+M\+B\+Register\+CB@{e\+M\+B\+Register\+CB}}
+\index{e\+M\+B\+Register\+CB@{e\+M\+B\+Register\+CB}!Modbus@{Modbus}}
+\subsubsection[{\texorpdfstring{e\+M\+B\+Register\+C\+B(\+U\+C\+H\+A\+R uc\+Function\+Code, px\+M\+B\+Function\+Handler px\+Handler)}{eMBRegisterCB(UCHAR ucFunctionCode, pxMBFunctionHandler pxHandler)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf e\+M\+B\+Error\+Code} e\+M\+B\+Register\+CB (
+\begin{DoxyParamCaption}
+\item[{U\+C\+H\+AR}]{uc\+Function\+Code, }
+\item[{px\+M\+B\+Function\+Handler}]{px\+Handler}
+\end{DoxyParamCaption}
+)}\hypertarget{group__modbus_ga5f6e66893b2388a602ac453253a00784}{}\label{group__modbus_ga5f6e66893b2388a602ac453253a00784}
+
+
+Registers a callback handler for a given function code. 
+
+This function registers a new callback handler for a given function code. The callback handler supplied is responsible for interpreting the Modbus P\+DU and the creation of an appropriate response. In case of an error it should return one of the possible Modbus exceptions which results in a Modbus exception frame sent by the protocol stack.
+
+
+\begin{DoxyParams}{Parameters}
+{\em uc\+Function\+Code} & The Modbus function code for which this handler should be registers. Valid function codes are in the range 1 to 127. \\
+\hline
+{\em px\+Handler} & The function handler which should be called in case such a frame is received. If {\ttfamily N\+U\+LL} a previously registered function handler for this function code is removed.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+e\+M\+B\+Error\+Code\+::\+M\+B\+\_\+\+E\+N\+O\+E\+RR if the handler has been installed. If no more resources are available it returns e\+M\+B\+Error\+Code\+::\+M\+B\+\_\+\+E\+N\+O\+R\+ES. In this case the values in \hyperlink{mbconfig_8h_source}{mbconfig.\+h} should be adjusted. If the argument was not valid it returns e\+M\+B\+Error\+Code\+::\+M\+B\+\_\+\+E\+I\+N\+V\+AL. 
+\end{DoxyReturn}
+
+
+Definition at line 218 of file mb.\+c.
+

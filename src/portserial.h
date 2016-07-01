@@ -1,5 +1,5 @@
-/*
- * portserial.h
+/**
+ * @file 				portserial.h
  *
  *  Created on: Jun 29, 2016
  *      Author: ankit

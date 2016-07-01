@@ -1,6 +1,7 @@
-/*
+/**
+ * @file 				portevent.c
 ===============================================================================
- Name        : modbus.c
+ @file        : modbus.c
  Author      : $(author)
  Version     :
  Copyright   : $(copyright)

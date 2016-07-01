@@ -1,4 +1,5 @@
-/* 
+/**
+ * @file 				mbfuncother.c
  * FreeModbus Libary: A portable Modbus implementation for Modbus ASCII/RTU.
  * Copyright (c) 2006 Christian Walter <wolti@sil.at>
  * All rights reserved.
@@ -49,8 +50,19 @@ static USHORT   usMBSlaveIDLen;
 
 /* ----------------------- Start implementation -----------------------------*/
 
-eMBErrorCode
-eMBSetSlaveID( UCHAR ucSlaveID, BOOL xIsRunning,
+/**
+ -----------------------------------------------------------------------------------------------------------------------
+ eMBSetSlaveID
+ -----------------------------------------------------------------------------------------------------------------------
+*   Event Handler for GPI module
+*
+* 	@date       			DEC/02/2013
+* 	@author                         FW_DEV_2
+* 	@pre                            None
+* 	@return	 			None
+************************************************************************************************************************
+*/
+eMBErrorCode eMBSetSlaveID( UCHAR ucSlaveID, BOOL xIsRunning,
                UCHAR const *pucAdditional, USHORT usAdditionalLen )
 {
     eMBErrorCode    eStatus = MB_ENOERR;
@@ -77,8 +89,19 @@ eMBSetSlaveID( UCHAR ucSlaveID, BOOL xIsRunning,
     return eStatus;
 }
 
-eMBException
-eMBFuncReportSlaveID( UCHAR * pucFrame, USHORT * usLen )
+/**
+ -----------------------------------------------------------------------------------------------------------------------
+ eMBFuncReportSlaveID
+ -----------------------------------------------------------------------------------------------------------------------
+*   Event Handler for GPI module
+*
+* 	@date       			DEC/02/2013
+* 	@author                         FW_DEV_2
+* 	@pre                            None
+* 	@return	 			None
+************************************************************************************************************************
+*/
+eMBException eMBFuncReportSlaveID( UCHAR * pucFrame, USHORT * usLen )
 {
     memcpy( &pucFrame[MB_PDU_DATA_OFF], &ucMBSlaveID[0], ( size_t )usMBSlaveIDLen );
     *usLen = ( USHORT )( MB_PDU_DATA_OFF + usMBSlaveIDLen );

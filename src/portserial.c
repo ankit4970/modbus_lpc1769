@@ -1,4 +1,5 @@
-/*
+/**
+ * @file 				portserial.c
  * FreeModbus Libary: BARE Port
  * Copyright (C) 2006 Christian Walter <wolti@sil.at>
  *
@@ -53,6 +54,18 @@ static BOOL RxEnable, TxEnable;     // Cam - keep a static copy of the RxEnable 
 /* ----------------------- Start implementation -----------------------------*/
 // Cam - This is called every 1mS to simulate Rx character received ISR and
 // Tx buffer empty ISR.
+/**
+ -----------------------------------------------------------------------------------------------------------------------
+ prvvUARTISR
+ -----------------------------------------------------------------------------------------------------------------------
+*   Event Handler for GPI module
+*
+* 	@date       			DEC/02/2013
+* 	@author                         FW_DEV_2
+* 	@pre                            None
+* 	@return	 			None
+************************************************************************************************************************
+*/
 static void prvvUARTISR( void )
 {
     if (TxEnable)
@@ -71,6 +84,18 @@ static void prvvUARTISR( void )
     }
 }
 
+/**
+ -----------------------------------------------------------------------------------------------------------------------
+ vMBPortSerialEnable
+ -----------------------------------------------------------------------------------------------------------------------
+*   Event Handler for GPI module
+*
+* 	@date       			DEC/02/2013
+* 	@author                         FW_DEV_2
+* 	@pre                            None
+* 	@return	 			None
+************************************************************************************************************************
+*/
 void vMBPortSerialEnable( BOOL xRxEnable, BOOL xTxEnable )
 {
     /* If xRXEnable enable serial receive interrupts. If xTxENable enable
@@ -80,6 +105,18 @@ void vMBPortSerialEnable( BOOL xRxEnable, BOOL xTxEnable )
     TxEnable = xTxEnable;
 }
 
+/**
+ -----------------------------------------------------------------------------------------------------------------------
+ xMBPortSerialInit
+ -----------------------------------------------------------------------------------------------------------------------
+*   Event Handler for GPI module
+*
+* 	@date       			DEC/02/2013
+* 	@author                         FW_DEV_2
+* 	@pre                            None
+* 	@return	 			None
+************************************************************************************************************************
+*/
 BOOL xMBPortSerialInit( UCHAR ucPORT, ULONG ulBaudRate, UCHAR ucDataBits, eMBParity eParity )
 {
     //simISR.attach_us(&prvvUARTISR,1000);    // Cam - attach prvvUARTISR to a 1mS ticker to simulate serial interrupt behaviour
@@ -133,6 +170,18 @@ BOOL xMBPortSerialInit( UCHAR ucPORT, ULONG ulBaudRate, UCHAR ucDataBits, eMBPar
     return TRUE;
 }
 
+/**
+ -----------------------------------------------------------------------------------------------------------------------
+ xMBPortSerialPutByte
+ -----------------------------------------------------------------------------------------------------------------------
+*   Event Handler for GPI module
+*
+* 	@date       			DEC/02/2013
+* 	@author                         FW_DEV_2
+* 	@pre                            None
+* 	@return	 			None
+************************************************************************************************************************
+*/
 BOOL xMBPortSerialPutByte( CHAR ucByte )
 {
     /* Put a byte in the UARTs transmit buffer. This function is called
@@ -145,12 +194,27 @@ BOOL xMBPortSerialPutByte( CHAR ucByte )
     return TRUE;
 }
 
+/**
+ -----------------------------------------------------------------------------------------------------------------------
+ xMBPortSerialGetByte
+ -----------------------------------------------------------------------------------------------------------------------
+*   Event Handler for GPI module
+*
+* 	@date       			DEC/02/2013
+* 	@author                         FW_DEV_2
+* 	@pre                            None
+* 	@return	 			None
+************************************************************************************************************************
+*/
 BOOL xMBPortSerialGetByte( CHAR * pucByte )
 {
     /* Return the byte in the UARTs receive buffer. This function is called
      * by the protocol stack after pxMBFrameCBByteReceived( ) has been called.
      */
 	//* pucByte = pc.getc();
+	while( !( LPC_UART2->LSR & 0x01 ) )
+	{
+	}
 
 	*pucByte = LPC_UART2->RBR;
     return TRUE;
@@ -162,10 +226,22 @@ BOOL xMBPortSerialGetByte( CHAR * pucByte )
  * a new character can be sent. The protocol stack will then call 
  * xMBPortSerialPutByte( ) to send the character.
  */
-
+/**
+ -----------------------------------------------------------------------------------------------------------------------
+ UART2_IRQHandler
+ -----------------------------------------------------------------------------------------------------------------------
+*   Event Handler for GPI module
+*
+* 	@date       			DEC/02/2013
+* 	@author                         FW_DEV_2
+* 	@pre                            None
+* 	@return	 			None
+************************************************************************************************************************
+*/
 static void UART2_IRQHandler()
 {
 	uint32_t intsrc=0, tmp=0, tmp1=0;
+	volatile char   dummy;
 
 	intsrc = (LPC_UART2->IIR & 0x03CF);
 	tmp = intsrc & UART_IIR_INTID_MASK;
@@ -187,42 +263,31 @@ static void UART2_IRQHandler()
 	// Receive Data Available or Character time-out
 	if ((tmp == UART_IIR_INTID_RDA) || (tmp == UART_IIR_INTID_CTI))
 	{
-		pxMBFrameCBByteReceived( );
-#if 0
-		while (bToRecv)
-		{
-			if (!(LPC_UART2->LSR & UART_LSR_RDR))
-			{
-				printf("here1\n");
-				gBuffer[bRecvInt++] = '\0';
-				printf("-->%s\n",gBuffer);
-				bRecvInt =0;
-				xSemaphoreGiveFromISR(gUartSemaphore,NULL);
-				break;
-			}
-			else
-			{
-				recvData= LPC_UART2->RBR;
-				printf("%c\n",recvData);
+		prvvUARTRxISR( );
 
-				printf("%c\n",recvData);
-				gBuffer[bRecvInt] = recvData;
-				bRecvInt++;
-				bToRecv--;
-			}
-		}
-#endif
 	}
 
 	// Transmit Holding Empty
 	if (tmp == UART_IIR_INTID_THRE)
 	{
-		pxMBFrameCBTransmitterEmpty();
+		prvvUARTTxReadyISR();
 	}
 
 
 }
 
+/**
+ -----------------------------------------------------------------------------------------------------------------------
+ prvvUARTTxReadyISR
+ -----------------------------------------------------------------------------------------------------------------------
+*   Event Handler for GPI module
+*
+* 	@date       			DEC/02/2013
+* 	@author                         FW_DEV_2
+* 	@pre                            None
+* 	@return	 			None
+************************************************************************************************************************
+*/
 static void prvvUARTTxReadyISR(void)
 {
     pxMBFrameCBTransmitterEmpty();
@@ -233,6 +298,18 @@ static void prvvUARTTxReadyISR(void)
  * protocol stack will then call xMBPortSerialGetByte( ) to retrieve the
  * character.
  */
+/**
+ -----------------------------------------------------------------------------------------------------------------------
+ prvvUARTRxISR
+ -----------------------------------------------------------------------------------------------------------------------
+*   Event Handler for GPI module
+*
+* 	@date       			DEC/02/2013
+* 	@author                         FW_DEV_2
+* 	@pre                            None
+* 	@return	 			None
+************************************************************************************************************************
+*/
 static void prvvUARTRxISR(void)
 {
     pxMBFrameCBByteReceived( );

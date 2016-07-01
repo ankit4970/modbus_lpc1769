@@ -1,4 +1,6 @@
 /* 
+ * @file 				mbport.h
+ *
  * FreeModbus Libary: A portable Modbus implementation for Modbus ASCII/RTU.
  * Copyright (c) 2006 Christian Walter <wolti@sil.at>
  * All rights reserved.

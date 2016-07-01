@@ -1,0 +1,184 @@
+\hypertarget{portserial_8c}{}\section{portserial.\+c File Reference}
+\label{portserial_8c}\index{portserial.\+c@{portserial.\+c}}
+{\ttfamily \#include \char`\"{}port.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}mb.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}mbport.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}L\+P\+C17xx.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}portserial.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}mbutils.\+h\char`\"{}}\\*
+Include dependency graph for portserial.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{portserial_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{portserial_8c_a4bf68bda6b5ed6c341d27d439a6c03df}{v\+M\+B\+Port\+Serial\+Enable} (B\+O\+OL x\+Rx\+Enable, B\+O\+OL x\+Tx\+Enable)
+\item 
+B\+O\+OL \hyperlink{portserial_8c_a34627006710d0ea50c9215afad55ed55}{x\+M\+B\+Port\+Serial\+Init} (U\+C\+H\+AR uc\+P\+O\+RT, U\+L\+O\+NG ul\+Baud\+Rate, U\+C\+H\+AR uc\+Data\+Bits, e\+M\+B\+Parity e\+Parity)
+\item 
+B\+O\+OL \hyperlink{portserial_8c_a5ca95563c25eb239a4c51f3ce35f5cc8}{x\+M\+B\+Port\+Serial\+Put\+Byte} (C\+H\+AR uc\+Byte)
+\item 
+B\+O\+OL \hyperlink{portserial_8c_a4a4724e9dc26b2d2d1cc2a6d41c24770}{x\+M\+B\+Port\+Serial\+Get\+Byte} (C\+H\+AR $\ast$puc\+Byte)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Free\+Modbus Libary\+: B\+A\+RE Port Copyright (C) 2006 Christian Walter \href{mailto:wolti@sil.at}{\tt wolti@sil.\+at}
+
+This library is free software; you can redistribute it and/or modify it under the terms of the G\+NU Lesser General Public License as published by the Free Software Foundation; either version 2.\+1 of the License, or (at your option) any later version.
+
+This library is distributed in the hope that it will be useful, but W\+I\+T\+H\+O\+UT A\+NY W\+A\+R\+R\+A\+N\+TY; without even the implied warranty of M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+TY or F\+I\+T\+N\+E\+SS F\+OR A P\+A\+R\+T\+I\+C\+U\+L\+AR P\+U\+R\+P\+O\+SE. See the G\+NU Lesser General Public License for more details.
+
+You should have received a copy of the G\+NU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-\/1301 U\+SA
+
+File\+: \begin{DoxyParagraph}{Id}
+\hyperlink{portserial_8c}{portserial.\+c},v 1.\+1 2006/08/22 21\+:35\+:13 wolti Exp 
+\end{DoxyParagraph}
+
+
+\subsection{Function Documentation}
+\index{portserial.\+c@{portserial.\+c}!v\+M\+B\+Port\+Serial\+Enable@{v\+M\+B\+Port\+Serial\+Enable}}
+\index{v\+M\+B\+Port\+Serial\+Enable@{v\+M\+B\+Port\+Serial\+Enable}!portserial.\+c@{portserial.\+c}}
+\subsubsection[{\texorpdfstring{v\+M\+B\+Port\+Serial\+Enable(\+B\+O\+O\+L x\+Rx\+Enable, B\+O\+O\+L x\+Tx\+Enable)}{vMBPortSerialEnable(BOOL xRxEnable, BOOL xTxEnable)}}]{\setlength{\rightskip}{0pt plus 5cm}void v\+M\+B\+Port\+Serial\+Enable (
+\begin{DoxyParamCaption}
+\item[{B\+O\+OL}]{x\+Rx\+Enable, }
+\item[{B\+O\+OL}]{x\+Tx\+Enable}
+\end{DoxyParamCaption}
+)}\hypertarget{portserial_8c_a4bf68bda6b5ed6c341d27d439a6c03df}{}\label{portserial_8c_a4bf68bda6b5ed6c341d27d439a6c03df}
+
+
+ \subsubsection*{v\+M\+B\+Port\+Serial\+Enable }
+
+Event Handler for G\+PI module \begin{DoxyVerb} @date                           DEC/02/2013
+ @author                         FW_DEV_2
+ @pre                            None
+ @return                         None\end{DoxyVerb}
+ 
+
+Definition at line 99 of file portserial.\+c.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{portserial_8c_a4bf68bda6b5ed6c341d27d439a6c03df_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{portserial.\+c@{portserial.\+c}!x\+M\+B\+Port\+Serial\+Init@{x\+M\+B\+Port\+Serial\+Init}}
+\index{x\+M\+B\+Port\+Serial\+Init@{x\+M\+B\+Port\+Serial\+Init}!portserial.\+c@{portserial.\+c}}
+\subsubsection[{\texorpdfstring{x\+M\+B\+Port\+Serial\+Init(\+U\+C\+H\+A\+R uc\+P\+O\+R\+T, U\+L\+O\+N\+G ul\+Baud\+Rate, U\+C\+H\+A\+R uc\+Data\+Bits, e\+M\+B\+Parity e\+Parity)}{xMBPortSerialInit(UCHAR ucPORT, ULONG ulBaudRate, UCHAR ucDataBits, eMBParity eParity)}}]{\setlength{\rightskip}{0pt plus 5cm}B\+O\+OL x\+M\+B\+Port\+Serial\+Init (
+\begin{DoxyParamCaption}
+\item[{U\+C\+H\+AR}]{uc\+P\+O\+RT, }
+\item[{U\+L\+O\+NG}]{ul\+Baud\+Rate, }
+\item[{U\+C\+H\+AR}]{uc\+Data\+Bits, }
+\item[{e\+M\+B\+Parity}]{e\+Parity}
+\end{DoxyParamCaption}
+)}\hypertarget{portserial_8c_a34627006710d0ea50c9215afad55ed55}{}\label{portserial_8c_a34627006710d0ea50c9215afad55ed55}
+
+
+ \subsubsection*{x\+M\+B\+Port\+Serial\+Init }
+
+Event Handler for G\+PI module \begin{DoxyVerb} @date                           DEC/02/2013
+ @author                         FW_DEV_2
+ @pre                            None
+ @return                         None\end{DoxyVerb}
+ 
+
+Definition at line 120 of file portserial.\+c.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=309pt]{portserial_8c_a34627006710d0ea50c9215afad55ed55_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{portserial_8c_a34627006710d0ea50c9215afad55ed55_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{portserial.\+c@{portserial.\+c}!x\+M\+B\+Port\+Serial\+Put\+Byte@{x\+M\+B\+Port\+Serial\+Put\+Byte}}
+\index{x\+M\+B\+Port\+Serial\+Put\+Byte@{x\+M\+B\+Port\+Serial\+Put\+Byte}!portserial.\+c@{portserial.\+c}}
+\subsubsection[{\texorpdfstring{x\+M\+B\+Port\+Serial\+Put\+Byte(\+C\+H\+A\+R uc\+Byte)}{xMBPortSerialPutByte(CHAR ucByte)}}]{\setlength{\rightskip}{0pt plus 5cm}B\+O\+OL x\+M\+B\+Port\+Serial\+Put\+Byte (
+\begin{DoxyParamCaption}
+\item[{C\+H\+AR}]{uc\+Byte}
+\end{DoxyParamCaption}
+)}\hypertarget{portserial_8c_a5ca95563c25eb239a4c51f3ce35f5cc8}{}\label{portserial_8c_a5ca95563c25eb239a4c51f3ce35f5cc8}
+
+
+ \subsubsection*{x\+M\+B\+Port\+Serial\+Put\+Byte }
+
+Event Handler for G\+PI module \begin{DoxyVerb} @date                           DEC/02/2013
+ @author                         FW_DEV_2
+ @pre                            None
+ @return                         None\end{DoxyVerb}
+ 
+
+Definition at line 185 of file portserial.\+c.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{portserial_8c_a5ca95563c25eb239a4c51f3ce35f5cc8_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{portserial.\+c@{portserial.\+c}!x\+M\+B\+Port\+Serial\+Get\+Byte@{x\+M\+B\+Port\+Serial\+Get\+Byte}}
+\index{x\+M\+B\+Port\+Serial\+Get\+Byte@{x\+M\+B\+Port\+Serial\+Get\+Byte}!portserial.\+c@{portserial.\+c}}
+\subsubsection[{\texorpdfstring{x\+M\+B\+Port\+Serial\+Get\+Byte(\+C\+H\+A\+R $\ast$puc\+Byte)}{xMBPortSerialGetByte(CHAR *pucByte)}}]{\setlength{\rightskip}{0pt plus 5cm}B\+O\+OL x\+M\+B\+Port\+Serial\+Get\+Byte (
+\begin{DoxyParamCaption}
+\item[{C\+H\+AR $\ast$}]{puc\+Byte}
+\end{DoxyParamCaption}
+)}\hypertarget{portserial_8c_a4a4724e9dc26b2d2d1cc2a6d41c24770}{}\label{portserial_8c_a4a4724e9dc26b2d2d1cc2a6d41c24770}
+
+
+ \subsubsection*{x\+M\+B\+Port\+Serial\+Get\+Byte }
+
+Event Handler for G\+PI module \begin{DoxyVerb} @date                           DEC/02/2013
+ @author                         FW_DEV_2
+ @pre                            None
+ @return                         None\end{DoxyVerb}
+ 
+
+Definition at line 209 of file portserial.\+c.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{portserial_8c_a4a4724e9dc26b2d2d1cc2a6d41c24770_icgraph}
+\end{center}
+\end{figure}
+
+

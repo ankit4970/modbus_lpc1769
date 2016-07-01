@@ -1,4 +1,5 @@
-/*
+/**
+ * @file 				main.c
  * FreeModbus Libary: BARE Demo Application
  * Copyright (C) 2006 Christian Walter <wolti@sil.at>
  *
@@ -37,6 +38,18 @@ static USHORT   usRegInputBuf[REG_INPUT_NREGS];
 
 
 /* ----------------------- Start implementation -----------------------------*/
+/**
+ -----------------------------------------------------------------------------------------------------------------------
+ main
+ -----------------------------------------------------------------------------------------------------------------------
+*   Event Handler for GPI module
+*
+* 	@date       			DEC/02/2013
+* 	@author                         FW_DEV_2
+* 	@pre                            None
+* 	@return	 			None
+************************************************************************************************************************
+*/
 int main( void )
 {
     eMBErrorCode    eStatus;
@@ -60,6 +73,18 @@ int main( void )
     }
 }
 
+/**
+ -----------------------------------------------------------------------------------------------------------------------
+ eMBRegInputCB
+ -----------------------------------------------------------------------------------------------------------------------
+*   Event Handler for GPI module
+*
+* 	@date       			DEC/02/2013
+* 	@author                         FW_DEV_2
+* 	@pre                            None
+* 	@return	 			None
+************************************************************************************************************************
+*/
 eMBErrorCode eMBRegInputCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs )
 {
     eMBErrorCode    eStatus = MB_ENOERR;
@@ -86,6 +111,18 @@ eMBErrorCode eMBRegInputCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRe
     return eStatus;
 }
 
+/**
+ -----------------------------------------------------------------------------------------------------------------------
+ eMBRegHoldingCB
+ -----------------------------------------------------------------------------------------------------------------------
+*   Event Handler for GPI module
+*
+* 	@date       			DEC/02/2013
+* 	@author                         FW_DEV_2
+* 	@pre                            None
+* 	@return	 			None
+************************************************************************************************************************
+*/
 eMBErrorCode eMBRegHoldingCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs, eMBRegisterMode eMode )
 {
     eMBErrorCode    eStatus = MB_ENOERR;
@@ -126,12 +163,35 @@ eMBErrorCode eMBRegHoldingCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usN
     return eStatus;
 }
 
-
+/**
+ -----------------------------------------------------------------------------------------------------------------------
+ eMBRegCoilsCB
+ -----------------------------------------------------------------------------------------------------------------------
+*   Event Handler for GPI module
+*
+* 	@date       			DEC/02/2013
+* 	@author                         FW_DEV_2
+* 	@pre                            None
+* 	@return	 			None
+************************************************************************************************************************
+*/
 eMBErrorCode eMBRegCoilsCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNCoils,eMBRegisterMode eMode )
 {
     return MB_ENOREG;
 }
 
+/**
+ -----------------------------------------------------------------------------------------------------------------------
+ eMBRegDiscreteCB
+ -----------------------------------------------------------------------------------------------------------------------
+*   Event Handler for GPI module
+*
+* 	@date       			DEC/02/2013
+* 	@author                         FW_DEV_2
+* 	@pre                            None
+* 	@return	 			None
+************************************************************************************************************************
+*/
 eMBErrorCode eMBRegDiscreteCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNDiscrete )
 {
     return MB_ENOREG;

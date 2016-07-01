@@ -1,0 +1,50 @@
+\hypertarget{modbus_8c}{}\section{modbus.\+c File Reference}
+\label{modbus_8c}\index{modbus.\+c@{modbus.\+c}}
+{\ttfamily \#include $<$cr\+\_\+section\+\_\+macros.\+h$>$}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$math.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}extint.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}timer.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}L\+P\+C17xx.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include $<$stdbool.\+h$>$}\\*
+Include dependency graph for modbus.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{modbus_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{modbus_8c_a748a344fc38ce1f9469b536aa2663ba0}{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+C\+L\+O\+CK}~(4  $\ast$ 1000 $\ast$ 1000\+U\+L)\hypertarget{modbus_8c_a748a344fc38ce1f9469b536aa2663ba0}{}\label{modbus_8c_a748a344fc38ce1f9469b536aa2663ba0}
+
+\begin{DoxyCompactList}\small\item\em Do not change, this is the same on all L\+P\+C17\+XX. \end{DoxyCompactList}\item 
+\#define \hyperlink{modbus_8c_ae9d5d3d0882e298dbe8f4d5c5152c960}{E\+X\+T\+E\+R\+N\+A\+L\+\_\+\+C\+L\+O\+CK}~(12 $\ast$ 1000 $\ast$ 1000\+U\+L)\hypertarget{modbus_8c_ae9d5d3d0882e298dbe8f4d5c5152c960}{}\label{modbus_8c_ae9d5d3d0882e298dbe8f4d5c5152c960}
+
+\begin{DoxyCompactList}\small\item\em Change according to your board specification. \end{DoxyCompactList}\item 
+\#define \hyperlink{modbus_8c_ae359e5fa2f56eadc30656472ac53d174}{R\+T\+C\+\_\+\+C\+L\+O\+CK}~(32768\+U\+L)\hypertarget{modbus_8c_ae359e5fa2f56eadc30656472ac53d174}{}\label{modbus_8c_ae359e5fa2f56eadc30656472ac53d174}
+
+\begin{DoxyCompactList}\small\item\em Do not change, this is the typical R\+TC crystal value. \end{DoxyCompactList}\item 
+\#define {\bfseries config\+T\+I\+C\+K\+\_\+\+R\+A\+T\+E\+\_\+\+HZ}~( 1000 )\hypertarget{modbus_8c_a2f0258dd1e3b877e5bc013be54c2db6a}{}\label{modbus_8c_a2f0258dd1e3b877e5bc013be54c2db6a}
+
+\item 
+\#define \hyperlink{modbus_8c_ab743eff669ae3062b0885a8e0315b641}{O\+S\+\_\+\+MS}(x)~( x / M\+S\+\_\+\+P\+E\+R\+\_\+\+T\+I\+CK() )\hypertarget{modbus_8c_ab743eff669ae3062b0885a8e0315b641}{}\label{modbus_8c_ab743eff669ae3062b0885a8e0315b641}
+
+\begin{DoxyCompactList}\small\item\em Ticks to millisecond conversion. \end{DoxyCompactList}\item 
+\#define \hyperlink{modbus_8c_ab743eff669ae3062b0885a8e0315b641}{O\+S\+\_\+\+MS}(x)~( x / M\+S\+\_\+\+P\+E\+R\+\_\+\+T\+I\+CK() )\hypertarget{modbus_8c_ab743eff669ae3062b0885a8e0315b641}{}\label{modbus_8c_ab743eff669ae3062b0885a8e0315b641}
+
+\begin{DoxyCompactList}\small\item\em Ticks to millisecond conversion. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+char {\bfseries Read\+Char}\hypertarget{modbus_8c_a251e2c50e0ea1ca3a2b59c99348e8718}{}\label{modbus_8c_a251e2c50e0ea1ca3a2b59c99348e8718}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Author \+:  Version \+: Copyright \+:  \subsection*{Description \+: main definition }
