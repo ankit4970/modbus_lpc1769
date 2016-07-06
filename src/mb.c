@@ -143,7 +143,7 @@ static xMBFunctionHandler xFuncHandlers[MB_FUNC_HANDLERS_MAX] = {
 eMBErrorCode eMBInit( eMBMode eMode, UCHAR ucSlaveAddress, UCHAR ucPort, ULONG ulBaudRate, eMBParity eParity )
 {
     eMBErrorCode    eStatus = MB_ENOERR;
-
+    printf("Initializing emb\n");
     /* check preconditions */
     if ( ( ucSlaveAddress == MB_ADDRESS_BROADCAST ) ||
             ( ucSlaveAddress < MB_ADDRESS_MIN ) || ( ucSlaveAddress > MB_ADDRESS_MAX ) )
@@ -188,6 +188,7 @@ eMBErrorCode eMBInit( eMBMode eMode, UCHAR ucSlaveAddress, UCHAR ucPort, ULONG u
                 eStatus = MB_EINVAL;
         }
 
+        printf("Estatus is %d\n",eStatus);
         if ( eStatus == MB_ENOERR )
         {
             if ( !xMBPortEventInit( ))
@@ -425,13 +426,15 @@ eMBErrorCode eMBPoll( void )
                     /* Check if the frame is for us. If not ignore the frame. */
                     if ( ( ucRcvAddress == ucMBAddress ) || ( ucRcvAddress == MB_ADDRESS_BROADCAST ) )
                     {
-                        (void)xMBPortEventPost( EV_EXECUTE );
+                        printf("Posting execute event\n");
+                    	(void)xMBPortEventPost( EV_EXECUTE );
                     }
                 }
                 break;
 
             case EV_EXECUTE:
                 ucFunctionCode = ucMBFrame[MB_PDU_FUNC_OFF];
+                printf("Function code is %d\n",ucFunctionCode);
                 eException = MB_EX_ILLEGAL_FUNCTION;
  
                 for ( i = 0; i < MB_FUNC_HANDLERS_MAX; i++ )

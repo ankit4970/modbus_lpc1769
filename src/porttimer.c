@@ -32,17 +32,12 @@
 #include "timer.h"
 /* ----------------------- static functions ---------------------------------*/
 static void prvvTIMERExpiredISR( void );
+USHORT gusTimer3_5 ;
+#define SBIT_TIMER0 	1
+#define SBIT_TIMER1		2
+#define CCLK			100000000L
+#define PCLK			CCLK
 
-#define SBIT_TIMER0 1
-
-
-/* ----------------------- System Variables ---------------------------------*/
-//Timeout toMBUS;             // Cam - mbed timeout
-static ULONG usInterval;    // Cam - timeout interval in microseconds 
-
-
-
-/* ----------------------- Start implementation -----------------------------*/
 /**
  -----------------------------------------------------------------------------------------------------------------------
  xMBPortTimersInit
@@ -55,49 +50,63 @@ static ULONG usInterval;    // Cam - timeout interval in microseconds
 * 	@return	 			None
 ************************************************************************************************************************
 */
-BOOL xMBPortTimersInit( USHORT usTim1Timerout50us )
+BOOL xMBPortTimersInit( USHORT usTimer3_5 )
 {
-    usInterval = 50 * usTim1Timerout50us;
-
+	/* Timer 0*/
+	gusTimer3_5 = usTimer3_5;
+	printf("Initializing timer\n");
     LPC_SC->PCONP |= (1<<SBIT_TIMER0);
 
-	// Timer0 Configuration
-    LPC_TIM0->PR = 0;                   // Prscaler Register = 0
-    LPC_TIM0->PC = 0;                   // Prscaler Counter = 0
+    LPC_TIM0->PR = 0;                   	// Prscaler Register = 0
+    LPC_TIM0->PC = 0;
+    LPC_TIM0->TC = 0;
 
-    LPC_TIM0->TC = 0;                   // Timer Counter = 0
+    LPC_TIM0->MR0 = usTimer3_5;    	// Interval of (50us * usTim1Timerout50us)
+    LPC_TIM0->MCR = 3;                  	// Bit 0 = 1 - Interruption on MR0 // Bit 1 = 1 - Reset on MR0
 
-    //LPC_TIM0->MR0 = ( PCLK / 20000 ) * usTim1Timerout50us;      // Interval of (50us * usTim1Timerout50us)
-    LPC_TIM0->MCR = 3;                  // Bit 0 = 1 - Interruption on MR0
-	// Bit 1 = 1 - Reset on MR0
+    LPC_TIM0->CTCR = 0;
+    LPC_TIM0->TCR  = 0x02;
+    LPC_TIM0->TCR  = 0x01;
 
-    LPC_TIM0->TCR = 0x02;                  // Timer Counter and Prescale Counter Disabled
+#if 0
+    /* Timer 1*/
+    LPC_SC->PCONP |= (1<<SBIT_TIMER1);
 
-    LPC_TIM0->TCR = 0x01;
-	// Configure Timer0 Interruption
-	//VICVectAddr1 = ( unsigned int )prvvTIMERExpiredISR; // Timer0 Interruption - Priority 1
-	//VICVectCntl1 = 0x20 | 4;
-	//VICIntEnable = ( 1 << 4 );  // Enable Timer0 Interruption
+    LPC_TIM1->PR = 0;                   	// Prscaler Register = 0
+    LPC_TIM1->PC = 0;
+    LPC_TIM1->TC = 0;
 
-	//return TRUE;
+	LPC_TIM1->MR0 = usTimer3_5;    	// Interval of (50us * usTim1Timerout50us)
+	LPC_TIM1->MCR = 3;                  	// Bit 0 = 1 - Interruption on MR0 // Bit 1 = 1 - Reset on MR0
 
-    /* Enable timer interrupt */
+	LPC_TIM1->CTCR  = 0;
+	LPC_TIM1->TCR  = 0x02;
+	LPC_TIM1->TCR  = 0x01;
+
+	NVIC_ClearPendingIRQ(TIMER1_IRQn);
+	NVIC_EnableIRQ(TIMER1_IRQn);
+#endif
+
 	NVIC_ClearPendingIRQ(TIMER0_IRQn);
 	NVIC_EnableIRQ(TIMER0_IRQn);
 
+
+
 	return TRUE;
 }
+
+
 
 /**
  -----------------------------------------------------------------------------------------------------------------------
  vMBPortTimersEnable
  -----------------------------------------------------------------------------------------------------------------------
-*   Event Handler for GPI module
+*   Enable timer
 *
-* 	@date       			DEC/02/2013
-* 	@author                         FW_DEV_2
-* 	@pre                            None
-* 	@return	 			None
+* 	@date       			JUN/29/2016
+* 	@author                 Ankit
+* 	@pre                    None
+* 	@return	 				None
 ************************************************************************************************************************
 */
 void vMBPortTimersEnable(  )
@@ -107,7 +116,7 @@ void vMBPortTimersEnable(  )
     //toMBUS.detach();
     // Cam - now attach the timeout to the prvvTIMERExpiredISR routine    
     //toMBUS.attach_us(&prvvTIMERExpiredISR, usInterval);
-
+	LPC_TIM0->MR0 = gusTimer3_5;
 	LPC_TIM0->TCR = 0x02;
 	LPC_TIM0->TCR = 0x01;
 }
@@ -115,13 +124,13 @@ void vMBPortTimersEnable(  )
 /**
  -----------------------------------------------------------------------------------------------------------------------
  vMBPortTimersDisable
- -----------------------------------------------------------------------------------------------------------------------
-*   Event Handler for GPI module
+-----------------------------------------------------------------------------------------------------------------------
+*   Disable timer
 *
-* 	@date       			DEC/02/2013
-* 	@author                         FW_DEV_2
-* 	@pre                            None
-* 	@return	 			None
+* 	@date       			JUN/29/2016
+* 	@author                 Ankit
+* 	@pre                    None
+* 	@return	 				None
 ************************************************************************************************************************
 */
 void vMBPortTimersDisable(  )
@@ -134,7 +143,7 @@ void vMBPortTimersDisable(  )
  * must then call pxMBPortCBTimerExpired( ) to notify the protocol stack that
  * the timer has expired.
  */
-#if 0
+#if 1
 /**
  -----------------------------------------------------------------------------------------------------------------------
  prvvTIMERExpiredISR
@@ -168,8 +177,7 @@ static void prvvTIMERExpiredISR( void )
 */
 void TIMER0_IRQHandler(void)
 {
-	( void )pxMBPortCBTimerExpired( );
-
+	( void )prvvTIMERExpiredISR( );
 	LPC_TIM0->IR = 0xFF;
 }
 

@@ -54,7 +54,7 @@ int main( void )
 {
     eMBErrorCode    eStatus;
 
-    eStatus = eMBInit( MB_RTU, SLAVE_ID, 0, 9600, MB_PAR_NONE );
+    eStatus = eMBInit( MB_RTU, SLAVE_ID, 0, 19200, MB_PAR_NONE );
 
     /* Enable the Modbus Protocol Stack. */
     eStatus = eMBEnable();
@@ -177,7 +177,8 @@ eMBErrorCode eMBRegHoldingCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usN
 */
 eMBErrorCode eMBRegCoilsCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNCoils,eMBRegisterMode eMode )
 {
-    return MB_ENOREG;
+    printf("Inside eMBRegCoilsCB\n ");
+	return MB_ENOREG;
 }
 
 /**

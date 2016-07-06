@@ -94,15 +94,18 @@ static volatile USHORT usRcvBufferPos;
 eMBErrorCode eMBRTUInit( UCHAR ucSlaveAddress, UCHAR ucPort, ULONG ulBaudRate, eMBParity eParity )
 {
     eMBErrorCode    eStatus = MB_ENOERR;
-    ULONG           usTimerT35_50us;
+    ULONG           usTimer1_5=0;
+    ULONG 			usTimer3_5=0;
 
+    printf("Initializing RTU\n");
     ( void )ucSlaveAddress;
     ENTER_CRITICAL_SECTION(  );
 
     /* Modbus RTU uses 8 Databits. */
     if( xMBPortSerialInit( ucPort, ulBaudRate, 8, eParity ) != TRUE )
     {
-        eStatus = MB_EPORTERR;
+        printf("Serial port initialization failed\n");
+    	eStatus = MB_EPORTERR;
     }
     else
     {
@@ -111,7 +114,8 @@ eMBErrorCode eMBRTUInit( UCHAR ucSlaveAddress, UCHAR ucPort, ULONG ulBaudRate, e
          */
         if( ulBaudRate > 19200 )
         {
-            usTimerT35_50us = 35;       /* 1800us. */
+        	usTimer1_5 = 75000;       	/* 750 us */
+            usTimer3_5 = 175000;		/* 1.750 ms*/
         }
         else
         {
@@ -123,9 +127,11 @@ eMBErrorCode eMBRTUInit( UCHAR ucSlaveAddress, UCHAR ucPort, ULONG ulBaudRate, e
              * The reload for t3.5 is 1.5 times this value and similary
              * for t3.5.
              */
-            usTimerT35_50us = ( 7UL * 220000UL ) / ( 2UL * ulBaudRate );
+        	usTimer1_5 = (1500000/ulBaudRate); 		//
+        	usTimer3_5 = (3500000/ulBaudRate);
         }
-        if( xMBPortTimersInit( ( USHORT ) usTimerT35_50us ) != TRUE )
+        printf("Initialize timer");
+        if( xMBPortTimersInit( ( USHORT ) usTimer3_5 ) != TRUE )
         {
             eStatus = MB_EPORTERR;
         }
@@ -200,10 +206,15 @@ eMBErrorCode eMBRTUReceive( UCHAR * pucRcvAddress, UCHAR ** pucFrame, USHORT * p
 {
     BOOL            xFrameReceived = FALSE;
     eMBErrorCode    eStatus = MB_ENOERR;
-
+    int i =0;
     ENTER_CRITICAL_SECTION(  );
     assert( usRcvBufferPos < MB_SER_PDU_SIZE_MAX );
         
+    for(i=0;i<8;i++)
+    {
+    	printf("Received data %x\n",ucRTUBuf[i]);
+    }
+
     /* Length and CRC check */
     if( ( usRcvBufferPos >= MB_SER_PDU_SIZE_MIN )
         && ( usMBCRC16( ( UCHAR * ) ucRTUBuf, usRcvBufferPos ) == 0 ) )
@@ -233,6 +244,8 @@ eMBErrorCode eMBRTUReceive( UCHAR * pucRcvAddress, UCHAR ** pucFrame, USHORT * p
         eStatus = MB_EIO;
     }
 
+    printf("eStatus in eMBRTUReceive is %d\n",eStatus);
+
     EXIT_CRITICAL_SECTION(  );
     return eStatus;
 }
@@ -253,8 +266,10 @@ eMBErrorCode eMBRTUSend( UCHAR ucSlaveAddress, const UCHAR * pucFrame, USHORT us
 {
     eMBErrorCode    eStatus = MB_ENOERR;
     USHORT          usCRC16;
+    int i =0;
 
     ENTER_CRITICAL_SECTION( );
+    printf("Inside eMBRTUSend\n");
 
     /* Check if the receiver is still in idle state. If not we where to
      * slow with processing the received frame and the master sent another
@@ -274,6 +289,11 @@ eMBErrorCode eMBRTUSend( UCHAR ucSlaveAddress, const UCHAR * pucFrame, USHORT us
         usCRC16 = usMBCRC16( ( UCHAR * ) pucSndBufferCur, usSndBufferCount );
         ucRTUBuf[usSndBufferCount++] = ( UCHAR )( usCRC16 & 0xFF );
         ucRTUBuf[usSndBufferCount++] = ( UCHAR )( usCRC16 >> 8 );
+
+        for(i=0;i<8;i++)
+        {
+        	printf("Sending data %d\n",ucRTUBuf[i]);
+        }
 
         /* Activate the transmitter. */
         eSndState = STATE_TX_XMIT;
@@ -308,7 +328,7 @@ BOOL xMBRTUReceiveFSM( void )
 
     /* Always read the character. */
     (void)xMBPortSerialGetByte( ( CHAR * ) & ucByte );
-
+    printf("Received byte is %x\n",ucByte);
     switch (eRcvState)
     {
         /* If we have received a character in the init state we have to
@@ -354,6 +374,7 @@ BOOL xMBRTUReceiveFSM( void )
         vMBPortTimersEnable();
         break;
     }
+
 
     return xTaskNeedSwitch;
 }
@@ -421,7 +442,7 @@ BOOL xMBRTUTransmitFSM( void )
 BOOL xMBRTUTimerT35Expired( void )
 {
     BOOL    xNeedPoll = FALSE;
-
+    printf("eRcvState is %d\n",eRcvState);
     switch ( eRcvState )
     {
         /* Timer t35 expired. Startup phase is finished. */
