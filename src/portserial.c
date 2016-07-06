@@ -413,8 +413,26 @@ void vMBPortSerialEnable( BOOL xRxEnable, BOOL xTxEnable )
     /* If xRXEnable enable serial receive interrupts. If xTxENable enable
      * transmitter empty interrupts.
      */
-    RxEnable = xRxEnable;
-    TxEnable = xTxEnable;
+    //RxEnable = xRxEnable;
+    //TxEnable = xTxEnable;
+
+    if( xRxEnable )
+	{
+    	LPC_UART2->IER |= 0x01;
+	}
+	else
+	{
+		LPC_UART2->IER &= ~0x01;
+	}
+	if( xTxEnable )
+	{
+		LPC_UART2->IER |= 0x02;
+		prvvUARTTxReadyISR(  );
+	}
+	else
+	{
+		LPC_UART2->IER &= ~0x02;
+	}
 }
 
 /**
@@ -520,6 +538,7 @@ BOOL xMBPortSerialPutByte( CHAR ucByte )
 
 	LPC_UART2->THR = ucByte;
 	while( !(LPC_UART2->LSR & (1 << 5)));
+	printf("Put byte %x\n",ucByte);
     return TRUE;
 }
 
@@ -546,7 +565,7 @@ BOOL xMBPortSerialGetByte( CHAR * pucByte )
 	//}
 
 	*pucByte = LPC_UART2->RBR;
-	//printf("Received data is %d\n",*pucByte);
+	printf("Received data is %d\n",*pucByte);
     return TRUE;
 }
 
@@ -582,7 +601,7 @@ void UART2_IRQHandler()
 	 /* Always read the character. */
 	//(void)xMBPortSerialGetByte( ( CHAR * ) & ucByte );
 	//printf("Received byte is %c\n",ucByte);
-#if 1
+
 	// Receive Line Status
 	if (tmp == UART_IIR_INTID_RLS)
 	{
@@ -612,7 +631,7 @@ void UART2_IRQHandler()
 		prvvUARTTxReadyISR();
 	}
 
-#endif
+
 }
 
 /**

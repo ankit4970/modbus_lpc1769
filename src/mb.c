@@ -454,6 +454,7 @@ eMBErrorCode eMBPoll( void )
                 /* If the request was not sent to the broadcast address we return a reply. */
                 if ( ucRcvAddress != MB_ADDRESS_BROADCAST )
                 {
+                	printf("Exception is %x\n",eException);
                     if ( eException != MB_EX_NONE )
                     {
                         /* An exception occured. Build an error frame. */
@@ -461,6 +462,7 @@ eMBErrorCode eMBPoll( void )
                         ucMBFrame[usLength++] = ( UCHAR )( ucFunctionCode | MB_FUNC_ERROR );
                         ucMBFrame[usLength++] = eException;
                     }
+                    printf("usLength is %d\n",usLength);
                     eStatus = peMBFrameSendCur( ucMBAddress, ucMBFrame, usLength );
                 }
                 break;

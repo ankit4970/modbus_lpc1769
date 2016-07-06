@@ -210,10 +210,10 @@ eMBErrorCode eMBRTUReceive( UCHAR * pucRcvAddress, UCHAR ** pucFrame, USHORT * p
     ENTER_CRITICAL_SECTION(  );
     assert( usRcvBufferPos < MB_SER_PDU_SIZE_MAX );
         
-    for(i=0;i<8;i++)
+    /*for(i=0;i<8;i++)
     {
     	printf("Received data %x\n",ucRTUBuf[i]);
-    }
+    }*/
 
     /* Length and CRC check */
     if( ( usRcvBufferPos >= MB_SER_PDU_SIZE_MIN )
@@ -244,7 +244,7 @@ eMBErrorCode eMBRTUReceive( UCHAR * pucRcvAddress, UCHAR ** pucFrame, USHORT * p
         eStatus = MB_EIO;
     }
 
-    printf("eStatus in eMBRTUReceive is %d\n",eStatus);
+    //printf("eStatus in eMBRTUReceive is %d\n",eStatus);
 
     EXIT_CRITICAL_SECTION(  );
     return eStatus;
@@ -271,6 +271,11 @@ eMBErrorCode eMBRTUSend( UCHAR ucSlaveAddress, const UCHAR * pucFrame, USHORT us
     ENTER_CRITICAL_SECTION( );
     printf("Inside eMBRTUSend\n");
 
+    /*for(i=0;i<usLength;i++)
+    {
+    	printf("Sending data is %x\n",*pucFrame++);
+    }*/
+
     /* Check if the receiver is still in idle state. If not we where to
      * slow with processing the received frame and the master sent another
      * frame on the network. We have to abort sending the frame.
@@ -290,11 +295,12 @@ eMBErrorCode eMBRTUSend( UCHAR ucSlaveAddress, const UCHAR * pucFrame, USHORT us
         ucRTUBuf[usSndBufferCount++] = ( UCHAR )( usCRC16 & 0xFF );
         ucRTUBuf[usSndBufferCount++] = ( UCHAR )( usCRC16 >> 8 );
 
-        for(i=0;i<8;i++)
+        /*for(i=0;i<8;i++)
         {
         	printf("Sending data %d\n",ucRTUBuf[i]);
-        }
+        }*/
 
+        printf("Buffer count is %d\n",usSndBufferCount);
         /* Activate the transmitter. */
         eSndState = STATE_TX_XMIT;
         vMBPortSerialEnable( FALSE, TRUE );
@@ -328,7 +334,7 @@ BOOL xMBRTUReceiveFSM( void )
 
     /* Always read the character. */
     (void)xMBPortSerialGetByte( ( CHAR * ) & ucByte );
-    printf("Received byte is %x\n",ucByte);
+    //printf("Received byte is %x\n",ucByte);
     switch (eRcvState)
     {
         /* If we have received a character in the init state we have to
@@ -412,6 +418,7 @@ BOOL xMBRTUTransmitFSM( void )
             xMBPortSerialPutByte( ( CHAR )*pucSndBufferCur );
             pucSndBufferCur++;  /* next byte in sendbuffer. */
             usSndBufferCount--;
+            //printf("Buffer count is %d\n",usSndBufferCount);
         }
         else
         {

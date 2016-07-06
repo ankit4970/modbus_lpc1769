@@ -178,7 +178,9 @@ eMBErrorCode eMBRegHoldingCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usN
 eMBErrorCode eMBRegCoilsCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNCoils,eMBRegisterMode eMode )
 {
     printf("Inside eMBRegCoilsCB\n ");
-	return MB_ENOREG;
+    //*pucRegBuffer++ = 0xAF;
+	//return MB_ENOREG;
+    return MB_ENOERR;
 }
 
 /**

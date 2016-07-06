@@ -43,6 +43,7 @@
 #include "mbconfig.h"
 
 /* ----------------------- Defines ------------------------------------------*/
+#define MB_SER_PDU_ADDR_OFF					0
 #define MB_PDU_FUNC_READ_ADDR_OFF           ( MB_PDU_DATA_OFF )
 #define MB_PDU_FUNC_READ_COILCNT_OFF        ( MB_PDU_DATA_OFF + 2 )
 #define MB_PDU_FUNC_READ_SIZE               ( 4 )
@@ -96,16 +97,20 @@ eMBException eMBFuncReadCoils( UCHAR * pucFrame, USHORT * usLen )
         usCoilCount = ( USHORT )( pucFrame[MB_PDU_FUNC_READ_COILCNT_OFF] << 8 );
         usCoilCount |= ( USHORT )( pucFrame[MB_PDU_FUNC_READ_COILCNT_OFF + 1] );
 
+        //printf("Coil count is %d\n",usCoilCount);
+
         /* Check if the number of registers to read is valid. If not
          * return Modbus illegal data value exception. 
          */
         if( ( usCoilCount >= 1 ) &&( usCoilCount < MB_PDU_FUNC_READ_COILCNT_MAX ) )
         {
             /* Set the current PDU data pointer to the beginning. */
+
             pucFrameCur = &pucFrame[MB_PDU_FUNC_OFF];
             *usLen = MB_PDU_FUNC_OFF;
 
             /* First byte contains the function code. */
+            //*pucFrameCur++ = pucFrame[MB_SER_PDU_ADDR_OFF];
             *pucFrameCur++ = MB_FUNC_READ_COILS;
             *usLen += 1;
 
