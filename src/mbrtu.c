@@ -52,6 +52,7 @@
 #define MB_SER_PDU_ADDR_OFF     0       /*!< Offset of slave address in Ser-PDU. */
 #define MB_SER_PDU_PDU_OFF      1       /*!< Offset of Modbus-PDU in Ser-PDU. */
 
+
 /* ----------------------- Type definitions ---------------------------------*/
 typedef enum
 {
@@ -75,7 +76,9 @@ volatile UCHAR  ucRTUBuf[MB_SER_PDU_SIZE_MAX];
 
 static volatile UCHAR *pucSndBufferCur;
 static volatile USHORT usSndBufferCount;
-
+UCHAR tempbuf[6]={0x0a,0x01,0x01,0xaf,0x13,0x0d};
+//UCHAR *temp=&tempbuf;
+//int tempcount =6;
 static volatile USHORT usRcvBufferPos;
 
 /* ----------------------- Start implementation -----------------------------*/
@@ -209,11 +212,6 @@ eMBErrorCode eMBRTUReceive( UCHAR * pucRcvAddress, UCHAR ** pucFrame, USHORT * p
     int i =0;
     ENTER_CRITICAL_SECTION(  );
     assert( usRcvBufferPos < MB_SER_PDU_SIZE_MAX );
-        
-    /*for(i=0;i<8;i++)
-    {
-    	printf("Received data %x\n",ucRTUBuf[i]);
-    }*/
 
     /* Length and CRC check */
     if( ( usRcvBufferPos >= MB_SER_PDU_SIZE_MIN )
@@ -244,8 +242,6 @@ eMBErrorCode eMBRTUReceive( UCHAR * pucRcvAddress, UCHAR ** pucFrame, USHORT * p
         eStatus = MB_EIO;
     }
 
-    //printf("eStatus in eMBRTUReceive is %d\n",eStatus);
-
     EXIT_CRITICAL_SECTION(  );
     return eStatus;
 }
@@ -254,7 +250,7 @@ eMBErrorCode eMBRTUReceive( UCHAR * pucRcvAddress, UCHAR ** pucFrame, USHORT * p
  -----------------------------------------------------------------------------------------------------------------------
  eMBRTUSend
  -----------------------------------------------------------------------------------------------------------------------
-*   Event Handler for GPI module
+*   Send RTU Frame
 *
 * 	@date       			DEC/02/2013
 * 	@author                         FW_DEV_2
@@ -284,26 +280,33 @@ eMBErrorCode eMBRTUSend( UCHAR ucSlaveAddress, const UCHAR * pucFrame, USHORT us
     {
         /* First byte before the Modbus-PDU is the slave address. */
         pucSndBufferCur = ( UCHAR * ) pucFrame - 1;
+        //printf("pucSndBufferCur data is %x\n",*pucSndBufferCur);
         usSndBufferCount = 1;
 
         /* Now copy the Modbus-PDU into the Modbus-Serial-Line-PDU. */
-        pucSndBufferCur[MB_SER_PDU_ADDR_OFF] = ucSlaveAddress;
-        usSndBufferCount += usLength;
+        //pucSndBufferCur[MB_SER_PDU_ADDR_OFF] = ucSlaveAddress;
+        //pucSndBufferCur[MB_SER_PDU_PDU_OFF] = pucFrame[0];
+        //pucSndBufferCur[MB_SER_PDU_PDU_OFF+1] = pucFrame[1];
+        //pucSndBufferCur[MB_SER_PDU_PDU_OFF+2] = pucFrame[2];
+        usSndBufferCount += (usLength);
+
+
 
         /* Calculate CRC16 checksum for Modbus-Serial-Line-PDU. */
         usCRC16 = usMBCRC16( ( UCHAR * ) pucSndBufferCur, usSndBufferCount );
         ucRTUBuf[usSndBufferCount++] = ( UCHAR )( usCRC16 & 0xFF );
         ucRTUBuf[usSndBufferCount++] = ( UCHAR )( usCRC16 >> 8 );
 
-        /*for(i=0;i<8;i++)
-        {
-        	printf("Sending data %d\n",ucRTUBuf[i]);
-        }*/
+        //ucRTUBuf[usSndBufferCount] = '\0';
 
-        printf("Buffer count is %d\n",usSndBufferCount);
+
+        //usSndBufferCount = 8;
+        //printf("Buffer count is %d\n",usSndBufferCount);
         /* Activate the transmitter. */
         eSndState = STATE_TX_XMIT;
-        vMBPortSerialEnable( FALSE, TRUE );
+        //vMBPortSerialEnable( FALSE, TRUE );
+        vMBPortSerialEnable( FALSE, FALSE );
+        xMBRTUTransmitFSM();
     }
     else
     {
@@ -400,7 +403,7 @@ BOOL xMBRTUReceiveFSM( void )
 BOOL xMBRTUTransmitFSM( void )
 {
     BOOL            xNeedPoll = FALSE;
-
+int i=0;
     assert( eRcvState == STATE_RX_IDLE );
     switch ( eSndState )
     {
@@ -413,21 +416,34 @@ BOOL xMBRTUTransmitFSM( void )
 
     case STATE_TX_XMIT:
         /* check if we are finished. */
-        if( usSndBufferCount != 0 )
+#if 0
+    	if( usSndBufferCount != 0 )
         {
-            xMBPortSerialPutByte( ( CHAR )*pucSndBufferCur );
+    		xMBPortSerialPutByte( ( CHAR )*pucSndBufferCur );
+    		//printf("Buffer count is %x\n",*pucSndBufferCur);
             pucSndBufferCur++;  /* next byte in sendbuffer. */
             usSndBufferCount--;
-            //printf("Buffer count is %d\n",usSndBufferCount);
+
         }
         else
         {
             xNeedPoll = xMBPortEventPost( EV_FRAME_SENT );
-            /* Disable transmitter. This prevents another transmit buffer
-             * empty interrupt. */
+            /* Disable transmitter. This prevents another transmit buffer empty interrupt. */
             vMBPortSerialEnable( TRUE, FALSE );
             eSndState = STATE_TX_IDLE;
         }
+#endif
+#if 1
+    	printf("Buffer count is %x\n",usSndBufferCount);
+    	for(i=0 ; i<usSndBufferCount ; i++)
+    	{
+    		xMBPortSerialPutByte( ( CHAR )*pucSndBufferCur );
+    		pucSndBufferCur++;
+    	}
+    	xNeedPoll = xMBPortEventPost( EV_FRAME_SENT );
+    	vMBPortSerialEnable( TRUE, FALSE );
+    	eSndState = STATE_TX_IDLE;
+#endif
         break;
     }
 

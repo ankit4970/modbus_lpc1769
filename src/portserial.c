@@ -61,16 +61,13 @@ static BOOL RxEnable, TxEnable;     	// Cam - keep a static copy of the RxEnable
 #define SYSCTL_PLL1STS_CONNECTED (1 << 9)	/*!< PLL1 connect flag */
 #define SYSCTL_PLL1STS_LOCKED    (1 << 10)	/*!< PLL1 connect flag */
 
-/**
- * Peripheral clock selection for LPC175x/6x
- * This is a list of clocks that can be divided on the 175x/6x
- */
+
 typedef enum {
 	SYSCTL_PCLK_WDT,		/*!< Watchdog divider */
-	SYSCTL_PCLK_TIMER0,	/*!< Timer 0 divider */
-	SYSCTL_PCLK_TIMER1,	/*!< Timer 1 divider */
-	SYSCTL_PCLK_UART0,	/*!< UART 0 divider */
-	SYSCTL_PCLK_UART1,	/*!< UART 1 divider */
+	SYSCTL_PCLK_TIMER0,		/*!< Timer 0 divider */
+	SYSCTL_PCLK_TIMER1,		/*!< Timer 1 divider */
+	SYSCTL_PCLK_UART0,		/*!< UART 0 divider */
+	SYSCTL_PCLK_UART1,		/*!< UART 1 divider */
 	SYSCTL_PCLK_RSVD5,
 	SYSCTL_PCLK_PWM1,		/*!< PWM 1 divider */
 	SYSCTL_PCLK_I2C0,		/*!< I2C 0 divider */
@@ -88,15 +85,15 @@ typedef enum {
 	SYSCTL_PCLK_I2C1,		/*!< I2C 1 divider */
 	SYSCTL_PCLK_RSVD20,
 	SYSCTL_PCLK_SSP0,		/*!< SSP 0 divider */
-	SYSCTL_PCLK_TIMER2,	/*!< Timer 2 divider */
-	SYSCTL_PCLK_TIMER3,	/*!< Timer 3 divider */
-	SYSCTL_PCLK_UART2,	/*!< UART 2 divider */
-	SYSCTL_PCLK_UART3,	/*!< UART 3 divider */
+	SYSCTL_PCLK_TIMER2,		/*!< Timer 2 divider */
+	SYSCTL_PCLK_TIMER3,		/*!< Timer 3 divider */
+	SYSCTL_PCLK_UART2,		/*!< UART 2 divider */
+	SYSCTL_PCLK_UART3,		/*!< UART 3 divider */
 	SYSCTL_PCLK_I2C2,		/*!< I2C 2 divider */
 	SYSCTL_PCLK_I2S,		/*!< I2S divider */
 	SYSCTL_PCLK_RSVD28,
 	SYSCTL_PCLK_RIT,		/*!< Repetitive timer divider */
-	SYSCTL_PCLK_SYSCON,	/*!< SYSCON divider */
+	SYSCTL_PCLK_SYSCON,		/*!< SYSCON divider */
 	SYSCTL_PCLK_MCPWM		/*!< Motor control PWM divider */
 } CHIP_SYSCTL_PCLK_T;
 
@@ -152,19 +149,13 @@ static inline BOOL Chip_Clock_IsMainPLLEnabled(void)
 	return (BOOL) ((LPC_SC->PLL0STAT & SYSCTL_PLL0STS_ENABLED) != 0);
 }
 
-/**
- * @brief	Returns the main oscillator clock rate
- * @return	main oscillator clock rate
- */
+
 static inline uint32_t Chip_Clock_GetMainOscRate(void)
 {
 	return OscRateIn;
 }
 
-/**
- * @brief	Returns the input clock source for SYSCLK
- * @return	input clock source for SYSCLK
- */
+
 static inline CHIP_SYSCTL_PLLCLKSRC_T Chip_Clock_GetMainPLLSource(void)
 {
 	return (CHIP_SYSCTL_PLLCLKSRC_T) (LPC_SC->CLKSRCSEL & 0x3);
@@ -177,10 +168,7 @@ uint32_t Chip_Clock_GetSYSCLKRate(void)
 	return Chip_Clock_GetMainOscRate();
 
 }
-/**
- * @brief	Return Main PLL (PLL0) input clock rate
- * @return	PLL0 input clock rate
- */
+
 static inline uint32_t Chip_Clock_GetMainPLLInClockRate(void)
 {
 	return Chip_Clock_GetSYSCLKRate();
@@ -204,10 +192,6 @@ uint32_t Chip_Clock_GetMainPLLOutClockRate(void)
 	return (uint32_t) clkhr;
 }
 
-/**
- * @brief	Read PLL0 connect status
- * @return	true of the PLL0 is connected. false if not connected
- */
 static inline BOOL Chip_Clock_IsMainPLLConnected()
 {
 	return (BOOL) ((LPC_SC->PLL0STAT & SYSCTL_PLL0STS_CONNECTED) != 0);
@@ -232,31 +216,28 @@ CHIP_SYSCTL_CCLKSRC_T Chip_Clock_GetCPUClockSource(void)
 
 uint32_t Chip_Clock_GetMainClockRate(void)
 {
-	switch (Chip_Clock_GetCPUClockSource()) {
-	case SYSCTL_CCLKSRC_MAINPLL:
-		return Chip_Clock_GetMainPLLOutClockRate();
+	switch (Chip_Clock_GetCPUClockSource())
+	{
+		case SYSCTL_CCLKSRC_MAINPLL:
+			return Chip_Clock_GetMainPLLOutClockRate();
 
-	case SYSCTL_CCLKSRC_SYSCLK:
-		return Chip_Clock_GetSYSCLKRate();
+		case SYSCTL_CCLKSRC_SYSCLK:
+			return Chip_Clock_GetSYSCLKRate();
 
-	default:
-		return 0;
+		default:
+			return 0;
 	}
 }
 
 /* Gets the CPU clock divider */
 uint32_t Chip_Clock_GetCPUClockDiv(void)
 {
-
 	return (LPC_SC->CCLKCFG & 0xFF) + 1;
-
 }
 
 /* Get CCLK rate */
 uint32_t Chip_Clock_GetSystemClockRate(void)
 {
-	printf("Main clock rate is %d\n",Chip_Clock_GetMainClockRate());
-	printf("Chip_Clock_GetCPUClockDiv is %d\n",Chip_Clock_GetCPUClockDiv());
 	return Chip_Clock_GetMainClockRate() / Chip_Clock_GetCPUClockDiv();
 }
 
@@ -328,9 +309,6 @@ static CHIP_SYSCTL_PCLK_T Chip_UART_GetClkIndex(LPC_UART_TypeDef *pUART)
 /* Returns the clock rate for a peripheral */
 uint32_t Chip_Clock_GetPeripheralClockRate(CHIP_SYSCTL_PCLK_T clk)
 {
-	/* 175x/6x clock is derived from CPU clock with CPU divider */
-	printf("Chip_Clock_GetSystemClockRate is %d\n",Chip_Clock_GetSystemClockRate());
-	printf("Chip_Clock_GetPCLKDiv(clk) is %d\n",Chip_Clock_GetPCLKDiv(clk));
 	return Chip_Clock_GetSystemClockRate() / Chip_Clock_GetPCLKDiv(clk);
 }
 
@@ -363,9 +341,7 @@ uint32_t Chip_UART_SetBaud(LPC_UART_TypeDef *pUART, uint32_t baudrate)
 	return clkin / div;
 }
 
-/* ----------------------- Start implementation -----------------------------*/
-// Cam - This is called every 1mS to simulate Rx character received ISR and
-// Tx buffer empty ISR.
+
 /**
  -----------------------------------------------------------------------------------------------------------------------
  prvvUARTISR
@@ -427,7 +403,7 @@ void vMBPortSerialEnable( BOOL xRxEnable, BOOL xTxEnable )
 	if( xTxEnable )
 	{
 		LPC_UART2->IER |= 0x02;
-		prvvUARTTxReadyISR(  );
+		prvvUARTTxReadyISR();
 	}
 	else
 	{
@@ -510,7 +486,7 @@ BOOL xMBPortSerialInit( UCHAR ucPORT, ULONG ulBaudRate, UCHAR ucDataBits, eMBPar
 
 	//enable receive data available interrupt for uart2
 	LPC_UART2->IER &=~ (3<<0) ;
-	LPC_UART2->IER |= (3<<0);
+	LPC_UART2->IER |= (1<<0);
 
 	//LPC_UART2->IER = (1 << 0) | (1 << 2); // B0:Rx, B1: Tx
 
@@ -531,11 +507,6 @@ BOOL xMBPortSerialInit( UCHAR ucPORT, ULONG ulBaudRate, UCHAR ucDataBits, eMBPar
 */
 BOOL xMBPortSerialPutByte( CHAR ucByte )
 {
-    /* Put a byte in the UARTs transmit buffer. This function is called
-     * by the protocol stack if pxMBFrameCBTransmitterEmpty( ) has been
-     * called. */
-    //pc.putc( ucByte);
-
 	LPC_UART2->THR = ucByte;
 	while( !(LPC_UART2->LSR & (1 << 5)));
 	printf("Put byte %x\n",ucByte);
@@ -556,25 +527,14 @@ BOOL xMBPortSerialPutByte( CHAR ucByte )
 */
 BOOL xMBPortSerialGetByte( CHAR * pucByte )
 {
-    /* Return the byte in the UARTs receive buffer. This function is called
-     * by the protocol stack after pxMBFrameCBByteReceived( ) has been called.
-     */
-	//* pucByte = pc.getc();
-	//while( !( LPC_UART2->LSR & 0x01 ) )
-	//{
-	//}
 
 	*pucByte = LPC_UART2->RBR;
 	printf("Received data is %d\n",*pucByte);
     return TRUE;
 }
 
-/* Create an interrupt handler for the transmit buffer empty interrupt
- * (or an equivalent) for your target processor. This function should then
- * call pxMBFrameCBTransmitterEmpty( ) which tells the protocol stack that
- * a new character can be sent. The protocol stack will then call 
- * xMBPortSerialPutByte( ) to send the character.
- */
+
+
 /**
  -----------------------------------------------------------------------------------------------------------------------
  UART2_IRQHandler
@@ -595,12 +555,6 @@ void UART2_IRQHandler()
 
 	intsrc = (LPC_UART2->IIR & 0x03CF);
 	tmp = intsrc & UART_IIR_INTID_MASK;
-//	printf("Uart interrupt\n");
-//	printf("Interrupt source intsrc is %x\n",intsrc);
-//	printf("Interrupt source tmp is %x\n",tmp);
-	 /* Always read the character. */
-	//(void)xMBPortSerialGetByte( ( CHAR * ) & ucByte );
-	//printf("Received byte is %c\n",ucByte);
 
 	// Receive Line Status
 	if (tmp == UART_IIR_INTID_RLS)
@@ -629,6 +583,7 @@ void UART2_IRQHandler()
 	if (tmp == UART_IIR_INTID_THRE)
 	{
 		prvvUARTTxReadyISR();
+		//pxMBFrameCBTransmitterEmpty();
 	}
 
 
@@ -651,11 +606,7 @@ static void prvvUARTTxReadyISR(void)
     pxMBFrameCBTransmitterEmpty();
 }
 
-/* Create an interrupt handler for the receive interrupt for your target
- * processor. This function should then call pxMBFrameCBByteReceived( ). The
- * protocol stack will then call xMBPortSerialGetByte( ) to retrieve the
- * character.
- */
+
 /**
  -----------------------------------------------------------------------------------------------------------------------
  prvvUARTRxISR

@@ -109,8 +109,9 @@ eMBException eMBFuncReadCoils( UCHAR * pucFrame, USHORT * usLen )
             pucFrameCur = &pucFrame[MB_PDU_FUNC_OFF];
             *usLen = MB_PDU_FUNC_OFF;
 
+            //printf("Address is %x\n",pucFrame[MB_SER_PDU_ADDR_OFF]);
             /* First byte contains the function code. */
-            //*pucFrameCur++ = pucFrame[MB_SER_PDU_ADDR_OFF];
+           // *pucFrameCur++ = pucFrame[MB_SER_PDU_ADDR_OFF];
             *pucFrameCur++ = MB_FUNC_READ_COILS;
             *usLen += 1;
 
@@ -129,6 +130,7 @@ eMBException eMBFuncReadCoils( UCHAR * pucFrame, USHORT * usLen )
             *usLen += 1;
 
             eRegStatus = eMBRegCoilsCB( pucFrameCur, usRegAddress, usCoilCount,MB_REG_READ );
+
 
             /* If an error occured convert it into a Modbus exception. */
             if( eRegStatus != MB_ENOERR )

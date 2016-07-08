@@ -42,19 +42,19 @@ static USHORT   usRegInputBuf[REG_INPUT_NREGS];
  -----------------------------------------------------------------------------------------------------------------------
  main
  -----------------------------------------------------------------------------------------------------------------------
-*   Event Handler for GPI module
+*   Main entry
 *
 * 	@date       			DEC/02/2013
-* 	@author                         FW_DEV_2
-* 	@pre                            None
-* 	@return	 			None
+* 	@author                 ankit
+* 	@pre                    None
+* 	@return	 				None
 ************************************************************************************************************************
 */
 int main( void )
 {
     eMBErrorCode    eStatus;
 
-    eStatus = eMBInit( MB_RTU, SLAVE_ID, 0, 19200, MB_PAR_NONE );
+    eStatus = eMBInit( MB_RTU, SLAVE_ID, 0, 9600, MB_PAR_NONE );
 
     /* Enable the Modbus Protocol Stack. */
     eStatus = eMBEnable();
@@ -95,10 +95,8 @@ eMBErrorCode eMBRegInputCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRe
         iRegIndex = ( int )( usAddress - usRegInputStart );
         while( usNRegs > 0 )
         {
-            *pucRegBuffer++ =
-                ( unsigned char )( usRegInputBuf[iRegIndex] >> 8 );
-            *pucRegBuffer++ =
-                ( unsigned char )( usRegInputBuf[iRegIndex] & 0xFF );
+            *pucRegBuffer++ = ( unsigned char )( usRegInputBuf[iRegIndex] >> 8 );
+            *pucRegBuffer++ = ( unsigned char )( usRegInputBuf[iRegIndex] & 0xFF );
             iRegIndex++;
             usNRegs--;
         }
@@ -135,10 +133,8 @@ eMBErrorCode eMBRegHoldingCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usN
             iRegIndex = ( int )( usAddress - usRegInputStart );
             while( usNRegs > 0 )
             {
-                *pucRegBuffer++ =
-                    ( unsigned char )( usRegInputBuf[iRegIndex] >> 8 );
-                *pucRegBuffer++ =
-                    ( unsigned char )( usRegInputBuf[iRegIndex] & 0xFF );
+                *pucRegBuffer++ = ( unsigned char )( usRegInputBuf[iRegIndex] >> 8 );
+                *pucRegBuffer++ = ( unsigned char )( usRegInputBuf[iRegIndex] & 0xFF );
                 iRegIndex++;
                 usNRegs--;
             }
@@ -178,7 +174,7 @@ eMBErrorCode eMBRegHoldingCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usN
 eMBErrorCode eMBRegCoilsCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNCoils,eMBRegisterMode eMode )
 {
     printf("Inside eMBRegCoilsCB\n ");
-    //*pucRegBuffer++ = 0xAF;
+    *pucRegBuffer = 0xAF;
 	//return MB_ENOREG;
     return MB_ENOERR;
 }

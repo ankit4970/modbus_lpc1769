@@ -451,6 +451,12 @@ eMBErrorCode eMBPoll( void )
                     }
                 }
 
+               /*for(i=0;i<usLength;i++)
+                {
+                	printf("Data to be send is %x\n",ucMBFrame[i]);
+                }*/
+
+
                 /* If the request was not sent to the broadcast address we return a reply. */
                 if ( ucRcvAddress != MB_ADDRESS_BROADCAST )
                 {
