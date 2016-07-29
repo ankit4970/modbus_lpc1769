@@ -90,8 +90,6 @@ BOOL xMBPortTimersInit( USHORT usTimer3_5 )
 	NVIC_ClearPendingIRQ(TIMER0_IRQn);
 	NVIC_EnableIRQ(TIMER0_IRQn);
 
-
-
 	return TRUE;
 }
 
